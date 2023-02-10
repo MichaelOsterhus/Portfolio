@@ -1,0 +1,124 @@
+
+/* #poster{
+   margin-top: 60px;
+   position: relative;
+}
+#mandala{
+   position: absolute;
+   top: 230px;
+   left: 20px;
+} */
+#poster img{
+   display: block;
+}
+#todo{
+   display: flex;
+   width: 400px;
+   height: 800px;
+   float: right;
+   top: 80px;
+   background-color: rgba(50,0,0,.7);
+}
+#list{
+   flex: 90%;
+}
+#week{
+   flex: 10%;
+   margin-top:60px;
+}
+.day{
+   width: 40px;
+   height: 30px;
+   font-size: 20px;
+   text-align: center;
+   transition: 0.3s;
+   color: #aaa;
+   text-align: center;
+   padding-top: 10px; 
+   position: relative;
+   
+}
+#hiddenText{
+   display: inline-block;
+   width: 400px;
+   padding: 20px;
+   margin-top: 240px;
+   margin-left: 640px;
+}
+.hide {
+   width: 360px;
+   padding: 20px;
+   background-color: rgb(32, 26, 26);
+   color: white;
+  
+   display: none;
+}
+.day:hover + .hide{
+   display: block;
+}
+#newDate{
+   width: 320px;
+   padding-left: 40px;
+   color: #aaa
+}
+#newText{
+   width: 340px;
+   padding-left: 20px;
+}
+
+#dayText{
+   width: 400px;
+   padding: 5px;
+   background-color: rgb(70, 62, 62);
+   color: #ddd;
+}
+#newMessage{
+   width: 300px;
+   padding: 10px;
+}
+#displayClock{
+   position: fixed;
+   top: 0px;
+   left: 600px;
+   background-color: rgba(50,0,0,.4);
+   width: 400px;
+   /* height: 80px; */
+   border-radius: 0px 0px 20px 20px;
+
+}
+#clock{
+   color: rgb(235, 235, 235);
+   opacity: .6;
+   font-size: 42px;
+   font-family: monospace;
+   padding-left: 80px;
+}
+
+.day:hover {
+   background-color: #535353;
+   color: white;
+}
+#today{
+   text-align: right;
+   padding-right: 30px;
+   font-size: 16px;
+   color: #aaa;
+   font-family: monospace;
+}
+#announcements{
+   width: 400px;
+
+
+}  
+#announce{
+   width: 250px;
+   display: inline-block;
+   padding: 10px;
+   mix-blend-mode: soft-light;
+   color: rgb(235, 235, 214);
+}
+#time{
+   width: 130px;
+   display: inline-block;
+   mix-blend-mode: overlay;
+}
