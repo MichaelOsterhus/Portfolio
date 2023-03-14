@@ -5,7 +5,7 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Bitmap Image Presentation</title>
-   <link rel="stylesheet" href="../webdev.css">
+   <!-- <link rel="stylesheet" href="../webdev.css"> -->
    <style>
       #wrapper{
          width: 600px;
@@ -22,12 +22,19 @@
          background-color: #222;
          color: white;
       }
-      canvas{
+      .bitmap{
          display: inline-block;
-         
+        
          background-color: #444;
          border: 2px solid white;
       }
+      .button{
+         display: inline-block;
+        
+         background-color: #444;
+         border: 1px solid rgb(199, 198, 198);
+      }
+
 
       #text{
          font-size: 1.5em;
@@ -55,16 +62,38 @@
       <h1>A PRESENTATION ON BITMAP IMAGES</h1>
       <h1>USING JAVASCRIPT AND HTML CANVAS</h1>
       <div id="chalkboard">
-        
-        
+         <p id="p-0"></p>
+         <canvas id="btn-0" class="button"></canvas>
+         <canvas id="canvas-0" class="bitmap"></canvas>
+         <p id="p-1"></p>
+         <p id="p-2"></p>
+         <p id="p-3"></p>
+         <p id="p-4"></p>
+         <p id="p-5"></p>
+         <p id="p-6"></p>
+         <p id="p-7"></p>
+         <p id="p-8"></p>
+         <p id="p-9"></p>
+         <p id="p-10"></p>
+         <p id="p-11"></p>
+         <p id="p-12"></p>
+         <p id="p-13"></p>
+         <p id="p-14"></p>
+         <p id="p-15"></p>
+         <p id="p-16"></p>
+         <p id="p-17"></p>
+         <p id="p-18"></p>
+         <p id="p-19"></p>
+         
+         <canvas id="canvas-1"></canvas>
+         <canvas id="canvas-2"></canvas>
+         <canvas id="canvas-3"></canvas>
+         <canvas id="canvas-4"></canvas>
+         <canvas id="canvas-5"></canvas>
       </div>
    </div>
-   <!-- <div class="notepad">
-      <div class="noteBtn">Notes</div>
-      <div class="notes"><h2>What the hack?</h2></div> -->
-   </div>
+   <script src="p.js"></script>
    <script src="app.js"></script>
-   <!--I've disabled notes.js temporarily-->
-   <!-- <script src="notes.js"></script> -->
+
 </body>
 </html>
