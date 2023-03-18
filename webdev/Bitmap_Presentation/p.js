@@ -3,19 +3,27 @@
 let totalColor = 256 ** 3
 let messages = [ 
     
-`The night sky image below is made using JavaScript
- and the HTML canvas element. The colors of the  
- squares are randomly generated everytime the browser window loads. Refresh
- your web browser and you will see a different arrangement.`,
+`The night sky image below is a bitmap image made using JavaScript
+ and the HTML canvas element.  The colors of the grid of squares meant to 
+ represent pixels are a mix of randomly generated red, green, and blue
+ values within certain parameters. If you refresh the page/image, you will see
+ a different "night sky".`,
 
  `This product of code was made for illustrating how bitmap images work 
  and during the course of the presentation I will explain the code I used to build 
  it as a way of explaining bitmap.`,
 
- `You might think by the name that a bitmap image is an image
- produced using a map of bits, but not so fast.  Originally, that is what the word 
- meant, and technically it still does though it would more appropriate now to call 
- it a map of bytes.`,
+ `Originally, a bitmap image, basically a grid of squares known as pixels, 
+ was attributed a single bit of data per square. A bit is the smallest piece of data used by a computer.
+ Typically depicted as a 0 or 1, a bit can hold two values. Thus, this one bit per pixel was used in the past
+ for monochrome monitors in which each pixel on the screen was either on or off, lit or dark.`,
+
+ `A bitmap image is not unlike the map below.  This world map is divided up into a grid which is 24 squares wide
+ and 12 squares tall, equaling 288 squares in total. In comparison, this world map 
+ is also a bitmap image, and as such is 600px wide by 300px tall. Meaning, for every visible square in this map, 
+ there are 625 pixels.  `,
+ 
+
 
  `Bitmap images account for most but not all images you see
  on the internet.  Also known as raster images, they come in many file types such as
@@ -41,9 +49,9 @@ containing the elements to display an image.`,
     dimensions, meaning each pixel in the bitmap file grid is being displayed by one pixel of the 
     screen.`,
  
- `A bitmap image is mapped using a grid like the one below where each square represents 1 pixel.`,
  
- `Again, in the past it was not unusual for each pixel to be ascribed only one bit of data.`,
+ 
+
  
  `So what is a bit?`,
 
@@ -90,6 +98,7 @@ and others.`,
  
  ]
 console.log(messages.length)
+
  function Message (i) {
    const printDiv = document.getElementById(`p-${i}`);
   //  const linebreak = document.createElement('br');
