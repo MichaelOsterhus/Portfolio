@@ -6,6 +6,10 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Bitmap Image Presentation</title>
    <!-- <link rel="stylesheet" href="../webdev.css"> -->
+   <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+   <link rel="manifest" href="img/site.webmanifest">
    <style>
       #wrapper{
          width: 600px;
@@ -53,6 +57,9 @@
          background-color: rgb(53, 53, 102);
          color: rgb(228, 228, 109);
          }
+      a{
+         color: rgb(228, 228, 109);
+      }
    </style>
 
 </head>
@@ -61,7 +68,9 @@
    <div id="wrapper">
       <h1>A PRESENTATION ON BITMAP IMAGES</h1>
       <h1>AND JAVASCRIPT TUTORIAL</h1>
-   
+         <a href="nightsky.html">Night Sky</a>
+         <a href="rgb2hsv.html">RGB To HSV</a>
+         <a href="getimagedata.html">Get Image Data</a>
       <div id="chalkboard">
          <p id="p-0"></p>
          <canvas id="btn-0" class="button"></canvas>
@@ -69,15 +78,28 @@
          <p id="p-1"></p>
          <p id="p-2"></p>
          <p id="p-3"></p>
+         <p id="p-4"></p>
          <canvas id="map1" width="600" height="300"></canvas>
          <canvas id="map2" width="600" height="300"></canvas>
          <p>In the second map, the squares from the first have been reinterpreted using JavaScript to represent 
             what the image would look like if it were 24px x 12px. It is not part of the tutorial but you can see
-            the code <a href="upated_image_data.txt">here</a></p>
-         <p id="p-4"></p>
+            the JS code <a href="https://github.com/MichaelOsterhus/michaelosterhus.github.io/blob/8b445e9ff7a6e20cb29d31d4fe8071f008d7d7fd/webdev/Bitmap_Presentation/map.js" target="_blank">here</a></p>
+         
+         <h2>Using JavaScript To Create An Image</h2>
          <p id="p-5"></p>
+         <pre><code>
+            let bit = [0, 1];
+          </code></pre>
          <p id="p-6"></p>
+         <pre><code>
+            let bitValue = bit.length;
+         </code></pre>
          <p id="p-7"></p>
+         <pre><code>
+            let byte = 8;
+            let byteValue = bitValue ** byte;
+         </code></pre>
+         
          <p id="p-8"></p>
          <p id="p-9"></p>
          <p id="p-10"></p>

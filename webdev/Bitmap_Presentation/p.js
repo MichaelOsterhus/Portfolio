@@ -14,50 +14,32 @@ let messages = [
  it as a way of explaining bitmap.`,
 
  `Originally, a bitmap image, basically a grid of squares known as pixels, 
- was attributed a single bit of data per square. A bit is the smallest piece of data used by a computer.
- Typically depicted as a 0 or 1, a bit can hold two values. Thus, this one bit per pixel was used in the past
- for monochrome monitors in which each pixel on the screen was either on or off, lit or dark.`,
+ was attributed a single bit of data per square.
+ Typically depicted as a 1 or 0, a bit is the smallest piece of data used by a computer. 
+ So it was, one bit per pixel was used in the past for monochrome monitors 
+ in which each pixel bit corresponded to a pixel on the screen which was either on or off, 
+ lit or dark, one color or no color.`,
+
+ `Bitmap images account for most but not all images you see
+ on the internet.  Also known as raster images, today they come in many file types such as
+ JPEG, PNG, GIF, and BMP. With bitmap images such as these is not unusual for a single 
+ pixel to be given not a bit, but 3 (to 4) bytes of data with one byte for the red, green, blue, (and alpha) values `,
 
  `A bitmap image is not unlike the map below.  This world map is divided up into a grid which is 24 squares wide
  and 12 squares tall, equaling 288 squares in total. In comparison, this world map 
  is also a bitmap image, and as such is 600px wide by 300px tall. Meaning, for every visible square in this map, 
  there are 625 pixels.  `,
- 
 
+ `For the sake of understanding, we will start with most basic element. `,
 
- `Bitmap images account for most but not all images you see
- on the internet.  Also known as raster images, they come in many file types such as
- JPEG, PNG, GIF, and BMP. An alternate to bitmap images which you might see are called 'vector' 
- images which work in a fundamentally different way, but that is for a different lesson. 
- In short, I will say that the difference in the output of each type 
- is that when you enlarge a bitmap image on a screen, at a certain point the image 
- will begin to "pixelate" whereas a vector image does not.`,
- 
-`Pixelation means "when a picture is enlarged on a screen or print medium to the point 
-that the pixels become visible". It must be pointed out that 'pixel' can mean the smallest     
-element of a bitmap image, OR the smallest unit of a lit screen, such as in a computer monitor or smartphone,
-containing the elements to display an image.`,
-          
-`So, when a bitmap image is enlarged on a screen, the file doesn't increase in pixels, rather
- each file pixel is diplayed by more screen pixels. Both bitmap images above are displayed at a 
- width of 300 screen pixels (px)
- but both have been resized for the screen from their original file pixel dimensions of: 
- 335px x 335px for the left, 24px x 24px.  This means that if the images were displayed at their original
- dimensions, the image on left would be larger and the one on right would be smaller. `,
- 
- `The tiny image below is the same as the one on right above shown at it's original
-    dimensions, meaning each pixel in the bitmap file grid is being displayed by one pixel of the 
-    screen.`,
- 
- 
- 
+ `With the above line of code we are creating a variable using the keyword 'let'
+ and setting it equal to an array which contains the numbers 0 and 1.  The term 'bit' here
+ is arbitrarily designated but because it names a variable, we can use it elsewhere, such as
+ in the code below:`,
 
- 
- `So what is a bit?`,
-
- `A bit is the smallest piece of data used in computer processing. A bit links 
- to computer hardware which in principle is like a light switch: it is either on or off.
- Hence a bit has two possible values usually depicted as 0 and 1. `,
+ `Here we create another variable and assign to it the length of the array we just made. 
+ In JS, 'length' is another keyword and it refers to the number of values in an array. 
+ Hence, because there are two numbers in our array, the length of 'bit' = 2.`,
 
  `A byte is 8 bits put together to make a single value. If a bit has 2 possible values,
  how many possible values then does a byte have? `,
