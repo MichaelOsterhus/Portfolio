@@ -1,5 +1,8 @@
 
-function getBloggerData(blogId, postId) {
+var apiKey = 'AIzaSyBgbqYoW1taQx5bY59XETPF48N1SzyWxSE'
+var blogId = 'trannyinacan'
+
+function getBloggerData(postId) {
   var apiUrl = 'https://www.googleapis.com/blogger/v3/blogs/' + blogId + '/posts/' + postId + '?key=' + apiKey + '&fields=title,selfLink,images&fetchImages=true';
   
   $.getJSON(apiUrl, function(data) {
@@ -9,5 +12,5 @@ function getBloggerData(blogId, postId) {
 }
 
 
-getBloggerData('trannyinacan', 'a-sign-on-my-journey-to-gender-deviance');
+getBloggerData('a-sign-on-my-journey-to-gender-deviance');
 
