@@ -56,9 +56,9 @@ function showPreviousImage() {
 // function to show next image
 function showNextImage() {
   var currentIndex = parseInt(modalImg.dataset.index);
-  var previousIndex = (currentIndex + 1 + thumbnailImgs.length) % thumbnailImgs.length;
-  var previousFullsizeUrl = thumbnailImgs[previousIndex].dataset.fullsize;
-  modalImg.src = previousFullsizeUrl;
-  modalImg.dataset.index = previousIndex;
+  var nextIndex = (currentIndex + 1 + thumbnailImgs.length) % thumbnailImgs.length;
+  var nextFullsizeUrl = thumbnailImgs[nextIndex].dataset.fullsize;
+  modalImg.src = nextFullsizeUrl;
+  modalImg.dataset.index = nextIndex;
 }
 
