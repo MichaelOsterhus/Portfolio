@@ -1,11 +1,11 @@
-#thumbnail img {
+.thumbnail img {
     background-size: cover;
     background-position: center;
     width: 100%;
     height: auto;
     display: flex;
  }
- #thumbnail {
+ #thumbnail-grid {
     width: 800px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
