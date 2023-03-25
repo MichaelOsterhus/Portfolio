@@ -53,3 +53,12 @@ function showPreviousImage() {
   modalImg.dataset.index = previousIndex;
 }
 
+// function to show next image
+function showNextImage() {
+  var currentIndex = parseInt(modalImg.dataset.index);
+  var previousIndex = (currentIndex + 1 + thumbnailImgs.length) % thumbnailImgs.length;
+  var previousFullsizeUrl = thumbnailImgs[previousIndex].dataset.fullsize;
+  modalImg.src = previousFullsizeUrl;
+  modalImg.dataset.index = previousIndex;
+}
+
