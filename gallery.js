@@ -33,7 +33,7 @@ thumbnailImgs.forEach(function(thumbnailImg, index) {
     modal.appendChild(nextButton);
 
     // add dim-page class to body
-    document.body.classList.add('dim-page');
+    //document.body.classList.add('dim-page');
 
     // add modal overlay to body
     document.body.appendChild(modal);
