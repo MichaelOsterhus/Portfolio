@@ -8,7 +8,11 @@ function getBloggerData(postId) {
   $.getJSON(apiUrl, function(data) {
     $('#post-title').text(data.title);
     $('#post-image').attr('src', data.images[0].url);
-  });
+  });.fail(function(jqXHR, textStatus, errorThrown) {
+    console.log(jqXHR);
+    console.log(textStatus);
+    console.log(errorThrown);
+});
 }
 
 
