@@ -34,7 +34,7 @@ fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?key=${apiKey
     throw new Error('Request failed');
   })
   .then(data => {
-    blogs.push(data.items)
+    blogs.push(data.items[0])
     console.log(data);
     console.log(blogs);
   })
