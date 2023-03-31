@@ -39,7 +39,6 @@ fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?key=${apiKey
     console.log(data);
     for (i = 0; i < blogs.length; i++){
       console.log(blogs[i].title);
-      console.log(blogs[i].content)
     }
     
   })
