@@ -40,7 +40,10 @@ fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?key=${apiKey
     console.log(`>>>>>The length of data.items is ${data.items.length}`)
     for (i = 0; i < blogs.length; i++){
       console.log(blogs[i].title);
-      console.log(blogs[i].content.img[0].url)
+      var htmlContent = blogs[i].content;
+      var $html = $(htmlContent);
+      var $images = $html.find('img.post-image');
+      console.log($images)
     }
     
     console.log(`>>>>>The length of blogs array is ${blogs.length}`)
