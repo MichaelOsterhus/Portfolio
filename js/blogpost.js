@@ -35,12 +35,12 @@ fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?key=${apiKey
   })
   .then(data => {
 
-    blogs.push(data.items[0])
+    blogs.push(data.items)
     console.log(data);
     for (i = 0; i < blogs.length; i++){
       console.log(blogs[i].title);
     }
-    console.log(`the length of blogs array is ${blogs.length}`)
+    console.log(`>>>>>The length of blogs array is ${blogs.length}`)
   })
   .catch(error => {
     console.error(error);
