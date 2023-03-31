@@ -20,7 +20,7 @@
 
 // getBloggerData(Thrimskvida);
 
-console.log(`What happened?`)
+
 
 const blogId2 = '4366616470796725508'
 const apiKey2 = 'AIzaSyDEAaAg51L7NHNpwQ4jVIwXlnCERuNsiOU'
@@ -34,15 +34,20 @@ fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?key=${apiKey
     throw new Error('Request failed');
   })
   .then(data => {
+
     blogs.push(data.items[0])
     console.log(data);
-    console.log(blogs[0].title);
+    for (i = 0; i < data.items.length; i++){
+      console.log(blogs[i].title);
+      console.log(blogs[i].content)
+    }
+    
   })
   .catch(error => {
     console.error(error);
   });
 
-console.log('Your code does not work here.')
+
 
 // fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?fields=items(title,url,selfLink,content/images)&key=${apiKey2}`)
 //   .then(response => {
