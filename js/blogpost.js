@@ -43,7 +43,7 @@ fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?key=${apiKey
       var htmlContent = blogs[i].content;
       var $html = $(htmlContent);
       var $images = $html.find('img');
-      console.log($images)
+      console.log($images[0].src)
     }
     
     console.log(`>>>>>The length of blogs array is ${blogs.length}`)
