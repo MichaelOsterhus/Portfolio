@@ -3,7 +3,7 @@ body{
    margin: 0px;
    padding: 0px;
    background-color: rgb(24, 24, 24);
-   background-image: url(img/4EC_logo.png);
+   background-image: url(../img/4EC_logo.png);
    background-repeat: no-repeat;
    background-attachment: fixed;
    background-position: center;
