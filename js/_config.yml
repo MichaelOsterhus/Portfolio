@@ -1,0 +1,5 @@
+defaults:
+  - scope:
+      path: ""
+    values:
+      cache_control: max-age=6000
