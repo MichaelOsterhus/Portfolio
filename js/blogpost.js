@@ -42,7 +42,7 @@ fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?key=${apiKey
       console.log(blogs[i].title);
       var htmlContent = blogs[i].content;
       var $html = $(htmlContent);
-      var $images = $html.find('img.post-image');
+      var $images = $html.find('img');
       console.log($images)
     }
     
