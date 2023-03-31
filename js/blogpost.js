@@ -24,6 +24,7 @@ console.log(`What happened?`)
 
 const blogId2 = '4366616470796725508'
 const apiKey2 = 'AIzaSyDEAaAg51L7NHNpwQ4jVIwXlnCERuNsiOU'
+let blogs = []
 
 fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?key=${apiKey2}`)
   .then(response => {
@@ -33,7 +34,9 @@ fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?key=${apiKey
     throw new Error('Request failed');
   })
   .then(data => {
+    blogs.push(data)
     console.log(data);
+    console.log(blogs);
   })
   .catch(error => {
     console.error(error);
