@@ -88,25 +88,25 @@ console.log('Your code does not work here.')
 
 
 
-fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?fields=items(title,url,content(images))&key=${apiKey2}`)
-  .then(response => {
-    if (response.ok) {
-      return response.json();
-    }
-    throw new Error('Request failed');
-  })
-  .then(data => {
-    const posts = data.items;
-    posts.forEach(post => {
-      const title = post.title;
-      const postUrl = post.url;
-      const image = post.content.images[0].url; // assuming there is only one image per post
-      console.log(title, postUrl, image);
-    });
-  })
-  .catch(error => {
-    console.error(error);
-  });
+// fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?fields=items(title,url,content(images))&key=${apiKey2}`)
+//   .then(response => {
+//     if (response.ok) {
+//       return response.json();
+//     }
+//     throw new Error('Request failed');
+//   })
+//   .then(data => {
+//     const posts = data.items;
+//     posts.forEach(post => {
+//       const title = post.title;
+//       const postUrl = post.url;
+//       const image = post.content.images[0].url; // assuming there is only one image per post
+//       console.log(title, postUrl, image);
+//     });
+//   })
+//   .catch(error => {
+//     console.error(error);
+//   });
 
 
   
