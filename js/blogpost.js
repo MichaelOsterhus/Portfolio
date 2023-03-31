@@ -34,12 +34,14 @@ fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?key=${apiKey
     throw new Error('Request failed');
   })
   .then(data => {
-
-    blogs.push(data.items)
-    console.log(data);
+    for (i = 0; i < data.items.length; i++){
+      blogs.push(data.items[i])
+    }
+    console.log(`>>>>>The length of data.items is ${data.items.length}`)
     for (i = 0; i < blogs.length; i++){
       console.log(blogs[i].title);
     }
+    
     console.log(`>>>>>The length of blogs array is ${blogs.length}`)
   })
   .catch(error => {
