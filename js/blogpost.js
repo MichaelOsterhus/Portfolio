@@ -36,7 +36,7 @@ fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?key=${apiKey
   .then(data => {
     blogs.push(data)
     console.log(data);
-    console.log(blogs);
+    console.log(`The title of the first blog is ${blogs[0].title});
   })
   .catch(error => {
     console.error(error);
