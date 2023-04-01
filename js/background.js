@@ -14,13 +14,12 @@ img.onload = function() {
   console.log(`The image width is ${img.width}`)
   console.log(`The scale is ${scale}`)
   const sourceX = 100
-  const sourceY = 100
+  const sourceY = 200
   const sourceWidth = img.width * 2/3 - sourceX;
   const sourceHeight = img.height * 2/3 - sourceY;
   const scale2 = sourceWidth / canvas.width;
   const destWidth = canvas.width;
-  const destHeight = sourceHeight * scale2;
+  const destHeight = sourceHeight;
   ctx.drawImage(img, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, destWidth, destHeight);
 }
-
 
