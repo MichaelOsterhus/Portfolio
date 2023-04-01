@@ -22,6 +22,7 @@ img.onload = function() {
   const tWidth = img.width * 2/3
   const tHeight = img.width * 2/3 
   tempCanvas.width = tWidth - sourceX;
+  const tScale = tempCanvas.width / img.
   tempCanvas.height = tHeight - sourceY;
   const destWidth = tempCanvas.width;
   const destHeight = tempCanvas.height;
@@ -29,7 +30,7 @@ img.onload = function() {
     // Get the pixel data for the canvas
   const imageData = tempContext.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
   const pixelData = imageData.data;
-  const greyValue = 50
+  const greyValue = 25
     // Loop through the pixel data and remove white pixels
   for (let i = 0; i < pixelData.length; i += 4) {
     const r = pixelData[i];
