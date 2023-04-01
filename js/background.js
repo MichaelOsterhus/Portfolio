@@ -22,7 +22,7 @@ img.onload = function() {
   const tWidth = img.width * 2/3
   const tHeight = img.width * 2/3 
   tempCanvas.width = tWidth - sourceX;
-  tempCanvas.height = tHeight - sourceY;
+  tempCanvas.height = tHeight
   const destWidth = tempCanvas.width;
   const destHeight = tempCanvas.height;
   tempContext.drawImage(img, sourceX, sourceY, tWidth, tHeight, 0, 0, destWidth, destHeight);
@@ -53,6 +53,7 @@ img.onload = function() {
     canvas.height = tempCanvas.height * scale
     // Draw the modified image onto your main canvas
     ctx.drawImage(tempCanvas, 0, 0);
+    ctx.drawImage(foreground, xc - (foreground.width/2), yc - (foreground.height/2))
 }
-ctx.drawImage(foreground, xc - (foreground.width/2), yc - (foreground.height/2))
+
 
