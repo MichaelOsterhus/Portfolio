@@ -18,8 +18,8 @@ img.onload = function() {
   const sourceWidth = img.width * 2/3 - sourceX;
   const sourceHeight = img.height * 2/3 - sourceY;
   const scale2 = sourceWidth / canvas.width;
-  const destWidth = sourceWidth;
-  const destHeight = sourceHeight;
+  const destWidth = canvas.width;
+  const destHeight = sourceHeight * scale2;
   ctx.drawImage(img, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, destWidth, destHeight);
 }
 
