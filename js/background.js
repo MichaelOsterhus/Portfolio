@@ -17,8 +17,8 @@ img.onload = function() {
   const tempCanvas = document.createElement('canvas');
     // Draw the image onto the temporary canvas
   const tempContext = tempCanvas.getContext('2d');
-  const sourceX = 200
-  const sourceY = 300
+  const sourceX = 100
+  const sourceY = 500
   const tWidth = img.width * 2/3
   const tHeight = img.width * 2/3 
   tempCanvas.width = tWidth - sourceX;
