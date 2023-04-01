@@ -29,7 +29,7 @@ img.onload = function() {
     // Get the pixel data for the canvas
   const imageData = tempContext.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
   const pixelData = imageData.data;
-  
+  const greyValue = 50
     // Loop through the pixel data and remove white pixels
   for (let i = 0; i < pixelData.length; i += 4) {
     const r = pixelData[i];
@@ -37,6 +37,10 @@ img.onload = function() {
     const b = pixelData[i + 2]; 
          if (r > 200 && g > 200 && b > 200) {
         pixelData[i + 3] = 0; // Set alpha to 0 for white pixels
+      } else {
+        pixelData[i] = greyValue; // Set R value to 50 for non-white pixels
+        pixelData[i + 1] = greyValue; // Set G value to 50 for non-white pixels
+        pixelData[i + 2] = greyValue; // Set B value to 50 for non-white pixels
       }
     }
   
