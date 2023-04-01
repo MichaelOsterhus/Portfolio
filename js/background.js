@@ -47,11 +47,14 @@ img.onload = function() {
     // Put the modified pixel data back onto the temporary canvas
     tempContext.putImageData(imageData, 0, 0);
     console.log(`Temp canvas width is ${tempCanvas.width}`)
+    console.log(`The temp canvas height is ${tempCanvas.height}`)
     
     canvas.width = window.innerWidth
     const scale = tempCanvas.width / canvas.width
     canvas.height = tempCanvas.height * scale
     // Draw the modified image onto your main canvas
+    console.log(`Scale = ${scale}`)
+    console.log(`Canvas height = ${canvas.height}`)
     ctx.drawImage(tempCanvas, 0, 0);
     ctx.drawImage(foreground, xc - (foreground.width/2), yc - (foreground.height/2))
 }
