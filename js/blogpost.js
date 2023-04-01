@@ -3,22 +3,6 @@
 // var blogId = '4366616470796725508'
 // var Thrimskvida = '6208382948984439349'
 
-// function getBloggerData(postId) {
-//   var apiUrl = 'https://www.googleapis.com/blogger/v3/blogs/' + blogId + '/posts/' + postId + '?key=' + apiKey + '&fields=title,selfLink,images&fetchImages=true';
-  
-//   $.getJSON(apiUrl, function(data) {
-//     $('#post-title').text(data.title);
-//     $('#post-image').attr('src', data.images[0].url);
-//     $('#post-link').attr('href', data.selfLink);
-//   }).fail(function(jqXHR, textStatus, errorThrown) {
-//     console.log(jqXHR);
-//     console.log(textStatus);
-//     console.log(errorThrown);
-// });
-// }
-
-
-// getBloggerData(Thrimskvida);
 
 
 
@@ -46,9 +30,10 @@ fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?key=${apiKey
       var $images = $html.find('img')
       var imgSRC = $images[0].src
       var blogPosts = document.getElementById('blogs')
-      var post = blogPosts.createElement('a')
+      var post = document.createElement('a')
       post.href = blogs[i].url
       post.innerHTML = `<div class="post"><h2>${blogs[i].title}</h2><img src="${imgSRC}"></div>`
+      blogPosts.appendChild(post)
     }
     
     console.log(`>>>>>The length of blogs array is ${blogs.length}`)
