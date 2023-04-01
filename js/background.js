@@ -8,13 +8,14 @@ const yc = canvas.height / 2;
 
 const img = new Image();
 img.src = '../img/background-sketch.png';
-const scale = img.width / canvas.width
-console.log(`The canvas width is ${canvas.width}`)
-console.log(`The image width is ${img.width}`)
-console.log(`The scale is ${scale}`)
 img.onload = function() {
+  const scale = img.width / canvas.width
+  console.log(`The canvas width is ${canvas.width}`)
+  console.log(`The image width is ${img.width}`)
+  console.log(`The scale is ${scale}`)
   const sourceWidth = img.width * 2/3;
   const sourceHeight = img.height * 2/3;
+  const scale2 = sourceWidth / canvasWidth;
   const destWidth = sourceWidth;
   const destHeight = sourceHeight;
   ctx.drawImage(img, 0, 0, sourceWidth, sourceHeight, 0, 0, destWidth, destHeight);
