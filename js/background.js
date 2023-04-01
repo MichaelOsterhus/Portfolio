@@ -1,18 +1,16 @@
 const canvas = document.getElementById('final');
 const ctx = canvas.getContext('2d');
 
-canvas.width = window.innerWidth
-canvas.height = window.innerHeight
+
 const xc = canvas.width / 2; // center of canvas
 const yc = canvas.height / 2;
 
 const img = new Image();
 img.src = '../img/background-sketch.png';
 img.onload = function() {
-  const scale = img.width / canvas.width
+  
   console.log(`The canvas width is ${canvas.width}`)
   console.log(`The image width is ${img.width}`)
-  console.log(`The scale is ${scale}`)
     // Create a temporary canvas element
   const tempCanvas = document.createElement('canvas');
     // Draw the image onto the temporary canvas
@@ -22,7 +20,6 @@ img.onload = function() {
   const tWidth = img.width * 2/3
   const tHeight = img.width * 2/3 
   tempCanvas.width = tWidth - sourceX;
-  const tScale = tempCanvas.width / img.
   tempCanvas.height = tHeight - sourceY;
   const destWidth = tempCanvas.width;
   const destHeight = tempCanvas.height;
@@ -47,7 +44,11 @@ img.onload = function() {
   
     // Put the modified pixel data back onto the temporary canvas
     tempContext.putImageData(imageData, 0, 0);
-  
+    console.log(`Temp canvas width is ${tempCanvas.width}`)
+    
+    canvas.width = window.innerWidth
+    const scale = tempCanvas.width / canvas.width
+    canvas.height = tempCanvas.height * scale
     // Draw the modified image onto your main canvas
     ctx.drawImage(tempCanvas, 0, 0);
 }
