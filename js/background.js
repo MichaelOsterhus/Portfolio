@@ -45,11 +45,7 @@ img.onload = function() {
     tempContext.putImageData(imageData, 0, 0);
   
     // Draw the modified image onto your main canvas
-    context.drawImage(tempCanvas, 0, 0);
+    ctx.drawImage(tempCanvas, 0, 0);
 }
 
 
-
-
-// Set the source of the image object
-img.src = 'path/to/your/image.png';
