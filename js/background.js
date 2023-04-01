@@ -7,9 +7,11 @@ const xc = canvas.width / 2; // center of canvas
 const yc = canvas.height / 2;
 
 const img = new Image();
-const scale = img.width / canvas.width
-console.log(scale)
 img.src = '../img/background-sketch.png';
+const scale = img.width / canvas.width
+console.log(`The canvas width is ${canvas.width}`)
+console.log(`The image width is ${img.width}`)
+console.log(`The scale is ${scale}`)
 img.onload = function() {
   const sourceWidth = img.width * 2/3;
   const sourceHeight = img.height * 2/3;
