@@ -8,6 +8,7 @@ const yc = canvas.height / 2;
 
 const img = new Image();
 const scale = img.width / canvas.width
+console.log(scale)
 img.src = '../img/background-sketch.png';
 img.onload = function() {
     const sourceX = 0;
