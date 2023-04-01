@@ -15,7 +15,6 @@ img.onload = function() {
   console.log(`The scale is ${scale}`)
     // Create a temporary canvas element
   const tempCanvas = document.createElement('canvas');
-
     // Draw the image onto the temporary canvas
   const tempContext = tempCanvas.getContext('2d');
   const sourceX = 200
@@ -36,7 +35,7 @@ img.onload = function() {
     const r = pixelData[i];
     const g = pixelData[i + 1];
     const b = pixelData[i + 2]; 
-         if (r === 255 && g === 255 && b === 255) {
+         if (r > 200 && g === 200 && b === 200) {
         pixelData[i + 3] = 0; // Set alpha to 0 for white pixels
       }
     }
