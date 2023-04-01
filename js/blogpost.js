@@ -39,11 +39,16 @@ fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?key=${apiKey
     }
     console.log(`>>>>>The length of data.items is ${data.items.length}`)
     for (i = 0; i < blogs.length; i++){
-      console.log(blogs[i].title);
-      var htmlContent = blogs[i].content;
-      var $html = $(htmlContent);
-      var $images = $html.find('img');
-      console.log($images[0].src)
+      console.log(blogs[i].title)
+      // var blogURL = blogs[i].url
+      var htmlContent = blogs[i].content
+      var $html = $(htmlContent)
+      var $images = $html.find('img')
+      var imgSRC = $images[0].src
+      var blogPosts = document.getElementById('blogs')
+      var post = blogPosts.createElement('a')
+      post.href = blogs[i].url
+      post.innerHTML = `<div class="post"><h2>${blogs[i].title}</h2><img src="${imgSRC}"></div>`
     }
     
     console.log(`>>>>>The length of blogs array is ${blogs.length}`)
@@ -54,49 +59,11 @@ fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?key=${apiKey
 
 
 
-// fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?fields=items(title,url,selfLink,content/images)&key=${apiKey2}`)
-//   .then(response => {
-//     if (response.ok) {
-//       return response.json();
-//     }
-//     throw new Error('Request failed');
-//   })
-//   .then(data => {
-//     const posts = data.items;
-//     posts.forEach(post => {
-//       const title = post.title;
-//       const imageUrl = post.content.images[0].url;
-//       const postUrl = post.selfLink;
-//       console.log(title, imageUrl, postUrl);
-//     });
-//   })
-//   .catch(error => {
-//     console.error(error);
-//     console.log(error.response);
-//   });
+
 
   console.log('Your code works here.')
 
-  // fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?fields=items(title,url)&key=${apiKey2}`)
-  // .then(response => {
-  //   if (response.ok) {
-  //     return response.json();
-  //   }
-  //   throw new Error('Request failed');
-  // })
-  // .then(data => {
-  //   const posts = data.items;
-  //   posts.forEach(post => {
-  //     const title = post.title;
-  //     // const imageUrl = post.content.images[0].url;
-  //     const postUrl = post.url;
-  //     console.log(title, postUrl);
-  //   });
-  // })
-  // .catch(error => {
-  //   console.error(error);
-  //   console.log(error.response);
-  // });
+ 
 
 
 
