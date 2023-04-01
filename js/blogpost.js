@@ -32,6 +32,7 @@ fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?key=${apiKey
       var blogPosts = document.getElementById('blogs')
       var post = document.createElement('a')
       post.href = blogs[i].url
+      post.target = '_blank'
       post.innerHTML = `<div class="post"><h2>${blogs[i].title}</h2><img src="${imgSRC}"></div>`
       blogPosts.appendChild(post)
     }
