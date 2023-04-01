@@ -1,7 +1,8 @@
 const canvas = document.getElementById('final');
 const ctx = canvas.getContext('2d');
 
-
+canvas.height = tempCanvas.height * scale
+canvas.width = window.innerWidth
 const xc = canvas.width / 2; // center of canvas
 const yc = canvas.height / 2;
 
@@ -49,9 +50,8 @@ img.onload = function() {
     console.log(`Temp canvas width is ${tempCanvas.width}`)
     console.log(`The temp canvas height is ${tempCanvas.height}`)
     
-    canvas.width = window.innerWidth
-    const scale = tempCanvas.width / canvas.width
-    canvas.height = tempCanvas.height * scale
+    // const scale = tempCanvas.width / canvas.width
+  
     // Draw the modified image onto your main canvas
     console.log(`Scale = ${scale}`)
     console.log(`Canvas height = ${canvas.height}`)
