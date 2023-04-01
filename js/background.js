@@ -7,6 +7,8 @@ const yc = canvas.height / 2;
 
 const img = new Image();
 img.src = '../img/background-sketch.png';
+const foreground = new Image();
+foreground.src = "../img/4EC_logo.png";
 img.onload = function() {
   
   console.log(`The canvas width is ${canvas.width}`)
@@ -52,5 +54,5 @@ img.onload = function() {
     // Draw the modified image onto your main canvas
     ctx.drawImage(tempCanvas, 0, 0);
 }
-
+ctx.drawImage(foreground, xc - (foreground.width/2), yc - (foreground.height/2))
 
