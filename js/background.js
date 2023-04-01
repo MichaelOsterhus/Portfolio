@@ -35,7 +35,7 @@ img.onload = function() {
     const r = pixelData[i];
     const g = pixelData[i + 1];
     const b = pixelData[i + 2]; 
-         if (r > 200 && g === 200 && b === 200) {
+         if (r > 200 && g > 200 && b > 200) {
         pixelData[i + 3] = 0; // Set alpha to 0 for white pixels
       }
     }
