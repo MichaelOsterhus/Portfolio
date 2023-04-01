@@ -1,16 +1,10 @@
-
-// var apiKey = 'AIzaSyDEAaAg51L7NHNpwQ4jVIwXlnCERuNsiOU'
-// var blogId = '4366616470796725508'
 // var Thrimskvida = '6208382948984439349'
-
-
-
-
-const blogId2 = '4366616470796725508'
-const apiKey2 = 'AIzaSyDEAaAg51L7NHNpwQ4jVIwXlnCERuNsiOU'
+const blogId = '4366616470796725508'
+const apiKey = 'AIzaSyDEAaAg51L7NHNpwQ4jVIwXlnCERuNsiOU'
 let blogs = []
+const cropOptions = {width: 600, height: 371};
 
-fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?key=${apiKey2}`)
+fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId}/posts?key=${apiKey}`)
   .then(response => {
     if (response.ok) {
       return response.json();
@@ -35,6 +29,18 @@ fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?key=${apiKey
       post.target = '_blank'
       post.innerHTML = `<div class="post"><h2>${blogs[i].title}</h2><img src="${imgSRC}"></div>`
       blogPosts.appendChild(post)
+      const cropImg = new Image();
+      cropImg.onload = function() {
+        const cropResult = smartcrop.crop(cropImg, cropOptions);
+        const cropCanvas = document.createElement('canvas');
+        cropCanvas.width = cropOptions.width;
+        cropCanvas.height = cropOptions.height;
+        const cropCtx = cropCanvas.getContext('2d');
+        cropCtx.drawImage(cropImg, cropResult.topCrop.x, cropResult.topCrop.y, cropResult.topCrop.width, cropResult.topCrop.height, 0, 0, cropOptions.width, cropOptions.height);
+        const cropUrl = cropCanvas.toDataURL();
+        document.getElementById(`img-${item.id}`).src = cropUrl;
+      };
+      cropImg.src = imgSRC;
     }
     
     console.log(`>>>>>The length of blogs array is ${blogs.length}`)
@@ -45,34 +51,34 @@ fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?key=${apiKey
 
 
 
+function handleResponse(response) {
+  const parser = new DOMParser();
+  const cropOptions = {width: 600, height: 371};
+  response.items.forEach(item => {
+    const html = parser.parseFromString(item.content, 'text/html');
+    const img = html.querySelector('img');
+    const url = img ? img.src : '';
+    const title = item.title;
+    const link = item.url;
+    const post = document.createElement('div');
+    post.classList.add('post');
+    post.innerHTML = `<h2><a href="${link}">${title}</a></h2><a href="${link}"><img src="${url}" id="img-${item.id}"></a><p>${item.content}</p>`;
+    document.getElementById('content').appendChild(post);
+    const cropImg = new Image();
+    cropImg.onload = function() {
+      const cropResult = smartcrop.crop(cropImg, cropOptions);
+      const cropCanvas = document.createElement('canvas');
+      cropCanvas.width = cropOptions.width;
+      cropCanvas.height = cropOptions.height;
+      const cropCtx = cropCanvas.getContext('2d');
+      cropCtx.drawImage(cropImg, cropResult.topCrop.x, cropResult.topCrop.y, cropResult.topCrop.width, cropResult.topCrop.height, 0, 0, cropOptions.width, cropOptions.height);
+      const cropUrl = cropCanvas.toDataURL();
+      document.getElementById(`img-${item.id}`).src = cropUrl;
+    };
+    cropImg.src = url;
+  })
+}
 
-
-  console.log('Your code works here.')
-
- 
-
-
-
-
-// fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogId2}/posts?fields=items(title,url,content(images))&key=${apiKey2}`)
-//   .then(response => {
-//     if (response.ok) {
-//       return response.json();
-//     }
-//     throw new Error('Request failed');
-//   })
-//   .then(data => {
-//     const posts = data.items;
-//     posts.forEach(post => {
-//       const title = post.title;
-//       const postUrl = post.url;
-//       const image = post.content.images[0].url; // assuming there is only one image per post
-//       console.log(title, postUrl, image);
-//     });
-//   })
-//   .catch(error => {
-//     console.error(error);
-//   });
 
 
   
