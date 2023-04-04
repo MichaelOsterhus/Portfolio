@@ -2,7 +2,8 @@
 // URL of the RSS feed
 const rssUrl = [
     'https://www.reutersagency.com/feed/?best-topics=tech&post_type=best',
-    'https://www.reutersagency.com/feed/?best-sectors=economy&post_type=best'
+    'https://www.reutersagency.com/feed/?best-sectors=economy&post_type=best',
+    'https://www.reutersagency.com/feed/?best-topics=human-interest&post_type=best'
   ];
   
   // Fetch the RSS feeds using the fetch API
