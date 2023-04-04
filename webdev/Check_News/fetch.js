@@ -15,7 +15,11 @@ fetch(rssUrl)
       const title = item.querySelector('title').textContent;
       const link = item.querySelector('link').textContent;
       const description = item.querySelector('description').textContent;
-
+      const newsfeed = document.getElementById('newsfeed')
+      const a = document.createElement('a')
+      a.href = link
+      a.innerHTML = `<h2>${title}</h2>
+      <p>${description}</p>`;   
       console.log(`${title}: ${link} - ${description}`);
     });
   })
