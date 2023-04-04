@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <script src="../../js/header.js"></script>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="style.css"> 
    <link rel="stylesheet" href="../../css/homestyle.css">
+   <link rel="apple-touch-icon" sizes="180x180" href="../../img/apple-touch-icon.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png">
+   <link rel="manifest" href="../../img/site.webmanifest">
    <script src="app.js"></script>
    
    <title>Puzzle App</title>
 </head>
 <body>
    <script src="../webdev_menu.js"></script>
-   <div id="playField">
-      <div class="grid"></div>
-      <btn id="jumble">Jumble</btn>
-      <p>Must find way to add cropped background image to squares and have them swap</p>
+   <div id="content">
+      <h2>Puzzle App</h2>
+
+      <h3>Phase 1:</h3>
+      <p>The goal here to is cut an uploaded image into a grid, scramble the pieces, and have the user rearrange them.</p>
+      <p>So far, I have made a grid with rearrangeable pieces. if you hit the 'Jumble button' the pieces are jumbled but the 
+         pieces cannot be moved.</p>
+      <div id="playField">
+         <div class="grid"></div>
+         <btn id="jumble">Jumble</btn>
+         
       </div>
+      <h3>Phase 2</h3>
+      <p>uploading an image and cutting it to pieces</p>
+      <div id="gamegrid"></div>
    </div>
+   <script src="image_cut.js"></script>
 </body>
 </html>
