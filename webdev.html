@@ -7,58 +7,48 @@
    <style>
       .thumbnail{
          display: inline-block;
-         margin-right: 20px;
+         margin: 50px;
          text-align: center;
-         width: 200px;
+         width: 100px;
+         height: 100px;
          caption-side: bottom;
-         margin-bottom: 30px;
-         
-         
+         background-color: #333;
+         border: 1px solid rgb(189, 180, 180);
+         border-radius: 5px;
       }
       .thumbnail a{
-         color: rgb(218, 159, 159);
+         color: rgb(119, 119, 107);
          text-decoration: none;
       }
       .thumbnail h3{
          font-size: 14px;
          color: red;
-         
       }
       .tnimage{
-         width: 200px;
-         height: 200px;
-         background-color: #333;
-         margin-bottom: 10px;
-         border: 1px solid rgb(189, 180, 180);
-         border-radius: 5px;
-      }
-      .tnimage img{
-         width: 100%;
-         height: 100%;
-      }
-      #menu{
-         
-         margin-left: 200px;
+         width: 100px;
+         height: 100px;
+         line-height: 100px;
+         vertical-align: center;
+         font-size: 60px;
+         margin-bottom: 20px;
       }
       #projects{
          width: 880px;
          display: flex;
          flex-wrap: wrap;
+
       }
    </style>
 </head>
 <body>
    <script src="js/menu.js"></script>
+   
    <div id="content">
       <h2>Web Development Projects</h2>
+      <h3>Works In Progress</h3>
          <div id="projects">   
-            <div class="thumbnail">
-               <a href="webdev/Bitmap_Presentation/index.html" target="_blank">
-                  <div class="tnimage"><img src="webdev/Bitmap_Presentation/bitmap_presentation.png"></div> 
-                 <caption>Photo Editor Project</caption>
-               </a>
-            </div>
          </div>
       </div>
+   <script src="js/webdev.js"></script>
 </body>
 </html>

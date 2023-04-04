@@ -10,6 +10,6 @@ const bodyElement = document.querySelector('body');
 bodyElement.insertAdjacentHTML('afterbegin', menuContent);
 
 
-//projects
-const projArray = []
-const project = document.getElementById('projects')
+
+
+
