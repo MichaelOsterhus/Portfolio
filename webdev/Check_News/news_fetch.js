@@ -1,3 +1,13 @@
+const translate = require('google-translate-api');
+
+// Example usage
+translate('Bonjour', { to: 'en' }).then(res => {
+  console.log(res.text);
+}).catch(err => {
+  console.error(err);
+});
+
+
 const url = `https://api.gdeltproject.org/api/v2/doc/doc?query=artificial+intelligence&mode=artlist&timespan=1M&format=json`;
 
 const newsfeed = document.getElementById('newsfeed')
