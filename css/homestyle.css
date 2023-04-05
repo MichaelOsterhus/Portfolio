@@ -3,12 +3,12 @@ body{
    margin: 0px;
    padding: 0px;
    background-color: rgb(24, 24, 24);
-   background-image: url(img/4EC_logo.png);
+   background-image: url(../img/4EC_logo.png);
    background-repeat: no-repeat;
    background-attachment: fixed;
    background-position: center;
    color: white;
-
+   background-size: cover;
    font-family: 'Gruppo', sans-serif;
 }
 
@@ -64,6 +64,7 @@ h3{
    vertical-align: top;
    /* background-color: #333333; */
    padding: 10px 10px 40px 10px;
+   position: fixed;
 }
 .wrap h3{
    margin-bottom: 2px;
@@ -81,4 +82,8 @@ a.goal{
    text-decoration: none;
 }
 
-
+#content{
+   width: 800px;
+   margin: auto;
+   
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <script src="../webdev_header.js"></script>
+   <script src="app.js"></script>
+   <link rel="stylesheet" href="style.css"> 
+   <link rel="stylesheet" href="../../css/homestyle.css">
+   
+   <title>Puzzle App</title>
+</head>
+<body>
+   <script src="../webdev_menu.js"></script>
+   <div id="content">
+      <h2>Puzzle App</h2>
+
+      <h3>Phase 1:</h3>
+      <p>The goal here to is cut an uploaded image into a grid, scramble the pieces, and have the user rearrange them.</p>
+      <p>So far, I have made a grid with rearrangeable pieces. if you hit the 'Jumble button' the pieces are jumbled but the 
+         pieces cannot be moved.</p>
+      <div id="playField">
+         <div class="grid"></div>
+         <btn id="jumble">Jumble</btn>
+         
+      </div>
+      <h3>Phase 2</h3>
+      <p>uploading an image and cutting it to pieces</p>
+      <div id="gamegrid"></div>
+   </div>
+   <script src="image_cut.js"></script>
+</body>
+</html>
