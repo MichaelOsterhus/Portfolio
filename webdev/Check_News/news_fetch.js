@@ -8,7 +8,7 @@ const trans = (story) => {
   const link = document.createElement('a')
   const title = story.title
   link.setAttribute('href', story.url)
-  link.innerHTML = `<h1>${title}</h1>`
+  link.innerHTML = `<h2>${title}</h2>`
   newsfeed.appendChild(link)
 }
 
