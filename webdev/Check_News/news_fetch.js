@@ -4,14 +4,15 @@ const newsfeed = document.getElementById('newsfeed')
 const trans = (story) => {
   const link = document.createElement('a')
   const title = story.title
-  link.url = story.url
+  link.setAttribute('href', story.url)
   link.innerHTML = `<h1>${title}</h1>`
-  newsfeed.appendChild(story)
+  newsfeed.appendChild(link)
 }
 
 fetch(url)
   .then(response => response.json())
   .then(data => {
-    data.forEach((story) => trans(story))
+    data.articles.forEach((story) => trans(story))
     console.log(data)})
   .catch(error => console.error(error));
+
