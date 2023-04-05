@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>drawing a pentagon with JS</h2>
+    <canvas id="pent"></canvas>
+    <script>
+        const canvas = document.getElementById('pent');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const xc = canvas.width / 2; // center of canvas
+        const yc = canvas.height / 2;
+        const r = 100; // radius of circumscribing circle
+
+        const angle = 72 * Math.PI / 180; // angle between adjacent vertices
+
+        // Calculate coordinates of topmost vertex
+        const x0 = xc + r * Math.sin(angle / 2);
+        const y0 = yc - r * Math.cos(angle / 2);
+
+        ctx.beginPath();
+        ctx.moveTo(x0, y0); // move to topmost vertex
+        for (let i = 1; i <= 5; i++) {
+            const theta = (i - 1) * angle + angle / 2;
+            const x = xc + r * Math.sin(theta);
+            const y = yc - r * Math.cos(theta);
+            ctx.lineTo(x, y); // draw line to next vertex
+        }
+        ctx.closePath();
+        ctx.stroke();
+
+    </script>
+</body>
+</html>
