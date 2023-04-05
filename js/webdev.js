@@ -1,7 +1,7 @@
 //projects
 const projArray = [
     {
-       url: "webdev/Bitmap_Presentation/index.html",
+       url: "webdev/Photo_Editor_Project/index.html",
        caption: "Photo Editor Project"
     },
     {
