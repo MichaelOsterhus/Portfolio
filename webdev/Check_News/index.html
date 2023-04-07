@@ -2,18 +2,35 @@
 <html lang="en">
 <head>
    <script src="../webdev_header.js"></script>
-   
+   <style>
+      #intro{
+         text-align: center;
+         background-color: rgba(20, 20, 20, .9);
+         margin-top: 30px;
+         padding: 20px;
+      }
+      h2{
+         font-size: 17px;
+      }
+   </style>
    <title>Check The News</title>
 </head>
 <body>
    <script src="../webdev_menu.js"></script>
    <div id="content">
-      <h1>Check The News With Me</h1>
+      <div id="intro">
+         <h1>Check The News With Me</h1>
+         <p>I've imported 25 news articles from around the world from the <a href="https://www.gdeltproject.org/">GDELT database</a>.  The request was made for 
+            articles on Artificial Intelligence, but I can't read most of the headlines to check.  Next step will be to translate the titles.
+          </p>
+      </div>
+     
+
       <div id="newsfeed">
          
          </div>
    </div>
-    <script src="node_modules/google-translate-api-browser/index.js"></script>
+    
     <script src="news_fetch.js"></script>
     
 </body>
