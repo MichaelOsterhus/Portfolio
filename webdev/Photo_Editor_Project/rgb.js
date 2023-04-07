@@ -1,3 +1,6 @@
+let canvasWidth = 400;
+let canvasHeight = 400; 
+
 function hsvToRgb(h, s, v) {
   const c = v * s;
   const hp = h / 60;
@@ -19,9 +22,19 @@ function hsvToRgb(h, s, v) {
   }
 
   const m = v - c;
-  return [r + m, g + m, b + m];
+  const red = (r + m) * 255
+  const green = (g + m) * 255 
+  const blue = (b + m) * 255
+  const cnv = document.getElementById(`color-sample`)
+  cnv.width = canvasWidth
+  cnv.height = canvasHeight
+  ctx = cnv.getContext('2d');
+  ctx.fillStyle = `rgb(${red}, ${green}, ${blue})`;
+  ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+  console.log(red, green, blue)
 }
 
+console.log(hsvToRgb(300, .5, .9)) 
 
 function rgbToHsv(r, g, b) {
     const max = Math.max(r, g, b);
@@ -47,9 +60,7 @@ function rgbToHsv(r, g, b) {
 
     return [h, s, v];
   }
-console.log(`Hue: ${rgbToHsv(255, 0, 0)[0]}`)
-console.log(`Saturation: ${rgbToHsv(255, 0, 0)[1]}`)
-console.log(`Value: ${rgbToHsv(255, 0, 0)[2]}`)
+
 
 
 const hueSlider = document.getElementById('hue-slider');
@@ -63,18 +74,20 @@ valueSlider.addEventListener('input', updateColor);
 
 function updateColor() {
   const hue = hueSlider.value;
-  const saturation = saturationSlider.value ;
-  const value = valueSlider.value ;
-
+  const saturation = saturationSlider.value / 255 ;
+  const value = valueSlider.value / 255 ;
+  hsvToRgb(hue, saturation, value)
 }
 
-let canvasWidth = 400;
-let canvasHeight = 400; 
-const changeColor= function(red, green, blue){
-  const cnv = document.getElementById(`color-sample`)
-  cnv.width = canvasWidth
-  cnv.height = canvasHeight
-  ctx = cnv.getContext('2d');
-  ctx.fillStyle = rgb(red, green, blue);
-  ctx.fillRect
-}
+
+// const changeColor = function(red, green, blue){
+//   const cnv = document.getElementById(`color-sample`)
+//   cnv.width = canvasWidth
+//   cnv.height = canvasHeight
+//   ctx = cnv.getContext('2d');
+//   ctx.fillStyle = `rgb(${red}, ${green}, ${blue})`;
+//   ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+//   console.log(red, green, blue)
+// }
+
+// changeColor(44, 67, 100)

@@ -1,16 +1,21 @@
-import Prism from 'prismjs';
-import 'prismjs/components/prism-javascript';
+import '../../node_modules/prismjs/prism.js';
 
-const codeElement = document.querySelector('pre.language-javascript');
-Prism.highlightElement(codeElement);
+import '../../node_modules/prismjs/components/prism-javascript.js';
+
+import '../../node_modules/prismjs/components/prism-markup.js';
+
+const JSElement = document.querySelector('code.language-javascript');
+Prism.highlightElement(JSElement);
+const HTMLElement = document.querySelector('code.language-markup');
+Prism.highlightElement(HTMLElement);
 
 
-
+console.log('Your code works here.')
     //test canvases 1,2, and 3
     const canvas1 = document.getElementById('canvas1');
     const ctx1 = canvas1.getContext('2d');
-    const canvas2 = document.getElementById('canvas2');
-    const ctx2 = canvas2.getContext('2d');
+    // const canvas2 = document.getElementById('canvas2');
+    // const ctx2 = canvas2.getContext('2d');
     const canvas3 = document.getElementById('canvas3');
     const ctx3 = canvas3.getContext('2d');
     
@@ -23,9 +28,9 @@ Prism.highlightElement(codeElement);
       ctx1.drawImage(img, 0, 0);
     
       // Redraw the image on canvas2 with modifications
-      const imageData2 = ctx1.getImageData(0, 0, canvas1.width, canvas1.height);
+      // const imageData2 = ctx1.getImageData(0, 0, canvas1.width, canvas1.height);
     
-      ctx2.putImageData(imageData2, 0, 0);
+      // ctx2.putImageData(imageData2, 0, 0);
     
       //draw canvas3
       for (let y = 0; y < 12; y++) {

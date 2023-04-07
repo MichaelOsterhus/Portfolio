@@ -61,21 +61,25 @@ const projArray = [
     <div class="tnimage">${i+1}</div> 
     <caption>${projArray[i].caption}</caption>
     </a>
-    `
+    `   
+    
+    if (projArray[i].url !== ""){
+      const hue = (i * 30) % 360; // Calculate the hue value based on the div's index
+      div.style.backgroundColor = `hsl(${hue}, 50%, 50%)`; // Set the background color using the calculated hue value
+      const links = div.querySelector('.thumbnail a');
+      console.log(links)
+      links.style.color = 'white'
+   } 
     project.appendChild(div)
  }
 
 const thumbnailDivs = document.querySelectorAll('.thumbnail'); 
 
-thumbnailDivs.forEach((div, index) => {
-    div.addEventListener('mouseover', () => {
-      const hue = (index * 30) % 360; // Calculate the hue value based on the div's index
-      div.style.backgroundColor = `hsl(${hue}, 50%, 50%)`; // Set the background color using the calculated hue value
-      div.classList.add('thumbnail-hover'); // Add the CSS class to specify the transition properties
-    });
+console.log(projArray[3].url)
+
+// thumbnailDivs.forEach((div, index) => {
+
+// })
+
     
-    div.addEventListener('mouseout', () => {
-      div.style.backgroundColor = ''; // Reset the background color to the original color
-      div.classList.remove('thumbnail-hover'); // Remove the CSS class to remove the transition properties
-    });
-  });
+
