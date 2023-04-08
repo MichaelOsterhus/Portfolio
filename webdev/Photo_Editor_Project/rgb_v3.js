@@ -1,3 +1,9 @@
+
+
+const cnvBars = document.getElementById(`color-bars`)
+const ctxBars = cnvBars.getContext('2d');
+let barsWidth = 300;
+let barsHeight = 255;
 let canvasWidth = 400;
 let canvasHeight = 400; 
 
@@ -28,42 +34,55 @@ function hsvToRgb(h, s, v) {
   const cnv = document.getElementById(`color-sample`)
   cnv.width = canvasWidth
   cnv.height = canvasHeight
-
+  ctxBars.width = barsWidth
+  ctxBars.height = barsHeight
   ctx = cnv.getContext('2d');
   ctx.fillStyle = `rgb(${red}, ${green}, ${blue})`;
   ctx.fillRect(0, 0, canvasWidth, canvasHeight);
-  // ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
-  // ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
- 
+
+  ctxBars.fillStyle = "#333";
+  ctxBars.fillRect(0, 0, barsWidth, barsHeight);
+
+  ctxBars.fillStyle = "red";
+  ctxBars.fillRect(10, barsHeight - red, 60, red);
+
+  ctxBars.fillStyle = "green";
+  ctxBars.fillRect(100, barsHeight - green, 60, green);
+
+  ctxBars.fillStyle = "blue";
+  ctxBars.fillRect(200, barsHeight - blue, 60, blue);
+
+  console.log(red, green, blue)
+  console.log(r, g, b)
 }
 
 console.log(hsvToRgb(300, .5, .9)) 
 
-function rgbToHsv(r, g, b) {
-    const max = Math.max(r, g, b);
-    const min = Math.min(r, g, b);
-    const d = max - min;
-    const v = (r + g + b) / 3;
-    let h, s;
+// function rgbToHsv(r, g, b) {
+//     const max = Math.max(r, g, b);
+//     const min = Math.min(r, g, b);
+//     const d = max - min;
+//     const v = (r + g + b) / 3;
+//     let h, s;
 
-    if (d === 0) {
-      h = 0;
-      s = 0;
-    } else {
-      s = d;
-      if (max === r) {
-        h = (g - b) / d + (g < b ? 6 : 0);
-      } else if (max === g) {
-        h = (b - r) / d + 2;
-      } else {
-        h = (r - g) / d + 4;
-      }
-      h *= 60;
-    }
+//     if (d === 0) {
+//       h = 0;
+//       s = 0;
+//     } else {
+//       s = d;
+//       if (max === r) {
+//         h = (g - b) / d + (g < b ? 6 : 0);
+//       } else if (max === g) {
+//         h = (b - r) / d + 2;
+//       } else {
+//         h = (r - g) / d + 4;
+//       }
+//       h *= 60;
+//     }
 
-    return [h, s, v];
-  }
+//     return [h, s, v];
+//   }
 
 
 
@@ -82,16 +101,3 @@ function updateColor() {
   const value = valueSlider.value / 255 ;
   hsvToRgb(hue, saturation, value)
 }
-
-
-// const changeColor = function(red, green, blue){
-//   const cnv = document.getElementById(`color-sample`)
-//   cnv.width = canvasWidth
-//   cnv.height = canvasHeight
-//   ctx = cnv.getContext('2d');
-//   ctx.fillStyle = `rgb(${red}, ${green}, ${blue})`;
-//   ctx.fillRect(0, 0, canvasWidth, canvasHeight);
-//   console.log(red, green, blue)
-// }
-
-// changeColor(44, 67, 100)

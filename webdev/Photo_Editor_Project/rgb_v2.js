@@ -30,6 +30,10 @@ function hsvToRgb(h, s, v) {
   return [r + m, g + m, b + m];
 }
 
+const hueSlider = document.getElementById('hue-slider');
+const saturationSlider = document.getElementById('saturation-slider');
+const valueSlider = document.getElementById('value-slider');
+
 function updateColor() {
   const hue = hueSlider.value;
   const saturation = saturationSlider.value / 255 ;

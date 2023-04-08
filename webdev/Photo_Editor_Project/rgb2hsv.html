@@ -12,8 +12,10 @@
         background-color: #333;
         padding: 20px 0px 0px 20px;
         margin-bottom: -15px;
+        margin-left: 10px;
         display: inline-block;
         position: relative;
+        order: 1;
         
       }
       .slider{
@@ -28,10 +30,14 @@
         display: flex;
         align-items: flex-start; /* or center or baseline */
       }
-      canvas {
+      .column {
         flex: 1;
+        display: flex;
+        flex-direction: column;
       }
-
+      #color-bars{
+      
+      }
 
     </style>
  
@@ -41,30 +47,38 @@
   <div id="content">
     <h2>RGB to HSV JavaScript Tutorial</h2>
     <div id="container">
-      <canvas id="color-sample"></canvas>
-      <div id="sliders">
-      <div class="slider">
-        <label for="hue-slider">Hue:</label>
-        <input type="range" min="0" max="360" value="0" id="hue-slider">
+
+      <div class="column column-left">
+        <canvas id="color-sample"></canvas>
       </div>
-      <div class="slider">
-        <label for="saturation-slider">Saturation:</label>
-        <input type="range" min="0" max="255" value="0" id="saturation-slider">
+
+      <div class="column column-right">
+        <div id="sliders">
+          <div class="slider">
+            <label for="hue-slider">Hue:</label>
+            <input type="range" min="0" max="360" value="0" id="hue-slider">
+          </div>
+          <div class="slider">
+            <label for="saturation-slider">Saturation:</label>
+            <input type="range" min="0" max="255" value="0" id="saturation-slider">
+          </div>
+          <div class="slider">
+            <label for="value-slider">Value:</label>
+            <input type="range" min="0" max="255" value="0" id="value-slider">
+          </div>
+
+          <canvas id="color-bars"></canvas>    
       </div>
-      <div class="slider">
-        <label for="value-slider">Value:</label>
-        <input type="range" min="0" max="255" value="0" id="value-slider">
-      </div>
+      
     </div>
 
 
-
   </div>
   </div>
 
 
 
-  <script src="rgb.js">
+  <script src="rgb_v3.js">
   </script>
   <!-- <script src="hexadecimal.js"></script> -->
 </body>
