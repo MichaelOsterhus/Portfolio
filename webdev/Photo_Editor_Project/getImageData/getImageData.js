@@ -1,8 +1,8 @@
-import '../../node_modules/prismjs/prism.js';
+import 'prismjs';
 
-import '../../node_modules/prismjs/components/prism-javascript.js';
+import 'prismjs/components/prism-javascript.js';
 
-import '../../node_modules/prismjs/components/prism-markup.js';
+import 'prismjs/components/prism-markup.js';
 
 const JSElement = document.querySelector('code.language-javascript');
 Prism.highlightElement(JSElement);

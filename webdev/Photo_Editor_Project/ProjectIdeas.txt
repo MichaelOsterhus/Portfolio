@@ -1,4 +1,5 @@
 
+Project Ideas
 
 Image filters: You can create a series of image filters using JavaScript, such as black and white, sepia, blur, 
 sharpen, etc. You can break down each filter into individual steps and explain how each step works.
