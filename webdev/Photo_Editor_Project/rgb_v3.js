@@ -48,16 +48,16 @@ function hsvToRgb(h, s, v) {
   ctxBars.fillRect(10, barsHeight - red, 60, red);
 
   ctxBars.fillStyle = "green";
-  ctxBars.fillRect(100, barsHeight - green, 60, green);
+  ctxBars.fillRect(110, barsHeight - green, 60, green);
 
   ctxBars.fillStyle = "blue";
-  ctxBars.fillRect(200, barsHeight - blue, 60, blue);
+  ctxBars.fillRect(210, barsHeight - blue, 60, blue);
 
   console.log(red, green, blue)
   console.log(r, g, b)
 }
 
-console.log(hsvToRgb(300, .5, .9)) 
+hsvToRgb(300, .5, .9) 
 
 // function rgbToHsv(r, g, b) {
 //     const max = Math.max(r, g, b);
