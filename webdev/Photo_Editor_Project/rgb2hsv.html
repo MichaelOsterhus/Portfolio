@@ -4,19 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../webdev_header.js"></script>
     <title>RGB to HSV JavaScript Tutorial</title>
+    <style>
+      #sliders{
+        width: 300px;
+        background-color: #333;
+      }
+      #sliders input{
+        display: block;
+      }
+    </style>
  
 </head>
 <body>
-  <h2>RGB to HSV JavaScript Tutorial</h2>
-  <canvas id="color-sample"></canvas>
+  <script src="../webdev_menu.js"></script>
+  <div id="content">
+    <h2>RGB to HSV JavaScript Tutorial</h2>
+    <canvas id="color-sample"></canvas>
+  <div id="sliders">
+    <label for="hue-slider">Hue:</label>
+    <input type="range" min="0" max="360" value="0" id="hue-slider">
+    <label for="saturation-slider">Saturation:</label>
+    <input type="range" min="0" max="255" value="0" id="saturation-slider">
+    <label for="value-slider">Value:</label>
+    <input type="range" min="0" max="255" value="0" id="value-slider">
+  </div>
+  </div>
 
-  <label for="hue-slider">Hue:</label>
-  <input type="range" min="0" max="360" value="0" id="hue-slider">
-  <label for="saturation-slider">Saturation:</label>
-  <input type="range" min="0" max="255" value="0" id="saturation-slider">
-  <label for="value-slider">Value:</label>
-  <input type="range" min="0" max="255" value="0" id="value-slider">
+
 
   <script src="rgb.js">
   </script>
