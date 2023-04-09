@@ -22,9 +22,14 @@ const newsfeed = document.getElementById('newsfeed')
   const lang = story.language;
   // const img = await cropImage(story.socialimage);
   const img = story.socialimage
-  img.width = 300
+
+  
   link.setAttribute('href', story.url);
-  link.innerHTML = `<div class="newspost"><h2>${title}</h2><h3>${lang}</h3><img src="${img}"></div>`;
+  link.innerHTML = `<div class="newspost"><h3>${title}</h3>
+  <div style="background-image: url(${img}); background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center; background-color: #444; 
+  width: 300px; height: 200px;"><h2>${lang}</h2></div></div>`;
   newsfeed.appendChild(link);
 };
 

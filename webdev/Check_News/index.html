@@ -10,19 +10,28 @@
          margin-top: 30px;
          padding: 20px;
       }
-      h2{
+      .newspost h2{
          font-size: 17px;
+         background-color: rgba(20, 20, 20, .6);
+         padding: 5px;
       }
       .newspost{
          width: 300px;
          display: inline-block;
+         margin-left: 50px;
+      }
+      .newspost img{
+         width: 300px;
+      }
+      #content{
+         width: 1050px;
       }
    </style>
    <title>Check The News</title>
 </head>
 <body>
    <script src="../webdev_menu.js"></script>
-   <script src="news_fetch.js"></script>
+   
    <div id="content">
       <div id="intro">
          <h1>Check The News With Me</h1>
@@ -37,7 +46,7 @@
          </div>
    </div>
     
-   
+   <script src="news_fetch.js"></script>
     
 </body>
 </html>
