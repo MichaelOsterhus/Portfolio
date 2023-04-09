@@ -3,23 +3,26 @@
 
 const url = `https://api.gdeltproject.org/api/v2/doc/doc?query=artificial+intelligence&mode=artlist&timespan=1M&format=json`;
 
-const cropImage = async (imgUrl) => {
-  const crop = await smartcrop.crop(imgUrl, {width: 300, height: 200});
-  const canvas = document.createElement('canvas');
-  canvas.width = 300;
-  canvas.height = 200;
-  const ctx = canvas.getContext('2d');
-  ctx.drawImage(imgUrl, crop.topCrop.x, crop.topCrop.y, crop.topCrop.width, crop.topCrop.height, 0, 0, 300, 200);
-  return canvas.toDataURL();
-};
+// const cropImage = async (imgUrl) => {
+//   const crop = await smartcrop.crop(imgUrl, {width: 300, height: 200});
+//   const canvas = document.createElement('canvas');
+//   canvas.width = 300;
+//   canvas.height = 200;
+//   const ctx = canvas.getContext('2d');
+//   ctx.drawImage(imgUrl, crop.topCrop.x, crop.topCrop.y, crop.topCrop.width, crop.topCrop.height, 0, 0, 300, 200);
+//   return canvas.toDataURL();
+// };
 
 const newsfeed = document.getElementById('newsfeed')
 
-const trans = async (story) => {
+// const trans = async (story) => {
+ const trans = (story) => { 
   const link = document.createElement('a');
   const title = story.title;
   const lang = story.language;
-  const img = await cropImage(story.socialimage);
+  // const img = await cropImage(story.socialimage);
+  const img = story.socialimage
+  img.width = 300
   link.setAttribute('href', story.url);
   link.innerHTML = `<div class="newspost"><h2>${title}</h2><h3>${lang}</h3><img src="${img}"></div>`;
   newsfeed.appendChild(link);
