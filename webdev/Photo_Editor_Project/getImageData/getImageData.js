@@ -1,6 +1,3 @@
-
-
-    //test canvases 1,2, and 3
     const canvas1 = document.getElementById('canvas1');
     const ctx1 = canvas1.getContext('2d');
     const canvas2 = document.getElementById('canvas2');
