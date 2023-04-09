@@ -1,23 +1,10 @@
-import 'prismjs';
-
-import 'prismjs/components/prism-javascript.js';
-
-import 'prismjs/components/prism-markup.js';
-
-const JSElement = document.querySelector('code.language-javascript');
-Prism.highlightElement(JSElement);
-const HTMLElement = document.querySelector('code.language-markup');
-Prism.highlightElement(HTMLElement);
 
 
-console.log('Your code works here.')
     //test canvases 1,2, and 3
     const canvas1 = document.getElementById('canvas1');
     const ctx1 = canvas1.getContext('2d');
-    // const canvas2 = document.getElementById('canvas2');
-    // const ctx2 = canvas2.getContext('2d');
-    const canvas3 = document.getElementById('canvas3');
-    const ctx3 = canvas3.getContext('2d');
+    const canvas2 = document.getElementById('canvas2');
+    const ctx2 = canvas3.getContext('2d');
     
     const img = new Image();
     
