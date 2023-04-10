@@ -26,10 +26,9 @@ const newsfeed = document.getElementById('newsfeed')
   
   link.setAttribute('href', story.url);
   link.innerHTML = `<div class="newspost"><h3>${title}</h3>
-  <div style="background-image: url(${img}); background-size: contain;
+  <div style="background-image: url(${img}); background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center; background-color: #444; 
-  width: 300px; height: 200px;"><h2>${lang}</h2></div></div>`;
+  background-position: center center; background-color: #444; width: 300px; height: 200px;"><h2>${lang}</h2></div></div>`;
   newsfeed.appendChild(link);
 };
 
