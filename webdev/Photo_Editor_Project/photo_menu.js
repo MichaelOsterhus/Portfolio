@@ -12,7 +12,8 @@ const menuContent = `<a href="../../../index.html">
    <a class="goal" href="../bitmap/bitmap.html">Bitmap Presentation</a>
    <a class="goal" href="../getImageData/getImageData.html">Using JavaScript getImageData Method</a>
    <a class="goal" href="../nightSky/nightSky.html">Random Night Sky Generator</a>
-   <a class="goal" href="../rgb2hsv/rgb2hsv.html">Relationship Between RGB and HSV</a>         
+   <a class="goal" href="../rgb2hsv/rgb2hsv.html">Relationship Between RGB and HSV</a> 
+   <a class="goal" href="../combineImages/combineImage.html">Combining Images</a>        
 
 </div>
 
