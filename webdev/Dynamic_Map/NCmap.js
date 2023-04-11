@@ -2,18 +2,21 @@
 window.addEventListener('load', function() {
 
   // Get the SVG element by ID
-  var svg = document.getElementById('nc-map');
+
 
   // Get all path elements in the SVG
-  var paths = svg.querySelectorAll('path');
+  var paths = querySelectorAll('path');
+
+let pathArray = []
+
 
   // Add the "county" class to all path elements
   paths.forEach(function(path) {
-    path.classList.add('county');
+    pathArray.push(path);
   });
 
   // Set the fill color of all path elements
-  paths.forEach(function(path) {
+  pathArray.forEach(function(path) {
     path.style.fill = '#fff';
   
   
