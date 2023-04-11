@@ -6,4 +6,6 @@ paths.forEach(function(path) {
   path.classList.add("county");
 });
 
-paths.
+paths.forEach(function(path){
+    path.style.fill = "#fff"
+})
