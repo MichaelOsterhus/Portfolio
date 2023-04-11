@@ -13,8 +13,8 @@ const projArray = [
        caption: "Check The News With Me"
     },
     {
-       url: "",
-       caption: ""
+       url: "webdev/Dynamic_Map/NCmap.html",
+       caption: "Dynamic Data Visualization"
     },
     {
        url: "",
