@@ -19,7 +19,20 @@ let pathArray = []
   pathArray.forEach(function(path) {
     path.style.fill = '#fff';
   
-  
+  var console = document.createElement("div");
+console.setAttribute("id", "console");
+document.body.appendChild(console);
+
+// redirect console output to custom console
+var log = console.log;
+console.log = function(message) {
+  var line = document.createElement("div");
+  line.innerHTML = message;
+  console.appendChild(line);
+  log.apply(console, arguments);
+};
+
+console.log(pathArray[0].id)
   
   });
 
@@ -42,18 +55,7 @@ let pathArray = []
 
 
 
-var console = document.createElement("div");
-console.setAttribute("id", "console");
-document.body.appendChild(console);
 
-// redirect console output to custom console
-var log = console.log;
-console.log = function(message) {
-  var line = document.createElement("div");
-  line.innerHTML = message;
-  console.appendChild(line);
-  log.apply(console, arguments);
-};
 
 // test the console
 
