@@ -25,9 +25,10 @@ function calculatePathCenter(pathString) {
 
 paths.forEach(function(path) {
     path.style.fill = '#000';
+    path.style.stroke = '#666'
+    path.style.strokeWidth = .4
     const d = path.getAttribute('d')
-    calculatePathCenter(d)
-    console.log(`${path.id} d = ${calculatePathCenter(d).x}, ${calculatePathCenter(d).y}`)
+
   });
 
 var counties = document.getElementById('counties');
@@ -37,7 +38,9 @@ for (i = 0; i < paths.length; i++) {
   div.id = paths[i].id
   div.classList.add('county-name')
   div.textContent = countyName;
-  div.style.top = `${i * 10}px`
+  const newD = paths[i].getAttribute('d')
+  div.style.top = `${calculatePathCenter(newD).y}px`
+  div.style.left = `${calculatePathCenter(newD).x}px`
   counties.appendChild(div);
 };
 
@@ -63,8 +66,34 @@ document.querySelector('#svg-object').addEventListener('load', function () {
 });
 });
 
+// function calculatePathCenter(pathString) {
+//   let points = pathString.match(/(-?\d+(\.\d+)?)/g).map(Number); // extract numbers from path string
+//   let xMin = Math.min(...points.filter((p, i) => i % 2 === 0)); // find minimum x value
+//   let xMax = Math.max(...points.filter((p, i) => i % 2 === 0)); // find maximum x value
+//   let yMin = Math.min(...points.filter((p, i) => i % 2 === 1)); // find minimum y value
+//   let yMax = Math.max(...points.filter((p, i) => i % 2 === 1)); // find maximum y value
+//   let centerX = (xMin + xMax) / 2; // calculate x coordinate of center
+//   let centerY = (yMin + yMax) / 2; // calculate y coordinate of center
+//   const bbox = path.getBBox();
+//   const x = bbox.x + bbox.width / 2;
+//   const y = bbox.y + bbox.height / 2;
+//   const scalingFactor = displayedMapWidth / viewportWidth; // replace these with your actual values
+//   return { x: x * scalingFactor, y: y * scalingFactor };
+//   return { x: centerX, y: centerY }; // return center point as object
+// }
 
 
+
+// function calculatePathCenter(pathString, scaleFactor) {
+//   let points = pathString.match(/(-?\d+(\.\d+)?)/g).map(Number); // extract numbers from path string
+//   let xMin = Math.min(...points.filter((p, i) => i % 2 === 0)); // find minimum x value
+//   let xMax = Math.max(...points.filter((p, i) => i % 2 === 0)); // find maximum x value
+//   let yMin = Math.min(...points.filter((p, i) => i % 2 === 1)); // find minimum y value
+//   let yMax = Math.max(...points.filter((p, i) => i % 2 === 1)); // find maximum y value
+//   let centerX = (xMin + xMax) / 2 * scaleFactor; // calculate x coordinate of center with scaling
+//   let centerY = (yMin + yMax) / 2 * scaleFactor; // calculate y coordinate of center with scaling
+//   return { x: centerX, y: centerY }; // return center point as object
+// }
 
 
 
