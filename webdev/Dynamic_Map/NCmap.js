@@ -1,41 +1,66 @@
-// Wait for the window to load before querying the SVG
 window.addEventListener('load', function() {
 
   // Get the SVG element by ID
-
 var svgObject = document.getElementById('svg-object').contentDocument;
-var svg = svgObject.getElementById("NC_Hyde");
-console.log(svg);
+// var svg = svgObject.getElementById("NC_Hyde");
+// console.log(svg);
 
   // Get all path elements in the SVG
 var paths = svgObject.querySelectorAll('path');
 let pathArray = []
-
-
-  // Add the "county" class to all path elements
 paths.forEach(function(path) {
    pathArray.push(path);
 });
+//??dkfwo
+function calculatePathCenter(pathString) {
+  let points = pathString.match(/(-?\d+(\.\d+)?)/g).map(Number); // extract numbers from path string
+  let xMin = Math.min(...points.filter((p, i) => i % 2 === 0)); // find minimum x value
+  let xMax = Math.max(...points.filter((p, i) => i % 2 === 0)); // find maximum x value
+  let yMin = Math.min(...points.filter((p, i) => i % 2 === 1)); // find minimum y value
+  let yMax = Math.max(...points.filter((p, i) => i % 2 === 1)); // find maximum y value
+  let centerX = (xMin + xMax) / 2; // calculate x coordinate of center
+  let centerY = (yMin + yMax) / 2; // calculate y coordinate of center
+  return { x: centerX, y: centerY }; // return center point as object
+}
 
-  // Set the fill color of all path elements
-pathArray.forEach(function(path) {
-  path.style.fill = '#fff';
-  console.log(path.id)
-});
-
-  // Create a list of county names
-  var countyList = document.createElement('ul');
-  paths.forEach(function(path) {
-    var countyName = path.id.replace('_', ' ');
-    var listItem = document.createElement('li');
-    listItem.textContent = countyName;
-    countyList.appendChild(listItem);
+paths.forEach(function(path) {
+    path.style.fill = '#000';
+    const d = path.getAttribute('d')
+    calculatePathCenter(d)
+    console.log(`${path.id} d = ${calculatePathCenter(d).x}, ${calculatePathCenter(d).y}`)
   });
 
-  // Add the list to the page
-  var counties = document.getElementById('counties');
-  counties.appendChild(countyList);
+var counties = document.getElementById('counties');
+for (i = 0; i < paths.length; i++) {
+  var countyName = paths[i].id.replace('NC_', ' '); 
+  var div = document.createElement('div');
+  div.id = paths[i].id
+  div.classList.add('county-name')
+  div.textContent = countyName;
+  div.style.top = `${i * 10}px`
+  counties.appendChild(div);
+};
 
+const countyNames = document.querySelectorAll('.county-name');
+// console.log(countyNames)
+document.querySelector('#svg-object').addEventListener('load', function () {
+
+  paths.forEach(path => {
+    const countyName = svgObject.getElementById(path.id);
+  
+    path.addEventListener('mouseover', function () {
+      countyNames.forEach(name => {
+        name.style.display = 'none';
+      });
+
+      countyName.style.display = 'block';
+    });
+
+    path.addEventListener('mouseout', function () {
+      countyName.style.display = 'none';
+    });
+  });
+});
 });
 
 
@@ -44,40 +69,4 @@ pathArray.forEach(function(path) {
 
 
 
-// test the console
 
-// function newFunction() {
-//   var svg = document.getElementById("nc-map");
-//   var paths = svg.querySelectorAll("path");
-//   console.log(`He there paths are where `);
-// }
-// Get all path elements in the SVG
-// Get all path elements in the SVG
-// var paths = document.querySelectorAll("path");
-
-// Add the "county" class to all path elements
-
-// Change the fill color of all path elements
-// console.log('hi there')
-
-// console.log(test) 
-
-// // Create an unordered list for the county names
-// var counties = document.getElementById('counties');
-// var header = document.createElement('h1')
-// header.innerHTML = `The Fist Count is ${paths[0].id}`
-
-// console.log(test) 
-
-// counties.appendChild(header)
-// var list = document.createElement('ul');
-// counties.appendChild(list);
- 
-// console.log(test) 
-// var testDiv = document.createElement('h1')
-// testDiv.textContent = test
-// counties.appendChild(testDiv)
-
-
-
-// console.log(test) 
