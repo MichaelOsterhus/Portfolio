@@ -3,38 +3,25 @@ window.addEventListener('load', function() {
 
   // Get the SVG element by ID
 
+var svgObject = document.getElementById('svg-object').contentDocument;
+var svg = svgObject.getElementById("NC_Hyde");
+console.log(svg);
 
   // Get all path elements in the SVG
-  var paths = querySelectorAll('path');
-
+var paths = svgObject.querySelectorAll('path');
 let pathArray = []
 
 
   // Add the "county" class to all path elements
-  paths.forEach(function(path) {
-    pathArray.push(path);
-  });
+paths.forEach(function(path) {
+   pathArray.push(path);
+});
 
   // Set the fill color of all path elements
-  pathArray.forEach(function(path) {
-    path.style.fill = '#fff';
-  
-  var console = document.createElement("div");
-console.setAttribute("id", "console");
-document.body.appendChild(console);
-
-// redirect console output to custom console
-var log = console.log;
-console.log = function(message) {
-  var line = document.createElement("div");
-  line.innerHTML = message;
-  console.appendChild(line);
-  log.apply(console, arguments);
-};
-
-console.log(pathArray[0].id)
-  
-  });
+pathArray.forEach(function(path) {
+  path.style.fill = '#fff';
+  console.log(path.id)
+});
 
   // Create a list of county names
   var countyList = document.createElement('ul');
