@@ -39,33 +39,33 @@ function C(i) {
    ctx.fillText(i, 4, 18)
 }
 
-function Button (i, myFunc) {
-const btn = document.getElementById(`btn-${i}`);
-   btn.width = 60;
-   btn.height = 60;
-   const ctx = btn.getContext("2d");
+// function Button (i, myFunc) {
+// const btn = document.getElementById(`btn-${i}`);
+//    btn.width = 60;
+//    btn.height = 60;
+//    const ctx = btn.getContext("2d");
    
-   const circle = new Path2D();
-   circle.arc(30, 30, 20, 0.2 * Math.PI, 1.8 * Math.PI); // draw a circle
+//    const circle = new Path2D();
+//    circle.arc(30, 30, 20, 0.2 * Math.PI, 1.8 * Math.PI); // draw a circle
    
-   ctx.strokeStyle = 'rgb(150, 150, 150)';
-   ctx.lineWidth = 4;
+//    ctx.strokeStyle = 'rgb(150, 150, 150)';
+//    ctx.lineWidth = 4;
    
-   // draw the circle
-   ctx.stroke(circle);
+//    // draw the circle
+//    ctx.stroke(circle);
 
-   const triangle = new Path2D();
-   triangle.moveTo(39, 22);
-   triangle.lineTo(52, 28);
-   triangle.lineTo(52, 13);
-   triangle.closePath();
+//    const triangle = new Path2D();
+//    triangle.moveTo(39, 22);
+//    triangle.lineTo(52, 28);
+//    triangle.lineTo(52, 13);
+//    triangle.closePath();
 
-   // Draw the arc and the triangle
-   ctx.fillStyle = 'rgb(150, 150, 150)';
-   ctx.fill(triangle);
+//    // Draw the arc and the triangle
+//    ctx.fillStyle = 'rgb(150, 150, 150)';
+//    ctx.fill(triangle);
 
-   btn.addEventListener('click', myFunc)
-}
+//    btn.addEventListener('click', myFunc)
+// }
 
 function pixel(x, y, red, green, blue, opacity) {
    ctx.fillStyle = `rgba(${red}, ${green}, ${blue}, ${opacity})`;
@@ -93,7 +93,7 @@ function randomNightSky (i) {
 }
 
 //Random Night Sky
-Button(y)
+// Button(y)
 C(x)
 for (let i = 0; i < hoRatio; i++) {
    for (let j = 0; j < verRatio; j++){
@@ -184,3 +184,33 @@ for (let i = 0; i < hoRatio; i++) {
 for (let i = 0; i < 16; i++) {
    Speckle()
 }
+
+
+
+// let findQuest = (div, margin) => {
+//     let column = 800 / 3
+// }
+
+
+// for (i = 700; i < 740; i++){
+//    if ( i % 3 == 0) {
+//       let colWidth = i / 3
+//       for (j = 200; j < colWidth; j++){
+//          let doubleMargin = colWidth - j 
+//          if ((doubleMargin + j) * 3 == 740){
+//             console.log(j)
+//          } else {
+//             console.log('Somethign is wrong.')
+//          }
+         
+         // let margin = doubleMargin / 2
+         // if (doubleMargin % 2 == 0 && (j + doubleMargin) * 3 == 740) {
+         //    console.log(`A div width of ${j} and a margin of ${margin} will work.`)
+         // } else {
+         //    console.log('Your logic is wrong.')
+         // }
+
+//       }
+//    } 
+   
+// }

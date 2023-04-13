@@ -13,16 +13,33 @@
   
    <style>
       .tut{
-         width: 200px;
+         width: 230px;
          height: 50px;
          background-color: #333;
-         padding: 5px;
-         padding-left: 20px;
+         color: #d4d4da;
+         padding: 10px;
          margin: 10px;
          margin-bottom: 20px;
          display: inline-block;
          vertical-align: top;
       }
+      .tut a{
+         
+      }
+      #tutorials{
+         padding: 20px;
+      }
+      #content{
+         width: 800px;
+         margin: auto;
+         background-color: #222;
+         padding-left: 10px;
+      }
+      #intro{
+         width: 600px;
+         padding: 20px;
+      }
+
    </style>
 
 </head>
@@ -38,8 +55,8 @@
       <div class="wrap">
       
          <h3>PHOTO EDITOR PROJECTS</h3>
-         <a class="goal" href="bitmap/bitmap.html">Bitmap Presentation</a>
-         <a class="goal" href="getImageData/getImageData.html">Using JavaScript getImageData Method</a>
+         <a class="goal" href="bitmap/bitmap.html">Bitmap Presentation--Introduction</a>
+         <a class="goal" href="getImageData/getImageData.html">JavaScript getImageData() Method</a>
          <a class="goal" href="nightSky/nightSky.html">Random Night Sky Generator</a>
          <a class="goal" href="rgb2hsv/rgb2hsv.html">Relationship Between RGB and HSV</a> 
          <a class="goal" href="combineImages/combineImage.html">Combining Images</a>        
@@ -48,20 +65,26 @@
       
       </div>
    <div id="content">
-      <h1>A PHOTO EDITOR PROJECT</h1>
-      <h2>The Goal</h2>
-      <P>My goal is to create my own photo editor app, similar to Photoshop.</P>
-      <p>but I don't want to just copy and paste code from ChatGPT to build it because I want to understand how it works.</p>
-      <p>For example, Photoshop has a tool called 'lasso' which allows the user to draw a "lasso" around a group of pixels to select them.</p>
-      <p>How would I write this code?  I don't know. That's why I want to try making it.</p>
-      <h2>Making My Own Tutorials</h2>
-      <p>As part of the process I want to record the solutions I come up with and make my own tutorials.  Three that I have in mind already are:</p>
-      
-      <div class="tut"><a href="bitmap/bitmap.html">Bitmap Presentation</a></div>
-      <div class="tut"><a href="getImageData/getImageData.html">Using JavaScript getImageData Method</a></div>
-      <div class="tut"><a href="nightSky/nightSky.html">Random Night Sky Generator</a></div>
-      <div class="tut"><a href="rgb2hsv/rgb2hsv.html">Relationship Between RGB and HSV</a></div>
-      <div class="tut"><a href="combineImages/combineImage.html">Combining Images</a>  </div>   
+      <div id="intro">
+         <h1>A PHOTO EDITOR PROJECT</h1>
+         <h2>The Goal</h2>
+         <P>My goal is to create my own Photoshop-like photo-editing app.</P>
+         <p>The purpose is to understand what's underneath the hood of an image-manipulation machine.
+            So, I don't want to just copy and paste code to build it, and I may even reinvent the wheel.</p>
+         <p>In the process of making it, or learning about it, I've come up with projects to get my hands dirty, 
+            and for each of those I will make a tutorial which shows how I made it from point A to...</p>
+         
+      </div>
+
+      <div id="tutorials">
+         <h2>Projects/Tutorials</h2>
+         <a href="bitmap/bitmap.html"><div class="tut">Bitmap Presentation--Introduction</div></a>
+         <a href="getImageData/getImageData.html"><div class="tut">JavaScript getImageData() Method</div></a>
+         <a href="nightSky/nightSky.html"><div class="tut">Random Night Sky Generator</div></a>
+         <a href="rgb2hsv/rgb2hsv.html"><div class="tut">Relationship Between RGB and HSV</div></a>
+         <a href="combineImages/combineImage.html"><div class="tut">Combining Images</div></a>   
+      </div>
+  
    </div>
       
 </body>
