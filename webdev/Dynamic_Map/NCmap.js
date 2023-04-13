@@ -1,10 +1,7 @@
 
 window.addEventListener('load', function() {
 
-  // Get the SVG element by ID
 var svg = document.getElementById('svg-object').contentDocument;
-// var svg = svg.getElementById("NC_Hyde");
-// console.log(svg);
 
   // Get all path elements in the SVG
 var paths = svg.querySelectorAll('path');
@@ -12,7 +9,7 @@ let pathArray = []
 paths.forEach(function(path) {
    pathArray.push(path);
 });
-//??dkfwo
+pathArray.sort()
 
 var svgObject = document.getElementById('svg-object')
 const viewportWidth = window.innerWidth; // get the viewport width of the browser window
@@ -25,10 +22,10 @@ const viewBoxWidth = viewBoxValues[2]; // get the width value
 const viewBoxHeight = viewBoxValues[3]; // get the width value
 const scaleFactor = displayedMapWidth / viewBoxWidth
 
-console.log(`The viewport width = ${viewportWidth}`)
-console.log(`The display width = ${displayedMapWidth} the height = ${displayedMapHeight} and the ratio is ${displayedMapWidth / displayedMapHeight}`)
-console.log(`The viewBox width = ${viewBoxWidth} the height = ${viewBoxHeight} and the ratio is ${viewBoxWidth / viewBoxHeight}`)
-console.log(`The svg-object width = ${svgObject.width}`)
+// console.log(`The viewport width = ${viewportWidth}`)
+// console.log(`The display width = ${displayedMapWidth} the height = ${displayedMapHeight} and the ratio is ${displayedMapWidth / displayedMapHeight}`)
+// console.log(`The viewBox width = ${viewBoxWidth} the height = ${viewBoxHeight} and the ratio is ${viewBoxWidth / viewBoxHeight}`)
+// console.log(`The svg-object width = ${svgObject.width}`)
 
 
 function calculatePathCenter(pathString) {
@@ -64,31 +61,38 @@ for (i = 0; i < countyNames.length; i++) {
   div.classList.add('county-name')
   div.textContent = countyNames[i]
   counties.appendChild(div);
-  console.log(`The name of the county is: ${countyNames[i]}`)
+
 }
 
-
+const cName = document.querySelectorAll('.county-name')
+cName.forEach(function(name) {
+  const cIndex = countyNames.indexOf(name.id)
+  name.addEventListener('mouseover', function () {
+    pathArray[cIndex].style.fill = 'red'
+  })
+  name.addEventListener('mouseout', function () {
+    pathArray[cIndex].style.fill = 'black'
+  });
+})
 
 
 // console.log(countyNames)
-document.querySelectorAll('county-name').addEventListener('load', function () {
+// document.querySelectorAll('county-name').addEventListener('load', function () {
 
-  paths.forEach(path => {
-    const countyName = svg.getElementById(path.id);
+//   paths.forEach(path => {
+//     const countyName = svg.getElementById(path.id);
   
-    path.addEventListener('mouseover', function () {
-      countyNames.forEach(name => {
-        name.style.display = 'none';
-      });
+//     path.addEventListener('mouseover', function () {
+//       countyNames.forEach(name => {
+//         name.style.display = 'none';
+//       });
 
-      countyName.style.display = 'block';
-    });
+//       countyName.style.display = 'block';
+//     });
 
-    path.addEventListener('mouseout', function () {
-      countyName.style.display = 'none';
-    });
-  });
-});
+//  
+//   });
+// });
 
 
 
