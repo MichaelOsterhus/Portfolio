@@ -1,6 +1,11 @@
 
 window.addEventListener('load', function() {
 
+const censusAPIkey = 'dab7b36185f536dd42e20629c135a9fa1f74fcbc'
+// Set up the URL with the necessary parameters and your API key
+const url = `https://api.census.gov/data/2019/pep/population?get=POP&for=county:*&in=state:37&key=${censusAPIkey}`;
+// Set up the URL with the necessary parameters and your API key
+
 var svg = document.getElementById('svg-object').contentDocument;
 
   // Get all path elements in the SVG
@@ -21,15 +26,11 @@ let alphaPathArray = pathArray.sort((a, b) => {
   return 0;
 });
 
-
-
-
 paths.forEach(function(path) {
     path.style.transition = "fill 0.8s ease-out";
     path.style.fill = '#000';
     path.style.stroke = '#666'
     path.style.strokeWidth = .4
-    const d = path.getAttribute('d')
   });
 
 var counties = document.getElementById('counties');
@@ -47,7 +48,6 @@ for (i = 0; i < countyNames.length; i++) {
   div.classList.add('county-name')
   div.textContent = countyNames[i]
   counties.appendChild(div);
-
 }
 
 const cName = document.querySelectorAll('.county-name')
@@ -62,8 +62,42 @@ cName.forEach(function(name) {
   });
 })
 
+// Fetch the data from the Census API
+fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    // Process the data as neede
+    const removeHead = data.slice(1)
+    const sortedData = removeHead.sort((a, b) => a[2] - b[2]).map(county => ({
+      population: county[0],
+      stateCode: county[1],
+      countyCode: county[2]
+    }))
+    console.log(sortedData)
+    for (i = 0; i < sortedData.length; i++) {
+      const value = Number(sortedData[i].population) / 255
+      paths[i].style.fill = `rgb(${value}, ${value}, ${value})`;
+    }    
+
+    
+  
+  })
+  .catch(error => console.error(error));
 
 });
+
+// const sortedData = data[1].sort((a, b) => a[2] - b[2]).map(county => ({
+//   population: county[0],
+//   stateCode: county[1],
+//   countyCode: county[2]
+
+// }));
+
+// const countyCodes = data.map(county => countyCode(county[2])); // Use map instead of forEach
+// for (i = 0; i < countyCodes.length; i++) {
+//   console.log(`The population of county ${alphaPathArray[i].id} is ${sortedData[i].population}`);
+// }
+// });
 
 //Code I didn't use
 
@@ -131,7 +165,4 @@ cName.forEach(function(name) {
 // }
 // console.log(`This is the alphaArray ${alphaPathArray[0].id}`);
 // console.log(`This is the pathArray ${pathArray[0].id}`);
-
-
-
 
