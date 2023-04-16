@@ -28,6 +28,7 @@ let alphaPathArray = pathArray.sort((a, b) => {
 
 paths.forEach(function(path) {
     path.style.transition = "fill 0.8s ease-out";
+    path.style.transition = "stroke 1.2s ease-out";
     path.style.fill = '#000';
     path.style.stroke = '#666'
     path.style.strokeWidth = .4
@@ -55,12 +56,21 @@ const cName = document.querySelectorAll('.county-name')
 cName.forEach(function(name) {
   const cIndex = countyNames.indexOf(name.id)
   name.addEventListener('mouseover', function () {
-    alphaPathArray[cIndex].style.fill = 'red'
+    alphaPathArray[cIndex].style.stroke = 'white'
+    alphaPathArray[cIndex].style.strokeWidth = 1.5
+
   })
   name.addEventListener('mouseout', function () {
-    alphaPathArray[cIndex].style.fill = 'black'
+    alphaPathArray[cIndex].style.stroke = '#666'
+    alphaPathArray[cIndex].style.strokeWidth = .4
   });
 })
+
+let rangeAlpha = []
+let rangeBeta = []
+let rangeGamma = []
+let rangeDelta = []
+let rangeEpsilon = []
 
 // Fetch the data from the Census API
 fetch(url)
@@ -73,13 +83,70 @@ fetch(url)
       stateCode: county[1],
       countyCode: county[2]
     }))
-    console.log(sortedData)
-    for (i = 0; i < sortedData.length; i++) {
-      const value = Number(sortedData[i].population) / 255
-      paths[i].style.fill = `rgb(${value}, ${value}, ${value})`;
-    }    
+    // console.log(sortedData)
+    let color = 60
+    let red = []
+    let green = []
+    let blue = []
 
-    
+    const redShift = (color) => {
+      for (i = 0; i < 5; i++) {
+        red.push((i + 1) * color * .35)
+      }
+    }
+    const greenShift = (color) => {
+      for (i = 0; i < 5; i++) {
+        green.push(i * color * .05)
+      }
+    }
+    const blueShift = (color) => {
+      for (i = 0; i < 5; i++) {
+        blue.push(i * color * .005)
+      }
+    }
+
+    redShift(color)
+    greenShift(color)
+    blueShift(color)
+
+    for (i = 0; i < sortedData.length; i++) {
+      // const value = Number(sortedData[i].population) / 200000 * 255  
+      if (sortedData[i].population < 20000) {
+        rangeAlpha.push(sortedData[i])
+        // alphaPathArray[i].style.fill = `rgb(${red[0]}, ${green[0]}, ${blue[0]})`
+        alphaPathArray[i].style.fill = `rgb(30, 20, 30)`
+      } else if (sortedData[i].population < 40000) {
+        rangeBeta.push(sortedData[i])
+        // alphaPathArray[i].style.fill = `rgb(${red[1]}, ${green[1]}, ${blue[1]})`
+        alphaPathArray[i].style.fill = `rgb(60, 30, 40)`
+      } else if (sortedData[i].population < 60000) {
+        rangeGamma.push(sortedData[i])
+        // alphaPathArray[i].style.fill = `rgb(${red[2]}, ${green[2]}, ${blue[2]})`
+        alphaPathArray[i].style.fill = `rgb(90, 0, 0)`
+      } else if (sortedData[i].population < 100000) {
+        rangeDelta.push(sortedData[i])
+        // alphaPathArray[i].style.fill = `rgb(${red[3]}, ${green[3]}, ${blue[3]})`
+        alphaPathArray[i].style.fill = `rgb(120, 0, 0)`
+      } else if (sortedData[i].population < 140000){
+        rangeEpsilon.push(sortedData[i])
+        // alphaPathArray[i].style.fill = `rgb(${red[4]}, ${green[4]}, ${blue[4]})`
+        alphaPathArray[i].style.fill = `rgb(150, 0, 0)`
+
+      } else if (sortedData[i].population < 200000) {
+        alphaPathArray[i].style.fill = `rgb(180, 0, 0)`
+
+      } else {
+        alphaPathArray[i].style.fill = `rgb(220, 50, 20)`
+      }
+
+    }    
+console.log(`Range Alpha has ${rangeAlpha.length} objects and their populations is: ${rangeAlpha}`)
+console.log(`Range Beta has ${rangeBeta.length} objects and their populations is: ${rangeBeta}`)
+console.log(`Range Gamma has ${rangeGamma.length} objects and their populations is: ${rangeGamma}`)
+console.log(`Range Delta has ${rangeDelta.length} objects and their populations is: ${rangeDelta}`)
+console.log(`Range Epsilon has ${rangeEpsilon.length} objects and their populations is: ${rangeEpsilon}`)
+console.log(`The total number of counties logged is ${rangeAlpha.length + rangeBeta.length + rangeGamma.length 
+  + rangeDelta.length + rangeEpsilon.length}`)
   
   })
   .catch(error => console.error(error));
