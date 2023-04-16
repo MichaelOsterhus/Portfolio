@@ -23,6 +23,9 @@
          display: inline-block;
          vertical-align: top;
       }
+      .wrap{
+         width: 300px;
+      }
       .tut a{
          
       }
@@ -52,14 +55,10 @@
       </a>
       
       <div id="wrapper"> 
+         <h2>Tutorials</h2>
       <div class="wrap">
       
-         <h3>PHOTO EDITOR PROJECTS</h3>
-         <a class="goal" href="bitmap/bitmap.html">Bitmap Presentation--Introduction</a>
-         <a class="goal" href="getImageData/getImageData.html">JavaScript getImageData() Method</a>
-         <a class="goal" href="nightSky/nightSky.html">Random Night Sky Generator</a>
-         <a class="goal" href="rgb2hsv/rgb2hsv.html">Relationship Between RGB and HSV</a> 
-         <a class="goal" href="combineImages/combineImage.html">Combining Images</a>        
+        
          
       </div>
       
@@ -75,17 +74,47 @@
             and for each of those I will make a tutorial which shows how I made it from point A to...</p>
          
       </div>
-
+      <h2>Projects/Tutorials</h2>
       <div id="tutorials">
-         <h2>Projects/Tutorials</h2>
-         <a href="bitmap/bitmap.html"><div class="tut">Bitmap Presentation--Introduction</div></a>
-         <a href="getImageData/getImageData.html"><div class="tut">JavaScript getImageData() Method</div></a>
-         <a href="nightSky/nightSky.html"><div class="tut">Random Night Sky Generator</div></a>
-         <a href="rgb2hsv/rgb2hsv.html"><div class="tut">Relationship Between RGB and HSV</div></a>
-         <a href="combineImages/combineImage.html"><div class="tut">Combining Images</div></a>   
+         
+ 
       </div>
   
    </div>
-      
+   <script type="module">
+      import { tuts } from './tutorials.js';
+   console.log(tuts)
+
+   document.addEventListener("DOMContentLoaded", function() {
+      const addLinksToMenu = () => {
+         const wrap = document.querySelector('.wrap')
+         tuts.forEach(tutorial => {
+            const link = document.createElement("a");
+            link.href = tutorial.url.replace('../', '');
+            link.textContent = tutorial.title;
+            link.classList.add('goal')
+            wrap.appendChild(link);
+         });
+      }
+   
+      const addLinksToTutorials = () => {
+         const tutorials = document.getElementById('tutorials')
+         tuts.forEach(tutorial => {
+            const link = document.createElement("a");
+            link.href = tutorial.url.replace('../', '');
+            link.textContent = tutorial.title;
+            const div = document.createElement('div');
+            div.classList.add('tut');
+            div.appendChild(link);
+            tutorials.appendChild(div);
+         });
+      }
+   
+      addLinksToMenu();
+      addLinksToTutorials();
+});
+
+   </script>
+   
 </body>
 </html>

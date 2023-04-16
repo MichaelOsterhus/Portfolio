@@ -18,50 +18,76 @@
         <p> In terms of digital images, there are two basic image types: vector and bitmap, aka raster.  While both vector and bitmap
          can come in different file types, they work in fundamentally different ways.  
          
-         Vector images are made up of mathematical equations or expressions that describe shapes and lines in the image.
-         These shapes and lines can either be filled with colors or gradients, or given a stroke, 
-         i.e. a visualized line that runs along the path of the mathematically mapped line.
+         <p>
+            Vector images are made up of mathematical equations or expressions that describe shapes and lines in the image.
+            These shapes and lines can either be filled with colors or gradients, or given a stroke, 
+            i.e. a visualized line that runs along the path of the mathematically mapped line.
+         </p>
+         <p>
+            Bitmap images, on the other hand, map a 
+            grid of squares called pixels, from "picture + element", and are the smallest element of a bitmap image. 
+            Pixels contain specific color values and correspond to pixels on a display device such as a computer 
+            monitor or smartphone screen.  the size and resolution of the image and the screen can affect how the image appears 
+            and whether it looks sharp and clear or pixelated and blurry.
+         </p>
+         <p>
+            Originally, pixels were only give one bit of data, 
+            they were either on or off, lit or dark.
+            So, this map of pixels was orignally a map of bits, but nowadays they are a map of bytes of data,
+            typically 3 bytes (24-bit) or 4 bytes (32-bit).
+         </p>
+         <p>
+            This data, of course, is accessible, and it is by accessing this data and manipulating it that 
+            digital photo-editing is possible.
+         </p>
+
+
+         <h2>
+            What Data is Contained in a Bitmap Image?
+         </h2>
+         <p>
+            Each pixel in a bitmap image is represented by a set of color values. 
+            These values can be represented in different ways, depending on the file format of the image. 
+            For example, in a 24-bit bitmap image, each pixel is represented by three values: 
+            one for red, one for green, and one for blue (RGB). 
+            These values are often represented as numbers between 0 and 255, 
+            with 0 being the darkest and 255 being the brightest.  The extra byte of data in 32-bit images (RGBA)
+            is for the alpha channel, giving 256 possible values for a pixel's opacity or transparency. 
+         </p>
          
-         Bitmap images, on the other hand, map a 
-         grid of squares called pixels, from "picture + element", and are the smallest element of a bitmap image. 
-         Pixels contain specific color values and correspond to pixels on a display device such as a computer 
-         monitor or smartphone screen.  the size and resolution of the image and the screen can affect how the image appears 
-         and whether it looks sharp and clear or pixelated and blurry.
-         
-         Originally, pixels were only give one bit of data, 
-         they were either on or off, lit or dark.
-         So, this map of pixels was orignally a map of bits, but nowadays they are a map of bytes of data,
-         typically 3 bytes (24-bit) or 4 bytes (32-bit).
 
-         This data, of course, is accessible, and it is by accessing this data and manipulating it that 
-         digital photo-editing is possible.
+<p>In addition to the RGB, or RGBA values, bitmap images also contain information about the size of the image, 
+   the resolution (or number of pixels per inch), and other metadata such as the date
+   the image was created and the software used to create it.</p>
 
-         What Data is Contained in a Bitmap Image?
 
-         Each pixel in a bitmap image is represented by a set of color values. 
-         These values can be represented in different ways, depending on the file format of the image. 
-         For example, in a 24-bit bitmap image, each pixel is represented by three values: 
-         one for red, one for green, and one for blue (RGB). 
-         These values are often represented as numbers between 0 and 255, 
-         with 0 being the darkest and 255 being the brightest.  The extra byte of data in 32-bit images (RGBA)
-         is for the alpha channel, giving 256 possible values for a pixel's opacity or transparency. 
 
-         In addition to the RGB, or RGBA values, bitmap images also contain information about the size of the image, 
-         the resolution (or number of pixels per inch), and other metadata such as the date
-         the image was created and the software used to create it.
 
-         What Can We Do with Bitmap Image Data?
 
-         With the data contained in a bitmap image, we can perform a wide variety of image 
-         processing tasks. For example, we can change the color values of individual pixels 
+        <h2>What Can We Do with Bitmap Image Data?</h2> 
+        
+        <p>With the data contained in a bitmap image, we can perform a wide variety of image processing tasks. For example, we can change the color values of individual pixels 
          to create special effects, or we can blur or sharpen specific areas of the image. 
          We can also use algorithms to automatically detect and correct problems with the image, 
-         such as noise or distortion.
-
-         In addition to image processing, bitmap image data can also be used for computer 
+         such as noise or distortion.</p>
+         <p>In addition to image processing, bitmap image data can also be used for computer 
          vision tasks such as object recognition or face detection. By analyzing the color 
          values and patterns in the pixels, we can train machine learning algorithms to identify 
-         specific objects or features within the image.
+         specific objects or features within the image.</p> 
+<p></p>
+<p></p>
+<p></p> 
+<p></p>
+<p></p>
+<p></p> 
+<p></p>
+<p></p>
+<p></p> 
+
+         
+
+
+
 
          Conclusion
 
@@ -75,29 +101,9 @@
          When we display a bitmap image on a screen, each pixel in the image is 
          mapped to a corresponding pixel on the screen.
         
-        
-         <p>
-            Bitmap images account for most but not all images you see
-            on the internet.  Also known as raster images, today they come in many file types such as
-            JPEG, PNG, GIF, and BMP. With bitmap images such as these is not unusual for a single 
-            pixel to be given not a bit, but 3 (to 4) bytes of data with one byte for the red, green, blue, (and alpha) values 
-         </p>
+
       
-         <p>
-            A bitmap image is not unlike the map below.  This world map is divided up into a grid which is 24 squares wide
-            and 12 squares tall, equaling 288 squares in total. In comparison, this world map 
-            is also a bitmap image, and as such is 600px wide by 300px tall. Meaning, for every visible square in this map, 
-            there are 625 pixels.  
-         </p>
-        <p>
-         For the sake of understanding, we will start with most basic element.
-        </p>
-        <p>
-         With the above line of code we are creating a variable using the keyword 'let'
-         and setting it equal to an array which contains the numbers 0 and 1.  The term 'bit' here
-         is arbitrarily designated but because it names a variable, we can use it elsewhere, such as
-         in the code below:
-        </p>
+
         <p>
          Here we create another variable and assign to it the length of the array we just made. 
          In JS, 'length' is another keyword and it refers to the number of values in an array. 

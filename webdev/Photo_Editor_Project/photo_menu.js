@@ -1,3 +1,13 @@
+import { tuts } from './tutorials.js'
+
+const tutsMenu = tuts.forEach(tutorial => {
+   const link = document.createElement("a");
+   link.href = tutorial.url;
+   link.textContent = tutorial.title;
+   linksContainer.appendChild(link);
+ });
+
+
 const menuContent = `<a href="../../../index.html">
 <div class="logo">
    <img src="../../../img/4EC_logo32.png"/>
@@ -9,11 +19,7 @@ const menuContent = `<a href="../../../index.html">
 <div class="wrap">
 
    <a href="../index.html"><h3>PHOTO EDITOR PROJECTS</h3></a>
-   <a class="goal" href="../bitmap/bitmap.html">Bitmap Presentation</a>
-   <a class="goal" href="../getImageData/getImageData.html">Using JavaScript getImageData Method</a>
-   <a class="goal" href="../nightSky/nightSky.html">Random Night Sky Generator</a>
-   <a class="goal" href="../rgb2hsv/rgb2hsv.html">Relationship Between RGB and HSV</a> 
-   <a class="goal" href="../combineImages/combineImage.html">Combining Images</a>        
+ ${tutsMenu}      
 
 </div>
 

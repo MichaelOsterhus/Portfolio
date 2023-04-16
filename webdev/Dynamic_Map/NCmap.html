@@ -8,10 +8,11 @@
       
      
    }
+
    #container{
       background-color: rgba(0, 0, 0, .8);
-      height: 100vh;
-      width: 100vw;
+      height: 90vh;
+      width: 90vw;
    }
    #map {
       display: flex;
@@ -22,15 +23,15 @@
       
       }
    #counties{
-      width: 9%;
-      height: 100vh;
+      width: 140px;
+      height: 600px;
       overflow-y: scroll;
       padding: 10px;
       margin-right: 10px;
       
    }
    .county-name {
-      width: 9%;
+      
       text-align: left;
       /* display: flex; */
       align-items: center;
@@ -43,8 +44,22 @@
    }
 
    #svg-object {
-      width: 87%;
+      width: 97%;
    }
+   /* Track */
+::-webkit-scrollbar-track {
+  background: #242222;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 
    </style>
    <title>NC Map Data Visualization</title>
@@ -60,6 +75,7 @@
  
          <div id="counties"></div>
          <object id="svg-object" data="NCmap.svg" type="image/svg+xml" width="100%" height="80%"></object>
+         <canvas id="graphKey"></canvas>
          
       </div>
    </div>

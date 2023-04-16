@@ -140,16 +140,16 @@ fetch(url)
       }
 
     }    
-console.log(`Range Alpha has ${rangeAlpha.length} objects and their populations is: ${rangeAlpha}`)
-console.log(`Range Beta has ${rangeBeta.length} objects and their populations is: ${rangeBeta}`)
-console.log(`Range Gamma has ${rangeGamma.length} objects and their populations is: ${rangeGamma}`)
-console.log(`Range Delta has ${rangeDelta.length} objects and their populations is: ${rangeDelta}`)
-console.log(`Range Epsilon has ${rangeEpsilon.length} objects and their populations is: ${rangeEpsilon}`)
-console.log(`The total number of counties logged is ${rangeAlpha.length + rangeBeta.length + rangeGamma.length 
-  + rangeDelta.length + rangeEpsilon.length}`)
+
   
   })
   .catch(error => console.error(error));
+  const canf = document.getElementById("graphKey")
+  const can = canf.getContext('2d')
+  can.width = 700;
+  can.height = 100;
+  can.style.fill = `rgb(30, 20, 30)`
+  can.fillRect(0, 0, 100, 100)
 
 });
 
