@@ -26,6 +26,32 @@
       #content{
          width: 1050px;
       }
+      /* CSS */
+      .search-container {
+      display: flex;
+      }
+
+      .search-input {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+      color: white;
+      background-color: rgba(20, 20, 20, .6);
+      border: 1px solid #ccc;
+      }
+
+      .search-button {
+      padding: 10px;
+      background-color: #24242b;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      }
+      #announce{
+         color: #ccc;
+         width: 800px;
+      }
    </style>
    <title>Check The News</title>
 </head>
@@ -35,8 +61,18 @@
    <div id="content">
       <div id="intro">
          <h1>Check The News With Me</h1>
-         <p>I've imported 25 news articles from around the world from the <a href="https://www.gdeltproject.org/">GDELT database</a>.  The request was made for 
-            articles on Artificial Intelligence, but I can't read most of the headlines to check.  Next step will be to translate the titles.
+
+
+         <!-- HTML -->
+<div class="search-container">
+   <input type="text" id="news" name="news" class="search-input" placeholder="Search For News">
+   <input type="submit" value="Search" id="searchBtn" class="search-button">
+ </div>
+ 
+
+ 
+         <p id="announce">I've imported 25 news articles from around the world from the <a href="https://www.gdeltproject.org/">GDELT database</a>.  
+            The request was made for articles on Artificial Intelligence, but I can't read most of the headlines to check.  Next step will be to translate the titles.
           </p>
       </div>
      

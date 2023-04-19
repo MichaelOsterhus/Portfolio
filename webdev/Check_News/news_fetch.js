@@ -1,19 +1,41 @@
+// const url = `https://api.gdeltproject.org/api/v2/doc/doc?query=artificial+intelligence&mode=artlist&timespan=1M&format=json`;
+const url = `https://api.gdeltproject.org/api/v2/doc/doc?query=artificial+intelligence&mode=artlist&timespan=1M&format=json&_=${Date.now()}`;
 
 
 
-const url = `https://api.gdeltproject.org/api/v2/doc/doc?query=artificial+intelligence&mode=artlist&timespan=1M&format=json`;
 
-// const cropImage = async (imgUrl) => {
-//   const crop = await smartcrop.crop(imgUrl, {width: 300, height: 200});
-//   const canvas = document.createElement('canvas');
-//   canvas.width = 300;
-//   canvas.height = 200;
-//   const ctx = canvas.getContext('2d');
-//   ctx.drawImage(imgUrl, crop.topCrop.x, crop.topCrop.y, crop.topCrop.width, crop.topCrop.height, 0, 0, 300, 200);
-//   return canvas.toDataURL();
-// };
+// JavaScript
+const searchBtn = document.getElementById('searchBtn');
+const newsfeed = document.getElementById('newsfeed');
 
-const newsfeed = document.getElementById('newsfeed')
+searchBtn.addEventListener('click', () => {
+  const query = document.getElementById('news').value;
+  const url = `https://api.gdeltproject.org/api/v2/doc/doc?query=${query}&mode=artlist&timespan=1M&format=json`;
+
+  // Clear existing newsfeed content
+  newsfeed.innerHTML = '';
+
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      data.articles.forEach(story => {
+        const link = document.createElement('a');
+        const title = story.title;
+        const lang = story.language;
+        const img = story.socialimage;
+
+        link.setAttribute('href', story.url);
+        link.innerHTML = `<div class="newspost"><h3>${title}</h3>
+          <div style="background-image: url(${img}); background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center center; background-color: #444; width: 300px; height: 200px;"><h2>${lang}</h2></div></div>`;
+        newsfeed.appendChild(link);
+      });
+      console.log(data);
+    })
+    .catch(error => console.error(error));
+});
+
 
 // const trans = async (story) => {
  const trans = (story) => { 
