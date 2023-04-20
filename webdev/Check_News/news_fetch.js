@@ -1,21 +1,33 @@
-// const url = `https://api.gdeltproject.org/api/v2/doc/doc?query=artificial+intelligence&mode=artlist&timespan=1M&format=json`;
+
 const url = `https://api.gdeltproject.org/api/v2/doc/doc?query=artificial+intelligence&mode=artlist&timespan=1M&format=json&_=${Date.now()}`;
 
 
+const sourcecountry = 'United States'; // Specify the source country (e.g. USA for Reuters)
+const language = 'English'; // Specify the language (e.g. EN for English)
+const num = 6; // Maximum number of articles to fetch
+const Reutersurl = `https://api.gdeltproject.org/api/v2/doc/doc?query=%22Trump%22%20sourcecountry:US%20sourcelang:English%20near5:%22wall%20border%22%20domainis:nytimes.com&format=json`;
+
+fetch(Reutersurl)
+    .then(response => response.json())
+    .then(Reutersdata => {
+      console.log(Reutersdata)
+    })
+    .catch(error => console.error(error));
 
 
 // JavaScript
 const searchBtn = document.getElementById('searchBtn');
 const newsfeed = document.getElementById('newsfeed');
 
+//code for search function
 searchBtn.addEventListener('click', () => {
   const query = document.getElementById('news').value;
-  const url = `https://api.gdeltproject.org/api/v2/doc/doc?query=${query}&mode=artlist&timespan=1M&format=json`;
+  const queryURL = `https://api.gdeltproject.org/api/v2/doc/doc?query=${query}&mode=artlist&timespan=1M&format=json`;
 
   // Clear existing newsfeed content
   newsfeed.innerHTML = '';
 
-  fetch(url)
+  fetch(queryURL)
     .then(response => response.json())
     .then(data => {
       data.articles.forEach(story => {
@@ -31,12 +43,12 @@ searchBtn.addEventListener('click', () => {
           background-position: center center; background-color: #444; width: 300px; height: 200px;"><h2>${lang}</h2></div></div>`;
         newsfeed.appendChild(link);
       });
-      console.log(data);
+      
     })
     .catch(error => console.error(error));
 });
 
-
+//code for intial news fetch
 // const trans = async (story) => {
  const trans = (story) => { 
   const link = document.createElement('a');
@@ -58,7 +70,8 @@ fetch(url)
   .then(response => response.json())
   .then(data => {
     data.articles.forEach((story) => trans(story))
-    console.log(data)})
+    // console.log(data)
+  })
   .catch(error => console.error(error));
 
 

@@ -66,12 +66,14 @@
    <div id="content">
       <div id="intro">
          <h1>A PHOTO EDITOR PROJECT</h1>
+         <a href="photo-editor.html"><h2 id="photo-edtior-link">The Photo-Editor</h2></a>
          <h2>The Goal</h2>
-         <P>My goal is to create my own Photoshop-like photo-editing app.</P>
-         <p>The purpose is to understand what's underneath the hood of an image-manipulation machine.
-            So, I don't want to just copy and paste code to build it, and I may even reinvent the wheel.</p>
-         <p>In the process of making it, or learning about it, I've come up with projects to get my hands dirty, 
-            and for each of those I will make a tutorial which shows how I made it from point A to...</p>
+         <P>The goal is to create a Photoshop-like photo-editing app
+            for the purpose of understanding what's underneath the hood of an image-manipulation machine.</P>
+         <p>Because the goal is understanding, there may be a lot of reinventing the wheel.</p>
+         <p>Rather than try to make the editor all at once, the project has been broken up into smaller
+            projects.  As the photo-editor will be built with JavaScript, each project 
+            is presented as a tutorial to explain the steps in JavaScript.</p>
          
       </div>
       <h2>Projects/Tutorials</h2>
@@ -102,11 +104,11 @@
          tuts.forEach(tutorial => {
             const link = document.createElement("a");
             link.href = tutorial.url.replace('../', '');
-            link.textContent = tutorial.title;
             const div = document.createElement('div');
+            div.textContent = tutorial.title;
             div.classList.add('tut');
-            div.appendChild(link);
-            tutorials.appendChild(div);
+            link.appendChild(div);
+            tutorials.appendChild(link);
          });
       }
    

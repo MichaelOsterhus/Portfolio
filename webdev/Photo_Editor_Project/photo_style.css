@@ -92,6 +92,7 @@ a.goal{
 #content{
    width: 800px;
    margin: auto;
-   background-color: #333;
+   background-color: #222;
+   padding: 20px;
    
 }
