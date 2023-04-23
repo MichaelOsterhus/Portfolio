@@ -17,8 +17,8 @@ const projArray = [
        caption: "Dynamic Data Visualization"
     },
     {
-       url: "",
-       caption: ""
+       url: "webdev/YouTube_Sub_Organizer/index.html",
+       caption: "YouTube Subscription Organizer"
     },
     {
        url: "",
