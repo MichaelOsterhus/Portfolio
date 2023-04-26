@@ -83,73 +83,64 @@ fetch(url)
       stateCode: county[1],
       countyCode: county[2]
     }))
-    // console.log(sortedData)
-    let color = 60
-    let red = []
-    let green = []
-    let blue = []
 
-    const redShift = (color) => {
-      for (i = 0; i < 5; i++) {
-        red.push((i + 1) * color * .35)
-      }
-    }
-    const greenShift = (color) => {
-      for (i = 0; i < 5; i++) {
-        green.push(i * color * .05)
-      }
-    }
-    const blueShift = (color) => {
-      for (i = 0; i < 5; i++) {
-        blue.push(i * color * .005)
-      }
+
+
+    let colors = {
+      a: `rgb(30, 20, 30)`,
+      b: `rgb(60, 30, 40)`,
+      c: `rgb(90, 0, 0)`,
+      d: `rgb(120, 0, 0)`,
+      e: `rgb(150, 0, 0)`,
+      f: `rgb(180, 0, 0)`,
+      g: `rgb(220, 50, 20)`,
     }
 
-    redShift(color)
-    greenShift(color)
-    blueShift(color)
+ 
 
+  let coLength = Object.keys(colors).length
+  const graphKey = document.getElementById('graphKey')
+  for (i = 0; i < coLength; i++) {
+    const key = document.createElement('div')
+    key.classList.add('key')
+    key.style.backgroundColor = Object.values(colors)[i]
+    graphKey.appendChild(key)
+  }
     for (i = 0; i < sortedData.length; i++) {
       // const value = Number(sortedData[i].population) / 200000 * 255  
       if (sortedData[i].population < 20000) {
         rangeAlpha.push(sortedData[i])
         // alphaPathArray[i].style.fill = `rgb(${red[0]}, ${green[0]}, ${blue[0]})`
-        alphaPathArray[i].style.fill = `rgb(30, 20, 30)`
+        alphaPathArray[i].style.fill = colors.a
       } else if (sortedData[i].population < 40000) {
         rangeBeta.push(sortedData[i])
         // alphaPathArray[i].style.fill = `rgb(${red[1]}, ${green[1]}, ${blue[1]})`
-        alphaPathArray[i].style.fill = `rgb(60, 30, 40)`
+        alphaPathArray[i].style.fill = colors.b
       } else if (sortedData[i].population < 60000) {
         rangeGamma.push(sortedData[i])
         // alphaPathArray[i].style.fill = `rgb(${red[2]}, ${green[2]}, ${blue[2]})`
-        alphaPathArray[i].style.fill = `rgb(90, 0, 0)`
+        alphaPathArray[i].style.fill = colors.c
       } else if (sortedData[i].population < 100000) {
         rangeDelta.push(sortedData[i])
         // alphaPathArray[i].style.fill = `rgb(${red[3]}, ${green[3]}, ${blue[3]})`
-        alphaPathArray[i].style.fill = `rgb(120, 0, 0)`
+        alphaPathArray[i].style.fill = colors.d
       } else if (sortedData[i].population < 140000){
         rangeEpsilon.push(sortedData[i])
         // alphaPathArray[i].style.fill = `rgb(${red[4]}, ${green[4]}, ${blue[4]})`
-        alphaPathArray[i].style.fill = `rgb(150, 0, 0)`
+        alphaPathArray[i].style.fill = colors.e
 
       } else if (sortedData[i].population < 200000) {
-        alphaPathArray[i].style.fill = `rgb(180, 0, 0)`
+        alphaPathArray[i].style.fill = colors.f
 
       } else {
-        alphaPathArray[i].style.fill = `rgb(220, 50, 20)`
+        alphaPathArray[i].style.fill = colors.g
       }
 
     }    
 
-  
+    
   })
-  .catch(error => console.error(error));
-  const canf = document.getElementById("graphKey")
-  const can = canf.getContext('2d')
-  can.width = 700;
-  can.height = 100;
-  can.style.fill = `rgb(30, 20, 30)`
-  can.fillRect(0, 0, 100, 100)
+
 
 });
 

@@ -94,13 +94,7 @@ function Speckle() {
 }
 
 
-Message(`The bitmap image below is made using JavaScript
-and the HTML canvas element. I say "is made" not "was made" because the colors of the 
-squares are randomly generated everytime the browser window loads. Refresh
-your web browser and you will see a different arrangement.`)
-Message(`This product of code was made for illustrating how bitmap images work 
-and during the course of the presentation I will explain the code I used to build 
-it as a way of explaining bitmap.`)
+
 C(x)
 for (let i = 0; i < hoRatio; i++) {
    for (let j = 0; j < verRatio; j++){
@@ -116,53 +110,12 @@ for (let i = 0; i < 16; i++) {
    Speckle()
 }
 
-Message(`You might think by the name that a bitmap image is an image
-produced using a map of bits, but not so fast.  Originally, that is what the word 
-meant, and technically it still does though it would more appropriate now to call 
-it a map of bytes.`)
-Message(`Bitmap images account for most but not all images you see
-on the internet.  They are also known as raster images, and come in many file types such as
-JPEG, PNG, GIF, and BMP. The other type of digital image you might see are called 'vector' 
-images which work in a fundamentally different way, but I am not here to explain 
-vector images. In short, I will say that the difference in the output of each type 
-is that when you enlarge a bitmap image on a screen, at a certain point the image 
-will begin to "pixelate" whereas a vector image does not.`)
-Message(`Both bitmap images below are displayed at a width of 300 pixels (px)
-   on the screen but both have been resized for the screen
-   from their original pixel dimensions: 335px x 335px for the left, 24px x 24px 
-   for the right.  `)
-picture('self-portrait.jpg', 300)
-picture('self-portrait_resize2.jpg', 300)
-Message(`Pointing out this pixelation helps to demonstrate how bitmap images work. 
-   Pixelation means "when a picture is enlarged to the point 
-   that the pixels become visible". This though can be confusing because
-   while 'pixel' can mean the smallest element of a digital image, it also refers
-   to the smallest unit of a lit screen for displaying images such as on a computer monitor.`)
-Message(`To put it another way, though the image on right is being diplayed at 300px wide,
-   the file it's drawing from has only 24px width of data to provide, meaning the pixels 
-   from the file are being drawn by just over 12 screen pixels each.`)
-Message(`The tiny image below is the same as the one on right above shown at it's original
-   dimensions, meaning each pixel in the bitmap grid is being displayed by one pixel of the 
-   screen.`)
-picture('self-portrait_resize2.jpg', 24)
-Message('')
-Message('A bitmap image is mapped using a grid like the one below where each square represents 1 pixel.')
+
+
 
 C(x)
 ctx.strokeStyle = '#ffffff';
-// let columns = (c) => {
-//    ctx.beginPath();
-//    ctx.moveTo(c, 0);
-//    ctx.lineTo(c, canvasHeight);
-//    ctx.stroke();
-// }
 
-// let rows = (y) => {
-//    ctx.beginPath();
-//    ctx.moveTo(0, y);
-//    ctx.lineTo(canvasWidth, y);
-//    ctx.stroke();
-// }
 
 let lines = (sX, sY, eX, eY) => {
    ctx.beginPath();
@@ -181,23 +134,7 @@ for (i = 1; i < verRatio; i++) {
 
 
 
-Message(`In the past it was not unusual for each pixel to be ascribed only one bit of data.
-   Indeed, there may be instances where this is still the case. Nowadays, however, 
-   it is common to see pixels given 3 or 4 bytes of data.`)
 
-Message(`So what is a bit?`)
-Message(`A bit is the smallest piece of data used in computer processing. A bit links 
-to computer hardware which in principle is like a light switch: it is either on or off.
-Hence a bit has two possible values usually depicted as 0, and 1. `)
-picture(`bit_byte.png`, 400)
-Message(`One byte = ${byte} bits. Given that the variable I've called 'bitValue' will equal 2 
-(the length of the 'bit' array), then byteValue equals ${byteValue} possible values for a byte.`)
-Message(`Now, I can make an array for byte like I have for bit, but I don't want to 
- type a bunch of 0s and 1s.
-So, I created an empty byteArray, then used a for loop so that while the iterator 'i' is less
-than the value of 'byte' it will push a copy of the 'bit' array into the byteArray, yielding
-the result below`)
-picture(`byteArray.png`, 400)
 
 C(x)
 ctx.fillText("byteArray contains: ", canvasWidth / 2, canvasHeight / 2 - 40);
