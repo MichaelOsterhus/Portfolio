@@ -1,5 +1,13 @@
 const image = new Image();
 image.src = "../../img/maidenNred2.jpg";
+console.log(image.width)
+console.log(image.height)
+if (image.width >= image.height) {
+  image.height = 800;
+} else {
+  image.width = 800;
+}
+
 
 let unedited = document.getElementById('image');
 
@@ -21,8 +29,8 @@ image.addEventListener('load', function() {
   // Draw the image on the canvas
   const x = (image.width - size) / 2;
   const y = (image.height - size) / 2;
-  context.drawImage(image, x, y, size, size, 0, 0, size, size);
-  console.log(`X and Y are ${x}, and ${y}`);
+  context.drawImage(image, x, y, size, size, 0, 0, 800, 800);
+
 
   // Split the canvas into 64 equal-sized pieces
   const squareSize = size / 8;
@@ -48,6 +56,7 @@ image.addEventListener('load', function() {
       const square = document.createElement('div');
       square.classList.add('square');
       square.style.backgroundImage = `url(${dataURL})`;
+      square.setAttribute('draggable', true)
       gameGrid.appendChild(square);
     }
   }

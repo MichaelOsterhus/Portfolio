@@ -4,6 +4,52 @@
    <link rel="stylesheet" href="css/homestyle.css"/>
    <script src="js/header.js"></script>
    <title>Corpus</title>
+   <style>
+#display {
+  width: 800px;
+  margin: auto;
+  background-color: rgba(0, 0, 0, .4)
+}
+.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-item {
+  position: relative;
+}
+
+.menu-item a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #eee;
+}
+
+.submenu {
+  max-height: 0;
+  /* display: none; */
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.submenu.active {
+  max-height: 400px; /* Adjust the value as needed */
+  /* display: block; */
+}
+
+
+.submenu li {
+  /* padding: 10px; */
+}
+
+.menu-item:hover .submenu {
+  display: block;
+}
+
+
+   </style>
 </head>
 <body>
    
@@ -13,40 +59,89 @@
       <div class="wrap">
 
          <h1>Corpus</h1>
-         
-         <h2>Work</h2>
-         <h3>Freelance</h3>
-         <a class="goal" href="https://golance.com/dashboard/freelancer" target="_blanak">GoLance</a>
-         <a class="goal" href="https://www.freelancer.com/login" target="_blank">Freelancer</a>
-         <a class="goal" href="https://www.upwork.com/nx/find-work/best-matches" target="_blank">UpWork</a>
-         
-         <h2>School</h2>
-         <h3>RCCC</h3>
-    <a class="goal" href="https://rccc.blackboard.com/" target="_blank">Blackboard</a>
-    <a class="goal" href="https://login.microsoftonline.com/common/oauth2/authorize?client_id=00000002-0000-0ff1-ce00-000000000000&redirect_uri=https%3a%2f%2foutlook.office365.com%2fowa%2f&resource=00000002-0000-0ff1-ce00-000000000000&response_mode=form_post&response_type=code+id_token&scope=openid&msafed=1&msaredir=1&client-request-id=f24d60df-0817-5afe-8e73-a946d70ce5d4&protectedtoken=true&claims=%7b%22id_token%22%3a%7b%22xms_cc%22%3a%7b%22values%22%3a%5b%22CP1%22%5d%7d%7d%7d&nonce=638053436428203299.d20c437c-6514-4738-a387-5ec36ee307a1&state=DcsxEoAgDAXRoONxIoEfSDgOg9SWXt8Ub7tNRHSGIySJkHW4NCi6Vq-COsb9VFkKW9xbUVaD84Qbt73Q94bYLCneK7_fzD8&sso_reload=true" 
-       target="_blank">RCCC Email</a>
-       <div id="classes">
-        <p>Computing Fundamentals 1</p>
-        <p>Network and Sec Foundation</p>
-        <p>Info Sys Business Concepts</p>
-       </div>
+         <nav>
+            <ul class="menu">
+              <li class="menu-item">
+                <a href="#">Creative Projects</a>
+                <ul class="submenu">
+                  <li class="item"><a href="#">Four Element Creations Photo-Editor</a></li>
+                  <li class="item"><a href="#">Four Element Creations Tutorials</a></li>
+                </ul>
+              </li>
+              <li class="menu-item">
+               <a href="#">School</a>
+               <ul class="submenu">
+                  <li class="submenu-item">
+                     <a href="#">Fall 2023</a>
+                     <ul>
+                        <li class="item"><a href="#">Computing Fundamentals 1</a></li>
+                        <li class="item"><a href="#">Network and Sec Foundation</a></li>
+                        <li class="item"><a href="#">Info Sys Business Concepts</a></li>
+                        <li class="item"><a href="#">Intro To Engineering</a></li>
+                        <li class="item"><a href="#">Intro To Statistics</a></li>
+                        <li class="item"><a href="#">Intermediate JavaScript</a></li>
+                     </ul>
+                  </li>
+                  <li class="submenu-item">Summer 2023
+                    <ul>
+                      <li class="item"><a href="#">Intro To Statistics For Data Science</a></li>
+                      <li class="item"><a href="#">Complete JavaScript</a></li>
+                      <li class="item"><a href="#">Intro To Data Science In Python</a></li>
+                    </ul>
+                  </li>
 
-    <h3>EdX</h3>
-    <a class="goal" href="https://www.edx.org/course/introduction-to-engineering-and-design?index=product" target="blank">Intro to Engineering</a>
-    <h3>Udemy</h3>
-    <a class="goal" href="https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648181?start=15" target="blank">Complete JavaScript</a>
-    <h3>Coursera</h3>
-    <a class="goal" href="https://www.coursera.org/in-progress" target="blank">Introduction To Statistics</a>
-    <a class="goal" href="https://www.coursera.org/learn/python-data-analysis/home/week/1" target="blank">Introduction To Data Science In Python</a>
-    <h3>GreatLearning</h3>
-    <a class="goal" href="https://youtu.be/Vfo5le26IhY" target="blank">Introduction To Statistics For Data Science</a>
-    <h3>YouTube</h3>
-    <a class="goal" href ="https://www.professormesser.com/free-a-plus-training/a-plus-videos/professor-messers-free-comptia-a-certification-training-course/""> PM CompTIA A+ Training</a>
+
+
+                </ul>
+              </li>
+
+            </ul>
+          </nav>
+ 
+          
+
 
       </div>
    </div>
+   <div id="display"></div>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  var menuItems = document.querySelectorAll('.menu-item');
 
-  
+  menuItems.forEach(function(item) {
+    item.addEventListener('click', function(event) {
+      var submenu = this.querySelector('.submenu');
+      if (submenu) {
+        event.preventDefault();
+        submenu.classList.toggle('active');
+        // Close other active submenus
+        menuItems.forEach(function(otherItem) {
+          if (otherItem !== item) {
+            var otherSubmenu = otherItem.querySelector('.submenu');
+            if (otherSubmenu && otherSubmenu.classList.contains('active')) {
+              otherSubmenu.classList.remove('active');
+            }
+          }
+        });
+      }
+    });
 
+    // var submenuItems = item.querySelectorAll('.submenu-item'); // Add event listener for submenu items
+    // console.log('sub menu itimes', submenuItems)
+    // submenuItems.forEach(function(submenuItem) {
+    //   submenuItem.addEventListener('click', function(event) {
+    //     var submenu = this.closest('.submenu');
+    //     submenu.classList.toggle('active');
+    //     event.stopPropagation();
+    //   });
+    // });
+  });
+});
+
+   
+
+
+  </script>
+  <script src="js/corpus.js"></script>
 </body>
 </html>

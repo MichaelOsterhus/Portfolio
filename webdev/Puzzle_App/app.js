@@ -38,15 +38,17 @@ document.addEventListener('DOMContentLoaded', () => {
    createBoard()
 
    const button = document.querySelector('#jumble')
-   button.addEventListener('click', function(){
-      squares = []
-      while (grid.firstChild) {
-         grid.removeChild(grid.firstChild);
-     }
+   // button.addEventListener('click', function(){
+   //    squares = []
+   //    while (grid.firstChild) {
+   //       grid.removeChild(grid.firstChild);
+   //   }
       
-      createBoard()     
-      console.log(squares)
-   })
+   //    createBoard()     
+   //    console.log(squares)
+   // })
+
+   button.addEventListener('click', createBoard)
 
    let colorBeingDragged
    let colorBeingReplaced
