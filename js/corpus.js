@@ -2,26 +2,26 @@ const itemsArr = [
     {
         header: 'Four Element Creations Photo-Editor',
         url: '#',
-        tracker: 0,
-        tracked: null,    
+        tracker: 7,
+        tracked: 4,    
     }, 
     {
         header: 'Four Element Creations Tutorials',
         url: '#',
-        tracker: 0,
-        tracked: null,    
+        tracker: 7,
+        tracked: 2,    
     },
     {
         header: 'Computing Fundamentals 1',
         url: '#',
-        tracker: 0,
-        tracked: null,    
+        tracker: 7,
+        tracked: 5,    
     },
     {
         header: 'Network and Sec Foundation',
         url: '#',
-        tracker: 0,
-        tracked: null,    
+        tracker: 5,
+        tracked: 3,    
     },
     {
         header: 'Info Sys Business Concepts',
@@ -95,9 +95,25 @@ items.forEach((item, index) => {
     const displayObj = itemsArr[index];
     // Perform actions with the displayObj
     const display = document.getElementById('display')
+    const container = document.createElement('div')
+    container.classList.add('container')
     const header = document.createElement('h1')
     header.textContent = displayObj.header
-    display.appendChild(header)
+    container.appendChild(header)
+    console.log(displayObj.tracker)
+    for (i = 0; i < displayObj.tracker; i++) {
+        const tracker = document.createElement('div')
+        tracker.classList.add('tracker')
+        container.appendChild(tracker)
+    }
+
+    display.appendChild(container)
+    const tracked = container.querySelectorAll('.tracker')
+    console.log('first tracked', tracked)
+    for (i = 0; i < displayObj.tracked; i++) {
+        tracked[i].style.backgroundColor = '#00ff33'
+        console.log('tracked', tracked[i])
+    }
     });
 })
 

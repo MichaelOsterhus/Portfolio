@@ -21,8 +21,8 @@ const projArray = [
        caption: "YouTube Subscription Organizer"
     },
     {
-       url: "",
-       caption: ""
+       url: "webdev/Random_Night_Sky/index.html",
+       caption: "Random Night Sky Generator"
     },
     {
        url: "",
