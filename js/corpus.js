@@ -31,6 +31,20 @@ const itemsArr = [
         source: '',
     },
     {
+        header: 'Intro To Statistics For Data Science',
+        url: 'https://youtu.be/Vfo5le26IhY',
+        tracker: 0,
+        tracked: null,
+        source: 'Great Learning'
+    },
+    {
+        header: 'Intro To Data Science In Python',
+        url: 'https://www.coursera.org/learn/python-data-analysis/home/week/1',
+        tracker: 0,
+        tracked: null,
+        source: 'Coursera'
+    },
+    {
         header: 'Intro To Engineering',
         url: 'https://www.edx.org/course/introduction-to-engineering-and-design?index=product',
         tracker: 0,
@@ -51,13 +65,7 @@ const itemsArr = [
         tracked: null,
         source: 'Codecademy'
     },
-    {
-        header: 'Intro To Statistics For Data Science',
-        url: 'https://youtu.be/Vfo5le26IhY',
-        tracker: 0,
-        tracked: null,
-        source: 'Great Learning'
-    },
+
     {
         header: 'Complete JavaScript',
         url: 'https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22648181?start=15',
@@ -65,14 +73,6 @@ const itemsArr = [
         tracked: null,
         source: 'Udemy'
     },
-    {
-        header: 'Intro To Data Science In Python',
-        url: 'https://www.coursera.org/learn/python-data-analysis/home/week/1',
-        tracker: 0,
-        tracked: null,
-        source: 'Coursera'
-    },
-
 
     {
         header: 'CompTIA A+ Training',
