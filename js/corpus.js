@@ -32,10 +32,10 @@ const itemsArr = [
     },
     {
         header: 'Intro To Statistics For Data Science',
-        url: 'https://youtu.be/Vfo5le26IhY',
+        url: 'https://www.youtube.com/watch?v=Vfo5le26IhY&list=PLlgLmuG_KgbaXMKcISC-fdz7HUn1oKr9i',
         tracker: 0,
         tracked: null,
-        source: 'Great Learning'
+        source: 'Great Learning -- YouTube'
     },
     {
         header: 'Intro To Data Science In Python',
@@ -99,7 +99,11 @@ items.forEach((item, index) => {
     container.classList.add('container')
     const header = document.createElement('h1')
     header.textContent = displayObj.header
+    const link = document.createElement('a')
+    link.href = displayObj.url
+    link.textContent = displayObj.source
     container.appendChild(header)
+    container.appendChild(link)
     console.log(displayObj.tracker)
     for (i = 0; i < displayObj.tracker; i++) {
         const tracker = document.createElement('div')
