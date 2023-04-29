@@ -17,12 +17,12 @@ const projArray = [
        caption: "Dynamic Data Visualization"
     },
     {
-       url: "webdev/YouTube_Sub_Organizer/index.html",
-       caption: "YouTube Subscription Organizer"
-    },
+      url: "webdev/Random_Night_Sky/index.html",
+      caption: "Random Night Sky Generator"
+   },
     {
-       url: "webdev/Random_Night_Sky/index.html",
-       caption: "Random Night Sky Generator"
+       url: "",
+       caption: ""
     },
     {
        url: "",

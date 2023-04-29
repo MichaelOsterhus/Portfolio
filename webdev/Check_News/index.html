@@ -10,13 +10,17 @@
          margin-top: 30px;
          padding: 20px;
       }
+      #newsfeed{
+         position: absolute;
+         left: 160px;
+      }
       .newspost h2{
          font-size: 17px;
          background-color: rgba(20, 20, 20, .6);
          padding: 5px;
       }
       .newspost{
-         width: 620px;
+         width: 600px;
          margin-left: 50px;
          background-color: #222;
          border-radius: 10px;
@@ -24,18 +28,20 @@
          position: relative;
       }
       .newspost h3{
-         font-size: 15px;
+         font-size: 16px;
          
-         line-height: 1em;
+         line-height: em;
       }
       .newspost img{
-         width: 80px;
-         height: 60px;
+         width: 100px;
+         height: 80px;
         
       }
       .post-title{
-         width: 500px;
+         width: 420px;
          display: inline-block;
+         position: absolute;
+         top: 10px;
       }
       .lang{
          font-size: 12px;
@@ -51,7 +57,8 @@
          top: 60px;
       }
       #content{
-         width: 1050px;
+         width: 100%;
+         position: relative;
       }
       /* CSS */
       .search-container {
@@ -85,6 +92,7 @@
       body{
          background-image: url(../4EC_logo_dark.png);
       }
+
 </style>
    </style>
    <title>Check The News</title>
@@ -106,15 +114,15 @@
    <p id="announce">Displayed below are 25 news articles from around the world fetched from the 
             <a href="https://www.gdeltproject.org/">GDELT database</a>.  
           </p>
-      </div>
+
       <div id="newsfeed">
          
          </div>
    </div>
     
    <script src="fetch_GDELT.js"></script>
-   <script src="fetch_Reddit.js"></script>
-   <script src="fetch_Twitter.js"></script>
+   <!-- <script src="fetch_Reddit.js"></script> -->
+
     
 </body>
 </html>
