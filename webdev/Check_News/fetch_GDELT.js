@@ -38,9 +38,8 @@ searchBtn.addEventListener('click', () => {
 
         link.setAttribute('href', story.url);
         link.innerHTML = `<div class="newspost"><h3>${title}</h3>
-          <div style="background-image: url(${img}); background-size: cover;
-          background-repeat: no-repeat;
-          background-position: center center; background-color: #444; width: 300px; height: 200px;"><h2>${lang}</h2></div></div>`;
+        <div style="width: 80px; height: 60px; background-image: url(${img}); background-size: cover;
+        background-repeat: no-repeat; "></div><h3>${title}</h3><span>${lang}</span></div>`;
         newsfeed.appendChild(link);
       });
       
@@ -56,13 +55,12 @@ searchBtn.addEventListener('click', () => {
   const lang = story.language;
   // const img = await cropImage(story.socialimage);
   const img = story.socialimage
+  const source = story.domain
 
   
   link.setAttribute('href', story.url);
-  link.innerHTML = `<div class="newspost"><h3>${title}</h3>
-  <div style="background-image: url(${img}); background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center; background-color: #444; width: 300px; height: 200px;"><h2>${lang}</h2></div></div>`;
+  link.innerHTML = `<div class="newspost">
+  <img src="${img}"><div class="post-title"><h3>${title}</h3></div><span class="lang">${lang}</span><span class="source">${source}</span></div>`;
   newsfeed.appendChild(link);
 };
 
@@ -70,7 +68,7 @@ fetch(url)
   .then(response => response.json())
   .then(data => {
     data.articles.forEach((story) => trans(story))
-    // console.log(data)
+    console.log(data)
   })
   .catch(error => console.error(error));
 
