@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Read Sacred Texts</title>
+    <style>
+        body{
+            background-color: #222;
+            color: white;
+        }
+        .redicle {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 2px;
+            font-size: 1.2em;
+            color: red;
+            text-shadow: 0 0 1px red;
+            border-top: 1px solid red;
+            border-bottom: 1px solid red;
+        }
+        #file-select a{
+            color: #aaa;
+            text-decoration: none;
+            display: block;
+            font-family: 'Proxima Nova', sans-serif;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        #container{
+            display: flex;
+            flex-direction: column;
+            width: 880px;
+            margin: auto;
+            position: relative;
+        }
+        #control-panel {
+            position: absolute;
+            left: -160;
+            top: 0;
+            height: 480px;
+            width: 80px;
+            background-color: #444;
+            padding: 10px;
+        }
+        #inputs{
+            margin-top: 20px;
+
+        }
+        input{
+            margin-top: 5px;
+            width: 70px;
+            background-color: #333;
+            color: #aaa;
+        }
+        label{
+            color: #aaa;
+        }
+
+        #reader{
+            background-color: #111;
+            /* width: 800px;
+            height: 500px; */
+            margin-left: 80px;
+            width: 800px;
+            height: 500px;
+            font-size: 6rem;
+            font-family: 'Helvetica', sans-serif;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ddd;
+        }
+        #text-container{
+            height: 160px;
+            overflow: hidden;
+            color: #aaa;
+        }
+        #play-button{
+            width: 80px;
+            height: 40px;
+            background-color: rgb(97, 97, 144);
+        }
+        #reader span {
+            font-size: inherit;
+        }
+
+        .redicle{
+            color: red;
+            position: fixed;
+        }
+    </style>
+</head>
+<body>
+    <div id="file-select"></div>
+    <div id="container">
+        <div id="control-panel">
+            <div id="buttons">
+                <button id="play-button">Play</button>
+            </div>
+            <div id="inputs">
+       
+               <input id="speed" type="text" min="50" max="1000" value="250">
+               <div class="label">
+                    <label for="speed">Speed</label>
+               </div>
+               
+               <input id="size" type="text" min="6" max="60" value="40">
+               <div class="label">
+                    <label for="size">Size</label>
+               </div>
+              
+            </div>
+
+        </div>
+        <div id="reader">
+            
+        </div>
+        <div id="text-container"></div>
+    </div>
+    <script src="speedread.js"></script>
+</body>
+</html>

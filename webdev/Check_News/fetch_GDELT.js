@@ -18,12 +18,26 @@ fetch(Reutersurl)
 // JavaScript
 const searchBtn = document.getElementById('searchBtn');
 const newsfeed = document.getElementById('newsfeed');
+let country
+let domain
+const filtersForm = document.querySelector('#filters form');
+filtersForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form from submitting
+    country = document.querySelector('#country').value;
+    domain = document.querySelector('#domain').value;
+    // Pass country and domain values to GDELT query
+    // ...
+});
+
 
 //code for search function
 searchBtn.addEventListener('click', () => {
   const query = document.getElementById('news').value;
-  const queryURL = `https://api.gdeltproject.org/api/v2/doc/doc?query=${query}&mode=artlist&timespan=1M&format=json`;
+  const gdeltBaseUrl = 'https://api.gdeltproject.org/api/v2/doc/doc';
+  // const queryURL = `https://api.gdeltproject.org/api/v2/doc/doc?query=${query}&mode=artlist&timespan=1M&format=json`;
+  const queryURL = `${gdeltBaseUrl}?query=${query}&mode=artlist&format=json&sort=datedesc&${country ? `sourcecountry:${country}&` : ''}${domain ? `domainis:${domain}&` : ''}`;
 
+  console.log(queryURL)
   // Clear existing newsfeed content
   newsfeed.innerHTML = '';
 

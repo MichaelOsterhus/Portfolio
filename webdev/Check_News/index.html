@@ -10,6 +10,17 @@
          margin-top: 30px;
          padding: 20px;
       }
+      #sources{
+         position: fixed;
+         left: 10px;
+         top: 180px;
+         color: #9eafbc;
+      }
+      #sources h4{
+         margin-top: 0px;
+         margin-bottom: 10px;
+         line-height: 10px;
+      }
       #newsfeed{
          position: absolute;
          left: 160px;
@@ -98,19 +109,60 @@
    <title>Check The News</title>
 </head>
 <body>
-   <script src="../webdev_menu.js"></script>
+  
    
    <div id="content">
+ 
       <div id="intro">
+         <a href="../../index.html">
+            <div class="logo">
+               <img src="../../img/4EC_logo32.png"/>
+            <h1>Michael Osterhus</h1>
+            </div>
+            </a>
          <h1>Check The News With Me</h1>
-
+      </div>
 
          <!-- HTML -->
 <div class="search-container">
    <input type="text" id="news" name="news" class="search-input" placeholder="Search For News">
    <input type="submit" value="Search" id="searchBtn" class="search-button">
  </div>
- <div id="trending"></div>
+
+   <div id="filters">
+      <form>
+          <label for="country">Country:</label>
+          <select name="country" id="country">
+              <option value="">All countries</option>
+              <option value="US">United States</option>
+              <option value="GB">United Kingdom</option>
+              <option value="CA">Canada</option>
+              <option value="FR">France</option>
+              <option value="RU">Russia</option>
+              <option value="CN">China</option>
+              <option value="JP">Japan</option>
+              
+              <!-- Add more country options here -->
+          </select>
+          <br>
+          <label for="domain">Domain:</label>
+          <select name="domain" id="domain">
+              <option value="">All domains</option>
+              <option value="reuters.com">Reuters</option>
+              <option value="apnews.com">AP News</option>
+              <option value="foxnews.com">FOX</option>
+              <option value="cnn.com">CNN</option>
+              <option value="msnbc.com">MSNBC</option>
+
+              <!-- Add more domain options here -->
+          </select>
+          <br>
+          <input type="submit" value="Filter">
+      </form>
+  </div>
+  
+
+ </div>
    <p id="announce">Displayed below are 25 news articles from around the world fetched from the 
             <a href="https://www.gdeltproject.org/">GDELT database</a>.  
           </p>
