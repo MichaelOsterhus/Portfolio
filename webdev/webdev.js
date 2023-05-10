@@ -41,7 +41,7 @@ bodyElement.insertAdjacentHTML('afterbegin', menuContent);
        "Photo_Editor_Project/index.html",
        "Puzzle_App/index.html",   
        "Check_News/index.html",
-       "Dynamic_Map/index.html",
+       "Dynamic_Map_Data_Visualization/index.html",
        "Speed_Read_Sacred_Texts/index.html",
        "",
        "",
@@ -52,7 +52,6 @@ bodyElement.insertAdjacentHTML('afterbegin', menuContent);
        "",
 ]
  
- console.log(projArray[0].caption)
  for (i=0; i < projArray.length; i++){
     const project = document.getElementById('projects')
     const div = document.createElement('div')
