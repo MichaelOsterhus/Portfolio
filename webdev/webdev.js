@@ -40,7 +40,7 @@ bodyElement.insertAdjacentHTML('afterbegin', menuContent);
  const projArray = [
        "Photo_Editor_Project/index.html",
        "Puzzle_App/index.html",   
-       "Check_News/index.html",
+       "GDELT_News_Query/index.html",
        "Dynamic_Map_Data_Visualization/index.html",
        "Speed_Read_Sacred_Texts/index.html",
        "",
