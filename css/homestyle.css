@@ -3,13 +3,43 @@ body{
    margin: 0px;
    padding: 0px;
    background-color: rgb(24, 24, 24);
+   
+
+   color: white;
+   font-family: 'Gruppo', sans-serif;
+}
+body::before {
+   content: "";
    background-image: url(../img/4EC_logo.png);
    background-repeat: no-repeat;
    background-attachment: fixed;
    background-position: center;
-   color: white;
    background-size: cover;
-   font-family: 'Gruppo', sans-serif;
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   z-index: -1;
+
+ }
+ body.blur::before {
+   animation: blur-animation 2s forwards;
+   transition-timing-function: ease-out;
+ }
+ @keyframes blur-animation {
+   0% { filter: blur(0); opacity: 1;}
+   100% { filter: blur(10px); opacity: 0.3}
+ }
+
+
+.homepage{
+
+
+}
+.portfolio-piece{
+
+
 }
 
 .logo{

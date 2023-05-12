@@ -8,7 +8,7 @@
    
    <title>Puzzle App</title>
 </head>
-<body>
+<body class="portfolio-piece">
    <script src="../webdev_menu.js"></script>
    <div id="content">
       <h2>Puzzle App</h2>
@@ -23,11 +23,17 @@
          
       </div>
       <h3>Phase 2</h3>
-      <p>uploading an image and cutting it to pieces</p>
+      <p>uploading an image.</p>
       <div id="image"></div>
-      <div id="gamegrid"></div>
+      <p>Keeping things simple, I crop the image as a square and put it to a canvas element.</p>
       <canvas id="display"></canvas>
+      <p>The canvas is then cut up in squares which are then used as the background image for 64 div elements, and put into an array
+         which can be rearranged.
+      </p>
+      <div id="gamegrid"></div>
+      <div id="gamegrid2"></div>
+      
    </div>
-   <script src="image_cut.js"></script>
+   <script src="image_cut2.js"></script>
 </body>
 </html>

@@ -1,5 +1,3 @@
-//try code with out dom content loaded putting 
-//script tag in footer. 
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -18,36 +16,21 @@ document.addEventListener('DOMContentLoaded', () => {
    ]
 
    function createBoard() {
+      grid.innerHTML = ""
       for (let i = 0; i < width*width; i++) {
          const square = document.createElement('div')
          square.setAttribute('draggable', true)
          square.setAttribute('id', i)
-         // const number = document.createElement('p')
          square.textContent = square.id
          let randomColor = Math.floor(Math.random() * candyColors.length)
-
-         // let red = 0
-         // let green = 0
-         // let blue = 0
          square.style.backgroundColor = candyColors[randomColor]
          grid.appendChild(square)
-         // square.appendChild(number)
          squares.push(square)
       }
    }
    createBoard()
 
    const button = document.querySelector('#jumble')
-   // button.addEventListener('click', function(){
-   //    squares = []
-   //    while (grid.firstChild) {
-   //       grid.removeChild(grid.firstChild);
-   //   }
-      
-   //    createBoard()     
-   //    console.log(squares)
-   // })
-
    button.addEventListener('click', createBoard)
 
    let colorBeingDragged
