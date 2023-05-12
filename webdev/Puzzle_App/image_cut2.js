@@ -30,6 +30,7 @@ image.addEventListener('load', function() {
     const x = (image.width - size) / 2;
     const y = (image.height - size) / 2;
     context.drawImage(image, x, y, size, size, 0, 0, 800, 800);
+
 // Split the canvas into 64 equal-sized pieces
 const squareSize = size / 8;
 const imageData = context.getImageData(0, 0, size, size);
@@ -53,22 +54,72 @@ for (let row = 0; row < 8; row++) {
   }
 }
 
-console.log(squares)
 // Add the squares to the game grid
-const gameGrid = document.getElementById('gamegrid');
-const gameGridShuffle = document.getElementById('gamegrid2');
+const gameGrid = document.getElementById('first');
+const gameGridShuffle = document.getElementById('second');
+
 function putSquares(arr, div) {
-    for (let i = 0; i < squares.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
         const square = document.createElement('div');
         square.classList.add('square');
         square.style.backgroundImage = `url(${arr[i]})`;
         square.setAttribute('draggable', true);
         square.textContent = i;
         div.appendChild(square);
+
+      //   let imageBeingDragged
+      //   let imageBeingReplaced
+      //   let squareIdBeingDragged
+      //   let squareIdBeingReplaced
+
+      //   squares.forEach(square => square.addEventListener('dragstart', dragStart))
+      //   squares.forEach(square => square.addEventListener('drag', dragEnd))
+      //   squares.forEach(square => square.addEventListener('dragover', dragOver))
+      //   squares.forEach(square => square.addEventListener('dragenter', dragEnter))
+      //   squares.forEach(square => square.addEventListener('dragleave', dragLeave))
+      //   squares.forEach(square => square.addEventListener('drop', dragDrop))
+
+      //   function dragStart() {
+      //     imageBeingDragged = this.style.backgroundImage
+      //     squareIdBeingDragged = parseInt(this.id)
+
+      //     console.log(imageBeingDragged, squareIdBeingDragged)
+
+      //   }
+      //   function dragEnd() {
+
+      //   }
+      //   function dragOver(e) {  
+      //     e.preventDefault()
+      //   }
+      //   function dragEnter() {
+
+      //   }
+      //   function dragLeave() {
+        
+      //   }
+      //   function dragDrop() {
+      //     imageBeingReplaced = this.style.backgroundImage
+      //     squareIdBeingReplaced = parseInt(this.id)
+      //     this.style.backgroundImage = imageBeingDragged
+      //     squares[squareIdBeingDragged].style.backgroundImage = imageBeingReplaced
+      //   }
       }
 }
 
 putSquares(squares, gameGrid)
+
+const newSquares = [];
+
+while (squares.length > 0) {
+  const randomIndex = Math.floor(Math.random() * squares.length);
+  const randomItem = squares.splice(randomIndex, 1)[0];
+  newSquares.push(randomItem);
+}
+
+putSquares(newSquares, gameGridShuffle)
+
+
 
 
 })
