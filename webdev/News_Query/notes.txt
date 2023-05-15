@@ -1,0 +1,14 @@
+News API - Provides access to news articles and headlines from a variety of sources, 
+including major news outlets, blogs, and more.
+
+Aylien - Offers a suite of AI-powered NLP tools and APIs for text analysis, 
+sentiment analysis, entity recognition, and more.
+
+Diffbot - Provides a suite of AI-powered APIs for web scraping, natural language processing, 
+and image recognition.
+
+GDELT - Offers a massive open database of global news articles and events, updated daily, 
+and can be queried via an API.
+
+OpenAI GPT-3 - Provides access to a language model API that can generate natural language text, 
+answer questions, and more.
