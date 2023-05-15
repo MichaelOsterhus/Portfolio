@@ -45,3 +45,9 @@
    width: 800px;
    height: 800px;
 }
+.prettyprint{
+   background-color: #ddd;
+   width: 600px;
+   margin: auto;
+   margin-bottom: 20px;
+}

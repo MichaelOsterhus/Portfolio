@@ -3,8 +3,10 @@
 <head>
    <script src="../webdev_header.js"></script>
    <script src="app.js"></script>
+   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
    <link rel="stylesheet" href="style.css"> 
    <link rel="stylesheet" href="../../css/homestyle.css">
+   
    
    <title>Puzzle App</title>
 </head>
@@ -13,10 +15,18 @@
    <div id="content">
       <h2>Puzzle App</h2>
       <h2>The Goal</h2>
-      <p>The goal here to is cut an uploaded image into a grid, scramble the pieces, and have the user rearrange them.</p>
+       <ol>
+         <li>Upload an image</li>
+         <li>Crop the image using a common denominator for width and height</li>
+         <li>Extract pixel data on squares of that denominator and put the data in an array</li>
+         <li>randomly reorder the data for the squares</li>
+         <li>Create a grid of the randomly reordered squares that a user must drag and drop to reorder to complete the puzzle.</li>
+       
       <h3>Phase 1:</h3>
       
       <p>First I wanted to be able to make a grid of draggable squares.</p>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/XD5sZWxwJUk" title="YouTube video player" frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       <div id="playField">
          <div class="grid"></div>
          <btn id="jumble">Jumble</btn>
@@ -35,6 +45,8 @@
       <div class="gamegrid" id="second"></div>
       
    </div>
-   <script src="image_cut2.js"></script>
+   <script src="image_cut.js" type="module"></script>
+   <script src="image_cut2.js" type="module"></script>
+   <script src="image_cut3.js" type="module"></script>
 </body>
 </html>

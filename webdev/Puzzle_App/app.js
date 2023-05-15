@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
          square.style.backgroundColor = candyColors[randomColor]
          grid.appendChild(square)
          squares.push(square)
+      }
          let colorBeingDragged
          let colorBeingReplaced
          let squareIdBeingDragged
@@ -58,28 +59,18 @@ document.addEventListener('DOMContentLoaded', () => {
          }
          function dragDrop() {
             colorBeingReplaced = this.style.backgroundColor
+            console.log(`The color being replaced is ${colorBeingReplaced}`)
             squareIdBeingReplaced = parseInt(this.id)
+            console.log(`The ID of the square being replaced is ${squareIdBeingReplaced}`)
             this.style.backgroundColor = colorBeingDragged
             squares[squareIdBeingDragged].style.backgroundColor = colorBeingReplaced
          }
-      }
+      
    }
 
    createBoard()
 
    const button = document.querySelector('#jumble')
    button.addEventListener('click', createBoard)
-
-
-   
-   // function shuffleBoard() {
-   //    while(squares.length > 0){
-   //       let newNumb = squares.splice(Math.floor(Math.random() * squares.length), 1)
-   //       shuffleSquares.push(newNumb)
-   //    }
-   //    return shuffleSquares
-   // }
-
-    // let showShuffle = shuffleBoard()
 
 })

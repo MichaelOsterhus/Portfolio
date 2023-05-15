@@ -8,13 +8,13 @@ if (image.width >= image.height) {
   image.width = 800;
 }
 
-
 let unedited = document.getElementById('image');
 
 const img = document.createElement('img');
 img.src = image.src;
 img.width = 800;
 unedited.appendChild(img);
+let squarePD = [];
 
 image.addEventListener('load', function() {
   const canvas = document.getElementById('display');
@@ -24,7 +24,7 @@ image.addEventListener('load', function() {
   const size = Math.min(image.width, image.height);
   canvas.width = size;
   canvas.height = size;
-  console.log(size);
+
 
   // Draw the image on the canvas
   const x = (image.width - size) / 2;
@@ -33,9 +33,10 @@ image.addEventListener('load', function() {
 
 
   // Split the canvas into 64 equal-sized pieces
+
   const squareSize = size / 8;
   const imageData = context.getImageData(0, 0, size, size);
-  const dataURL = canvas.toDataURL();
+  // const dataURL = canvas.toDataURL();
   for (let row = 0; row < 8; row++) {
     for (let col = 0; col < 8; col++) {
       const canvas = document.createElement('canvas');
@@ -50,14 +51,10 @@ image.addEventListener('load', function() {
         startX, startY,
         squareSize, squareSize
       );
-
-      // Add the canvas to the game grid
-      const gameGrid = document.getElementById('gamegrid');
-      const square = document.createElement('div');
-      square.classList.add('square');
-      square.style.backgroundImage = `url(${dataURL})`;
-      square.setAttribute('draggable', true)
-      gameGrid.appendChild(square);
+      squarePD.push(canvas.toDataURL());
     }
   }
+
 });
+
+export { image, squarePD };
