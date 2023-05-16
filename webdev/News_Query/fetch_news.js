@@ -1,16 +1,32 @@
 
-const url = `https://api.gdeltproject.org/api/v2/doc/doc?query=artificial+intelligence&mode=artlist&timespan=1M&format=json&_=${Date.now()}`;
+const urls = {
+                GDELT_AI_url : "https://api.gdeltproject.org/api/v2/doc/doc?query=artificial+intelligence&mode=artlist&timespan=1M&format=json",
+                GDELT_NYTimes_url : "https://api.gdeltproject.org/api/v2/doc/doc?query=%22Trump%22%20sourcecountry:US%20sourcelang:English%20near5:%22wall%20border%22%20domainis:nytimes.com&format=json",
+                NewsAPI_WSJ_url: "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=c4f6b12d51444588ad218a591da96f28",
+                NewsAPI_TechCrunch_url : "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=c4f6b12d51444588ad218a591da96f28",
+                Perigon_url : "api.goperigon.com/v1/all?q=SpaceX OR Tesla&language=en&from=2023-05-08&apiKey=[KEY]"
+              }
 
+let perigonAPI 
+let newsAPI 
+
+fetch('/secrets/keys.json')
+  .then(response => response.json())
+  .then(key => {
+    // Access your secrets here
+    perigonAPI = key.perigon_API
+    newsAPI = key.news_API 
+  });
 
 const sourcecountry = 'United States'; // Specify the source country (e.g. USA for Reuters)
 const language = 'English'; // Specify the language (e.g. EN for English)
 const num = 6; // Maximum number of articles to fetch
-const Reutersurl = `https://api.gdeltproject.org/api/v2/doc/doc?query=%22Trump%22%20sourcecountry:US%20sourcelang:English%20near5:%22wall%20border%22%20domainis:nytimes.com&format=json`;
 
-fetch(Reutersurl)
+
+fetch(urls.GDELT_AI_url)
     .then(response => response.json())
-    .then(Reutersdata => {
-      console.log(Reutersdata)
+    .then(data => {
+      console.log(data)
     })
     .catch(error => console.error(error));
 
@@ -78,81 +94,16 @@ searchBtn.addEventListener('click', () => {
   newsfeed.appendChild(link);
 };
 
-fetch(url)
-  .then(response => response.json())
-  .then(data => {
-    data.articles.forEach((story) => trans(story))
-    console.log(data)
-  })
-  .catch(error => console.error(error));
-
-
-
-  //Code below is pasted from Chat
-
-// const cropImage = async (imgUrl) => {
-//   const crop = await smartcrop.crop(imgUrl, {width: 300, height: 200});
-//   const canvas = document.createElement('canvas');
-//   canvas.width = 300;
-//   canvas.height = 200;
-//   const ctx = canvas.getContext('2d');
-//   ctx.drawImage(imgUrl, crop.topCrop.x, crop.topCrop.y, crop.topCrop.width, crop.topCrop.height, 0, 0, 300, 200);
-//   return canvas.toDataURL();
-// };
-
-
-
-// Example usage
-// const story = {
-//   title: "Lorem Ipsum",
-//   language: "English",
-//   socialimage: "https://example.com/image.jpg",
-//   url: "https://example.com"
-// };
-
-// trans(story);
-
-
-// const newsfeed = document.getElementById('newsfeed');
-
-// const trans = (story) => {
-//   // Create a new div element to hold the link and subheading
-//   const div = document.createElement('div');
-
-//   // Translate the title and add it as a subheading
-//   translate(story.title, { to: 'en' }).then(res => {
-//     const subheading = document.createElement('h2');
-//     subheading.innerText = res.text;
-//     div.appendChild(subheading);
-//   }).catch(err => {
-//     console.error(err);
-//   });
-
-//   // Create a link element for the original title
-//   const link = document.createElement('a');
-//   link.setAttribute('href', story.url);
-//   link.innerHTML = `<h1>${story.title}</h1>`;
-//   div.appendChild(link);
-
-//   // Translate the description and add it as a paragraph
-//   translate(story.description, { to: 'en' }).then(res => {
-//     const paragraph = document.createElement('p');
-//     paragraph.innerText = res.text;
-//     div.appendChild(paragraph);
-//   }).catch(err => {
-//     console.error(err);
-//   });
-
-//   // Add the div to the newsfeed
-//   newsfeed.appendChild(div);
-// }
-
 // fetch(url)
 //   .then(response => response.json())
 //   .then(data => {
-//     data.articles.forEach((story) => trans(story));
-//     console.log(data);
+//     data.articles.forEach((story) => trans(story))
+//     console.log(data)
 //   })
 //   .catch(error => console.error(error));
+
+
+
+
 
 

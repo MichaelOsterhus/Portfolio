@@ -12,3 +12,5 @@ and can be queried via an API.
 
 OpenAI GPT-3 - Provides access to a language model API that can generate natural language text, 
 answer questions, and more.
+
+///////Look up IndexedDB

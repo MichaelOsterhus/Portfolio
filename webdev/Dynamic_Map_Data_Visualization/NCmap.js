@@ -1,7 +1,19 @@
 
 window.addEventListener('load', function() {
+// Load the JSON file
 
-const censusAPIkey = 'dab7b36185f536dd42e20629c135a9fa1f74fcbc'
+let censusAPIkey;
+
+fetch('/secrets/keys.json')
+  .then(response => response.json())
+  .then(key => {
+    // Access your secrets here
+    censusAPIkey = key.census_API
+    console.log(`The key is ${censusAPIkey}`);
+  });
+
+
+
 // Set up the URL with the necessary parameters and your API key
 const url = `https://api.census.gov/data/2019/pep/population?get=POP&for=county:*&in=state:37&key=${censusAPIkey}`;
 // Set up the URL with the necessary parameters and your API key
