@@ -1,11 +1,4 @@
 
-const urls = {
-                GDELT_AI_url : "https://api.gdeltproject.org/api/v2/doc/doc?query=artificial+intelligence&mode=artlist&timespan=1M&format=json",
-                GDELT_NYTimes_url : "https://api.gdeltproject.org/api/v2/doc/doc?query=%22Trump%22%20sourcecountry:US%20sourcelang:English%20near5:%22wall%20border%22%20domainis:nytimes.com&format=json",
-                NewsAPI_WSJ_url: "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=c4f6b12d51444588ad218a591da96f28",
-                NewsAPI_TechCrunch_url : "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=c4f6b12d51444588ad218a591da96f28",
-                Perigon_url : "api.goperigon.com/v1/all?q=SpaceX OR Tesla&language=en&from=2023-05-08&apiKey=[KEY]"
-              }
 
 let perigonAPI 
 let newsAPI 
@@ -18,18 +11,51 @@ fetch('/secrets/keys.json')
     newsAPI = key.news_API 
   });
 
+  
+const urls = [
+                
+  {
+    name: "AI Around The World",
+    source: "GDELT",
+    url: "https://api.gdeltproject.org/api/v2/doc/doc?query=artificial+intelligence&mode=artlist&timespan=1M&format=json"
+    
+  },
+  {
+    name: "Trump Wall NYTimes",
+    source: "GDELT",
+    url: "https://api.gdeltproject.org/api/v2/doc/doc?query=%22Trump%22%20sourcecountry:US%20sourcelang:English%20near5:%22wall%20border%22%20domainis:nytimes.com&format=json",
+  },
+  {
+    name: "NewsAPI WSJ",
+    source: "News API",
+    url: "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=c4f6b12d51444588ad218a591da96f28",
+  },
+  {
+    name: "NewsAPI_TechCrunch",
+    source: "News API",
+    url: "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=c4f6b12d51444588ad218a591da96f28"
+  },
+  {
+    name: "Startups From Last Month",
+    source: "Perigon",
+    url: "api.goperigon.com/v1/all?topic=Startups&sourceGroup=top100&language=en&from=2023-04-16&apiKey=[KEY]"
+  }             
+               
+]
 const sourcecountry = 'United States'; // Specify the source country (e.g. USA for Reuters)
 const language = 'English'; // Specify the language (e.g. EN for English)
 const num = 6; // Maximum number of articles to fetch
 
 
-fetch(urls.GDELT_AI_url)
+urls.forEach((URL)=>{
+  fetch(URL.url)
     .then(response => response.json())
     .then(data => {
+      console.log('This is GDELT_AI_url')
       console.log(data)
     })
     .catch(error => console.error(error));
-
+  })
 
 // JavaScript
 const searchBtn = document.getElementById('searchBtn');
