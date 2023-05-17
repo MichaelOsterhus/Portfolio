@@ -21,9 +21,9 @@ fetch('/secrets/keys.json')
         url: `https://api.gdeltproject.org/api/v2/doc/doc?query=artificial+intelligence%20sourcecountry:US%20sourcelang:English%20near5:%22financial%20impact%22%20domainis:forbes.com&format=json`
       },
       {
-        name: "Everything--Reuters",
+        name: "Top Technology Headlines",
         source: "News API",
-        url: `https://newsapi.org/v2/everything?domains=reuters.com&apiKey=${newsAPI}`
+        url: `https://newsapi.org/v2/top-headlines/sources?category=technology&apiKey=${newsAPI}`
       },
       {
         name: "Top Headlines--TechCrunch",
