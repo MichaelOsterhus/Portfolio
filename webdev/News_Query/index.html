@@ -22,8 +22,10 @@
          line-height: 10px;
       }
       #newsfeed{
+         display: grid;
+         grid-template-columns: repeat(5, 1fr); /* Adjust the number of columns as needed */
+         grid-gap: 6px; /* Adjust the gap between columns */
          position: absolute;
-         left: 160px;
       }
       .newspost h2{
          font-size: 17px;
@@ -31,41 +33,62 @@
          padding: 5px;
       }
       .newspost{
-         width: 600px;
+         width: 440px;
+         height: 80px;
          margin-left: 50px;
          background-color: #222;
          border-radius: 10px;
          border: 1px solid #ccc;
          position: relative;
+         display: flex; /* Use flexbox to align the image and title */
+          align-items: center; /* Align items vertically within the newspost container */
       }
+
       .newspost h3{
          font-size: 16px;
          
          line-height: em;
       }
-      .newspost img{
-         width: 100px;
-         height: 80px;
-        
+      .newspost img {
+         width: 100px; /* Adjust the width of the image as needed */
+         height: auto; /* Maintain aspect ratio */
+         margin-right: 10px; /* Add some spacing between the image and title */
       }
-      .post-title{
-         width: 420px;
-         display: inline-block;
-         position: absolute;
-         top: 10px;
+
+      .post-title {
+      
+      flex-grow: 1; /* Allow the title to expand to fill the remaining space */
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal;
       }
+
+      .newspost:hover .post-title {
+         -webkit-line-clamp: initial;
+         overflow: visible; /* Show the full title on hover */
+      }
+
       .lang{
+         width: 100px;
+         background-color: rgba(10, 10, 10, .7);
          font-size: 12px;
          position: absolute;
-         right: 10px;
-         top: 10px;
+         padding-left: 10px;
+         left: 0px;
+         top: 0px;
       }
       .source{
+         width: 100px;
+         background-color: rgba(10, 10, 10, .7);
          font-size: 11px;
          color: #bbb;
          position: absolute;
-         right: 10px;
-         top: 60px;
+         padding-left: 10px;
+         left: 0px;
+         top: 70px;
       }
       #content{
          width: 100%;
@@ -100,9 +123,7 @@
          margin-top: 20px;
       }
    
-      body{
-         background-image: url(../4EC_logo_dark.png);
-      }
+ 
 
 </style>
    </style>

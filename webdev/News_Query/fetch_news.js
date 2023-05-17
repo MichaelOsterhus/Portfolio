@@ -1,65 +1,109 @@
+let perigonAPI;
+let newsAPI;
+const newsfeed = document.getElementById('newsfeed');
 
 
-let perigonAPI 
-let newsAPI 
 
 fetch('/secrets/keys.json')
   .then(response => response.json())
   .then(key => {
-    // Access your secrets here
-    perigonAPI = key.perigon_API
-    newsAPI = key.news_API 
+    perigonAPI = key.perigon_API;
+    newsAPI = key.news_API;
+    const urls = [
+      {
+        name: "AI Around The World",
+        source: "GDELT",
+        url: `https://api.gdeltproject.org/api/v2/doc/doc?query=artificial+intelligence&mode=artlist&timespan=1M&format=json`
+      },
+      {
+        name: "Trump Wall NYTimes",
+        source: "GDELT",
+        url: `https://api.gdeltproject.org/api/v2/doc/doc?query=%22Trump%22%20sourcecountry:US%20sourcelang:English%20near5:%22wall%20border%22%20domainis:nytimes.com&format=json`
+      },
+      {
+        name: "Everything--WSJ",
+        source: "News API",
+        url: `https://newsapi.org/v2/everything?domains=wsj.com&apiKey=${newsAPI}`
+      },
+      {
+        name: "Top Headlines--TechCrunch",
+        source: "News API",
+        url: `https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${newsAPI}`
+      },
+      {
+        name: "Startups From Last Month",
+        source: "Perigon",
+        url: `https://api.goperigon.com/v1/all?topic=Startups&sourceGroup=top100&language=en&from=2023-04-16&apiKey=${perigonAPI}`
+      }
+    ];
+    const createArticleElement = (story, img, lang, source) => {
+      const link = document.createElement('a');
+      const title = story.title;
+      link.setAttribute('href', story.url);
+      link.setAttribute('target', '_blank');
+      link.innerHTML = `<div class="newspost">
+        <img src="${img}"><div class="post-title"><h3>${title}</h3></div>
+        <span class="lang">${lang}</span><span class="source">${source}</span></div>`;
+      newsfeed.appendChild(link);
+    };
+    
+    const GDELT_articles = (story) => {
+      const img = story.socialimage;
+      const lang = story.language;
+      const source = story.domain;
+      createArticleElement(story, img, lang, source);
+    };
+    
+    const NewsAPI_articles = (story) => {
+      const img = story.urlToImage;
+      const lang = "English";
+      const source = story.source.name;
+      createArticleElement(story, img, lang, source);
+    };
+    
+    const Perigon_articles = (story) => {
+      const img = story.imageUrl;
+      const lang = "English";
+      const source = story.source.domain;
+      createArticleElement(story, img, lang, source);
+    };
+    const sourceToFunctionMap = {
+      GDELT: GDELT_articles,
+      "News API": NewsAPI_articles,
+      Perigon: Perigon_articles
+    };
+    
+    
+    urls.forEach((URL) => {
+      fetch(URL.url)
+        .then(response => response.json())
+        .then(data => {
+          console.log(`This is "${URL.name}" from ${URL.source}`)
+          console.log(data);
+          const header = document.createElement('h1')
+          header.textContent = URL.name
+          newsfeed.appendChild(header)
+          if (sourceToFunctionMap.hasOwnProperty(URL.source)) {
+            data.articles.forEach(story => sourceToFunctionMap[URL.source](story));
+          }
+          
+        })
+        .catch(error => console.error(error));
+    });
+    
+    console.log(newsAPI, perigonAPI);
   });
 
-  
-const urls = [
-                
-  {
-    name: "AI Around The World",
-    source: "GDELT",
-    url: "https://api.gdeltproject.org/api/v2/doc/doc?query=artificial+intelligence&mode=artlist&timespan=1M&format=json"
-    
-  },
-  {
-    name: "Trump Wall NYTimes",
-    source: "GDELT",
-    url: "https://api.gdeltproject.org/api/v2/doc/doc?query=%22Trump%22%20sourcecountry:US%20sourcelang:English%20near5:%22wall%20border%22%20domainis:nytimes.com&format=json",
-  },
-  {
-    name: "NewsAPI WSJ",
-    source: "News API",
-    url: "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=c4f6b12d51444588ad218a591da96f28",
-  },
-  {
-    name: "NewsAPI_TechCrunch",
-    source: "News API",
-    url: "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=c4f6b12d51444588ad218a591da96f28"
-  },
-  {
-    name: "Startups From Last Month",
-    source: "Perigon",
-    url: "api.goperigon.com/v1/all?topic=Startups&sourceGroup=top100&language=en&from=2023-04-16&apiKey=[KEY]"
-  }             
-               
-]
 const sourcecountry = 'United States'; // Specify the source country (e.g. USA for Reuters)
 const language = 'English'; // Specify the language (e.g. EN for English)
 const num = 6; // Maximum number of articles to fetch
 
 
-urls.forEach((URL)=>{
-  fetch(URL.url)
-    .then(response => response.json())
-    .then(data => {
-      console.log('This is GDELT_AI_url')
-      console.log(data)
-    })
-    .catch(error => console.error(error));
-  })
+
 
 // JavaScript
 const searchBtn = document.getElementById('searchBtn');
-const newsfeed = document.getElementById('newsfeed');
+
 let country
 let domain
 const filtersForm = document.querySelector('#filters form');
@@ -105,20 +149,20 @@ searchBtn.addEventListener('click', () => {
 
 //code for intial news fetch
 // const trans = async (story) => {
- const trans = (story) => { 
-  const link = document.createElement('a');
-  const title = story.title;
-  const lang = story.language;
-  // const img = await cropImage(story.socialimage);
-  const img = story.socialimage
-  const source = story.domain
+//  const trans = (story) => { 
+//   const link = document.createElement('a');
+//   const title = story.title;
+//   const lang = story.language;
+//   // const img = await cropImage(story.socialimage);
+//   const img = story.socialimage
+//   const source = story.domain
 
   
-  link.setAttribute('href', story.url);
-  link.innerHTML = `<div class="newspost">
-  <img src="${img}"><div class="post-title"><h3>${title}</h3></div><span class="lang">${lang}</span><span class="source">${source}</span></div>`;
-  newsfeed.appendChild(link);
-};
+//   link.setAttribute('href', story.url);
+//   link.innerHTML = `<div class="newspost">
+//   <img src="${img}"><div class="post-title"><h3>${title}</h3></div><span class="lang">${lang}</span><span class="source">${source}</span></div>`;
+//   newsfeed.appendChild(link);
+// };
 
 // fetch(url)
 //   .then(response => response.json())
