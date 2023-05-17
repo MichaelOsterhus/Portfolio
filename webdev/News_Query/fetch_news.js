@@ -23,7 +23,7 @@ fetch('/secrets/keys.json')
       {
         name: "Top Technology Headlines",
         source: "News API",
-        url: `https://newsapi.org/v2/top-headlines/sources?category=technology&apiKey=${newsAPI}`
+        url: `https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=${newsAPI}`
       },
       {
         name: "Top Headlines--TechCrunch",
