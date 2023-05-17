@@ -16,9 +16,9 @@ fetch('/secrets/keys.json')
         url: `https://api.gdeltproject.org/api/v2/doc/doc?query=artificial+intelligence&mode=artlist&timespan=1M&format=json`
       },
       {
-        name: "Trump Wall NYTimes",
+        name: "Financial Impact of AI--Forbes",
         source: "GDELT",
-        url: `https://api.gdeltproject.org/api/v2/doc/doc?query=%22Trump%22%20sourcecountry:US%20sourcelang:English%20near5:%22wall%20border%22%20domainis:nytimes.com&format=json`
+        url: `https://api.gdeltproject.org/api/v2/doc/doc?query=artificial+intelligence%20sourcecountry:US%20sourcelang:English%20near5:%22financial%20impact%22%20domainis:forbes.com&format=json`
       },
       {
         name: "Everything--WSJ",
