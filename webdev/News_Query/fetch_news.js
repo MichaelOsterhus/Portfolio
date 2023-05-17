@@ -36,7 +36,7 @@ fetch('/secrets/keys.json')
         url: `https://api.goperigon.com/v1/all?topic=Startups&sourceGroup=top100&language=en&from=2023-04-16&apiKey=${perigonAPI}`
       }
     ];
-    const createArticleElement = (story, img, lang, source) => {
+    const createArticleElement = (story, img, lang, source, col) => {
       const link = document.createElement('a');
       const title = story.title;
       link.setAttribute('href', story.url);
@@ -44,29 +44,30 @@ fetch('/secrets/keys.json')
       link.innerHTML = `<div class="newspost">
         <img src="${img}"><div class="post-title"><h3>${title}</h3></div>
         <span class="lang">${lang}</span><span class="source">${source}</span></div>`;
-      newsfeed.appendChild(link);
+      col.appendChild(link);
     };
     
-    const GDELT_articles = (story) => {
+    const GDELT_articles = (story, col) => {
       const img = story.socialimage;
       const lang = story.language;
       const source = story.domain;
-      createArticleElement(story, img, lang, source);
+      createArticleElement(story, img, lang, source, col);
     };
     
-    const NewsAPI_articles = (story) => {
+    const NewsAPI_articles = (story, col) => {
       const img = story.urlToImage;
       const lang = "English";
       const source = story.source.name;
-      createArticleElement(story, img, lang, source);
+      createArticleElement(story, img, lang, source, col);
     };
     
-    const Perigon_articles = (story) => {
+    const Perigon_articles = (story, col) => {
       const img = story.imageUrl;
       const lang = "English";
       const source = story.source.domain;
-      createArticleElement(story, img, lang, source);
+      createArticleElement(story, img, lang, source, col);
     };
+    
     const sourceToFunctionMap = {
       GDELT: GDELT_articles,
       "News API": NewsAPI_articles,
@@ -80,18 +81,19 @@ fetch('/secrets/keys.json')
         .then(data => {
           console.log(`This is "${URL.name}" from ${URL.source}`)
           console.log(data);
+          const col = document.createElement('div')
+          col.classList.add('column')
           const header = document.createElement('h1')
           header.textContent = URL.name
-          newsfeed.appendChild(header)
+          col.appendChild(header)
+          newsfeed.appendChild(col)
           if (sourceToFunctionMap.hasOwnProperty(URL.source)) {
-            data.articles.forEach(story => sourceToFunctionMap[URL.source](story));
+            data.articles.forEach(story => sourceToFunctionMap[URL.source](story, col));
           }
           
         })
         .catch(error => console.error(error));
     });
-    
-    console.log(newsAPI, perigonAPI);
   });
 
 const sourcecountry = 'United States'; // Specify the source country (e.g. USA for Reuters)

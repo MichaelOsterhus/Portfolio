@@ -22,10 +22,13 @@
          line-height: 10px;
       }
       #newsfeed{
-         display: grid;
-         grid-template-columns: repeat(5, 1fr); /* Adjust the number of columns as needed */
-         grid-gap: 6px; /* Adjust the gap between columns */
-         position: absolute;
+         display: flex;
+         flex-direction: row;
+      }
+      .column {
+         flex: 1 1 0; /* Allow columns to grow and shrink as needed */
+         max-width: 500px;
+         margin: 10px;
       }
       .newspost h2{
          font-size: 17px;
@@ -35,13 +38,12 @@
       .newspost{
          width: 440px;
          height: 100px;
-         margin-left: 50px;
          background-color: #222;
          border-radius: 10px;
          border: 1px solid #ccc;
-         position: relative;
          display: flex; /* Use flexbox to align the image and title */
-          align-items: center; /* Align items vertically within the newspost container */
+         align-items: center; /* Align items vertically within the newspost container */
+         position: relative;
       }
 
       .newspost h3{
@@ -50,9 +52,9 @@
          line-height: em;
       }
       .newspost img {
-         width: 100px; /* Adjust the width of the image as needed */
-         height: auto; /* Maintain aspect ratio */
-         margin-right: 10px; /* Add some spacing between the image and title */
+         width: 160px; /* Adjust the width of the image as needed */
+         height: 100px; /* Maintain aspect ratio */
+         margin-right: 4px; /* Add some spacing between the image and title */
       }
 
       .post-title {
@@ -72,7 +74,7 @@
       }
 
       .lang{
-         width: 100px;
+         width: 150px;
          background-color: rgba(10, 10, 10, .7);
          font-size: 12px;
          position: absolute;
@@ -81,14 +83,14 @@
          top: 0px;
       }
       .source{
-         width: 100px;
+         width: 150px;
          background-color: rgba(10, 10, 10, .7);
          font-size: 11px;
          color: #bbb;
          position: absolute;
          padding-left: 10px;
          left: 0px;
-         top: 70px;
+         top: 90px;
       }
       #content{
          width: 100%;
@@ -184,9 +186,7 @@
   
 
  </div>
-   <p id="announce">Displayed below are 25 news articles from around the world fetched from the 
-            <a href="https://www.gdeltproject.org/">GDELT database</a>.  
-          </p>
+
 
       <div id="newsfeed">
          
