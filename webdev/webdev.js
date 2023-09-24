@@ -38,7 +38,8 @@ bodyElement.insertAdjacentHTML('afterbegin', menuContent);
 
 //Putting the project array
  const projArray = [
-       "Web_Scrape/index.html",
+       "Scraping_Bible/index.html",
+       "Scraping_Sacred_Texts/index.html",
        "Puzzle_App/index.html",   
        "News_Query/index.html",
        "Dynamic_Map_Data_Visualization/index.html",
@@ -49,7 +50,7 @@ bodyElement.insertAdjacentHTML('afterbegin', menuContent);
        "",
        "",
        "", 
-       "",
+       
 ]
  
  for (i=0; i < projArray.length; i++){
