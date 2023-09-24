@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>scrape_sacred_texts</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -8001,7 +8001,7 @@ So, first this must be removed.</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">getURLS</span><span class="p">(</span><span class="n">span</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">getURLS</span><span class="p">(</span><span class="n">span</span><span class="p">,</span> <span class="n">text_column</span><span class="p">):</span>
     <span class="c1"># Find all of the link 'a' elements</span>
     <span class="n">a_tags</span> <span class="o">=</span> <span class="n">span</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">'a'</span><span class="p">)</span>
 
@@ -8018,11 +8018,11 @@ So, first this must be removed.</p>
             <span class="n">texts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 
     <span class="c1"># Create a DataFrame from the extracted data</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'URL'</span><span class="p">:</span> <span class="n">urls</span><span class="p">,</span> <span class="s1">'Text'</span><span class="p">:</span> <span class="n">texts</span><span class="p">}</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'URL'</span><span class="p">:</span> <span class="n">urls</span><span class="p">,</span> <span class="n">text_column</span><span class="p">:</span> <span class="n">texts</span><span class="p">}</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.max_rows'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>  
-<span class="n">df</span> <span class="o">=</span> <span class="n">getURLS</span><span class="p">(</span><span class="n">menu_span</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">getURLS</span><span class="p">(</span><span class="n">menu_span</span><span class="p">,</span> <span class="s1">'Category'</span><span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
 </div>
@@ -8055,7 +8055,7 @@ So, first this must be removed.</p>
 <tr style="text-align: right;">
 <th></th>
 <th>URL</th>
-<th>Text</th>
+<th>Category</th>
 </tr>
 </thead>
 <tbody>
@@ -8491,7 +8491,7 @@ So, first this must be removed.</p>
 <span class="n">extracted</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">:</span>
-    <span class="n">extracted_df</span> <span class="o">=</span> <span class="n">getURLS</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">extracted_df</span> <span class="o">=</span> <span class="n">getURLS</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="s1">'Title'</span><span class="p">)</span>
     <span class="n">extracted</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">extracted_df</span><span class="p">)</span>
 
 <span class="c1"># Concatenate the list of DataFrames into one</span>
@@ -8530,7 +8530,7 @@ So, first this must be removed.</p>
 <tr style="text-align: right;">
 <th></th>
 <th>URL</th>
-<th>Text</th>
+<th>Title</th>
 </tr>
 </thead>
 <tbody>
@@ -8681,7 +8681,7 @@ If there are, I run getURLS again.  Otherwise I print the text of the page.</p>
 
     <span class="c1">#Check for links in the body</span>
     <span class="k">if</span> <span class="n">body</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'a'</span><span class="p">):</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="n">getURLS</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">getURLS</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="s1">'Chapter'</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">body</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
@@ -8700,7 +8700,7 @@ If there are, I run getURLS again.  Otherwise I print the text of the page.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>             URL                                               Text
+<pre>             URL                                            Chapter
 0      title.htm                                         Title Page
 1       note.htm                                       Introduction
 2      intro.htm                                   Translators Note
