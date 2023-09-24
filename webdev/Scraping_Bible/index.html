@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>webscrape_presentation</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7508,6 +7508,7 @@ a.anchor-link {
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">re</span>
 </pre></div>
 </div>
 </div>
@@ -7857,6 +7858,20 @@ which I will change manually after converting the table back to CSV.</p>
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -7980,18 +7995,22 @@ which I will change manually after converting the table back to CSV.</p>
 
 <span class="c1"># Find unwanted elements within chap_soup</span>
 <span class="n">v_heading</span> <span class="o">=</span> <span class="n">chap_soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'div'</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">'vheading'</span><span class="p">)</span>
-<span class="n">footnote_span</span> <span class="o">=</span> <span class="n">chap_soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'span'</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">'mainfootnotes'</span><span class="p">)</span>
+<span class="n">find_span</span> <span class="o">=</span> <span class="n">chap_soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'span'</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">'mainfootnotes'</span><span class="p">)</span>
 <span class="n">section_head</span> <span class="o">=</span> <span class="n">chap_soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'p'</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">'sectionhead'</span><span class="p">)</span>
+<span class="n">bot_box</span> <span class="o">=</span> <span class="n">chap_soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'div'</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'botbox'</span><span class="p">)</span>
 
 <span class="c1"># Extract unwanted elements</span>
 <span class="k">if</span> <span class="n">v_heading</span><span class="p">:</span>
     <span class="n">v_heading</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
 
-<span class="k">if</span> <span class="n">footnote_span</span><span class="p">:</span>
-    <span class="n">footnote_span</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">find_span</span><span class="p">:</span>
+    <span class="n">find_span</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
 
 <span class="k">if</span> <span class="n">section_head</span><span class="p">:</span>
     <span class="n">section_head</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">bot_box</span><span class="p">:</span>
+    <span class="n">bot_box</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -8016,7 +8035,7 @@ which I will change manually after converting the table back to CSV.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Now I have just the text I want.</p>
+<h4 id="Now-I-have-just-the-text-I-want.">Now I have just the text I want.<a class="anchor-link" href="#Now-I-have-just-the-text-I-want.">¶</a></h4>
 </div>
 </div>
 </div>
@@ -8028,7 +8047,8 @@ which I will change manually after converting the table back to CSV.</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">chap_soup</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">chapter</span> <span class="o">=</span> <span class="n">chap_soup</span><span class="o">.</span><span class="n">text</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">chapter</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8073,9 +8093,2879 @@ a
 28God blessed them and said to them, “Be fruitful and increase in number; fill the earth and subdue it. Rule over the fish in the sea and the birds in the sky and over every living creature that moves on the ground.”
 29Then God said, “I give you every seed-bearing plant on the face of the whole earth and every tree that has fruit with seed in it. They will be yours for food. 
 30And to all the beasts of the earth and all the birds in the sky and all the creatures that move along the ground—everything that has the breath of life in it—I give every green plant for food.” And it was so.
-31God saw all that he had made, and it was very good. And there was evening, and there was morning—the sixth day.New International Version (NIV)Holy Bible, New International Version&amp;reg, NIV® Copyright © 1973, 1978, 1984, 2011 by Biblica, Inc.® Used by permission. All rights reserved worldwide.Bible Hub
+31God saw all that he had made, and it was very good. And there was evening, and there was morning—the sixth day.
 </pre>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3>5. Use regular expression to find numbers in the text. <br/></h3>
+<h3 id="Create-dataframe-with-number-as-'VerseID'-and-text-that-follows-it-as-'VerseText'">Create dataframe with number as 'VerseID' and text that follows it as 'VerseText'<a class="anchor-link" href="#Create-dataframe-with-number-as-'VerseID'-and-text-that-follows-it-as-'VerseText'">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">verse_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">'(\d+)([^0-9]+)'</span><span class="p">)</span>
+<span class="n">verses</span> <span class="o">=</span> <span class="n">verse_pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">chapter</span><span class="p">)</span>
+
+<span class="c1"># Create a DataFrame from the verses</span>
+<span class="n">cdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">verses</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'VerseID'</span><span class="p">,</span> <span class="s1">'VerseText'</span><span class="p">])</span>
+
+<span class="c1"># Convert VerseID to integer</span>
+<span class="n">cdf</span><span class="p">[</span><span class="s1">'VerseID'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdf</span><span class="p">[</span><span class="s1">'VerseID'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">cdf</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>VerseID</th>
+<th>VerseText</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>1</td>
+<td>In the beginning God created the heavens and t...</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2</td>
+<td>Now the earth was formless and empty, darkness...</td>
+</tr>
+<tr>
+<th>2</th>
+<td>3</td>
+<td>And God said, “Let there be light,” and there ...</td>
+</tr>
+<tr>
+<th>3</th>
+<td>4</td>
+<td>God saw that the light was good, and he separa...</td>
+</tr>
+<tr>
+<th>4</th>
+<td>5</td>
+<td>God called the light “day,” and the darkness h...</td>
+</tr>
+<tr>
+<th>5</th>
+<td>6</td>
+<td>And God said, “Let there be a vault between th...</td>
+</tr>
+<tr>
+<th>6</th>
+<td>7</td>
+<td>So God made the vault and separated the water ...</td>
+</tr>
+<tr>
+<th>7</th>
+<td>8</td>
+<td>God called the vault “sky.” And there was even...</td>
+</tr>
+<tr>
+<th>8</th>
+<td>9</td>
+<td>And God said, “Let the water under the sky be ...</td>
+</tr>
+<tr>
+<th>9</th>
+<td>10</td>
+<td>God called the dry ground “land,” and the gath...</td>
+</tr>
+<tr>
+<th>10</th>
+<td>11</td>
+<td>Then God said, “Let the land produce vegetatio...</td>
+</tr>
+<tr>
+<th>11</th>
+<td>12</td>
+<td>The land produced vegetation: plants bearing s...</td>
+</tr>
+<tr>
+<th>12</th>
+<td>13</td>
+<td>And there was evening, and there was morning—t...</td>
+</tr>
+<tr>
+<th>13</th>
+<td>14</td>
+<td>And God said, “Let there be lights in the vaul...</td>
+</tr>
+<tr>
+<th>14</th>
+<td>15</td>
+<td>and let them be lights in the vault of the sky...</td>
+</tr>
+<tr>
+<th>15</th>
+<td>16</td>
+<td>God made two great lights—the greater light to...</td>
+</tr>
+<tr>
+<th>16</th>
+<td>17</td>
+<td>God set them in the vault of the sky to give l...</td>
+</tr>
+<tr>
+<th>17</th>
+<td>18</td>
+<td>to govern the day and the night, and to separa...</td>
+</tr>
+<tr>
+<th>18</th>
+<td>19</td>
+<td>And there was evening, and there was morning—t...</td>
+</tr>
+<tr>
+<th>19</th>
+<td>20</td>
+<td>And God said, “Let the water teem with living ...</td>
+</tr>
+<tr>
+<th>20</th>
+<td>21</td>
+<td>So God created the great creatures of the sea ...</td>
+</tr>
+<tr>
+<th>21</th>
+<td>22</td>
+<td>God blessed them and said, “Be fruitful and in...</td>
+</tr>
+<tr>
+<th>22</th>
+<td>23</td>
+<td>And there was evening, and there was morning—t...</td>
+</tr>
+<tr>
+<th>23</th>
+<td>24</td>
+<td>And God said, “Let the land produce living cre...</td>
+</tr>
+<tr>
+<th>24</th>
+<td>25</td>
+<td>God made the wild animals according to their k...</td>
+</tr>
+<tr>
+<th>25</th>
+<td>26</td>
+<td>Then God said, “Let us make mankind in our ima...</td>
+</tr>
+<tr>
+<th>26</th>
+<td>27</td>
+<td>So God created mankind in his own image,in the...</td>
+</tr>
+<tr>
+<th>27</th>
+<td>28</td>
+<td>God blessed them and said to them, “Be fruitfu...</td>
+</tr>
+<tr>
+<th>28</th>
+<td>29</td>
+<td>Then God said, “I give you every seed-bearing ...</td>
+</tr>
+<tr>
+<th>29</th>
+<td>30</td>
+<td>And to all the beasts of the earth and all the...</td>
+</tr>
+<tr>
+<th>30</th>
+<td>31</td>
+<td>God saw all that he had made, and it was very ...</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Setup-For-Loop-for-iterating-through-all-chapter-URLs">Setup For Loop for iterating through all chapter URLs<a class="anchor-link" href="#Setup-For-Loop-for-iterating-through-all-chapter-URLs">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">base_url</span> <span class="o">=</span> <span class="s1">'https://biblehub.com/niv/'</span>
+
+<span class="c1"># Iterate through the DataFrame</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">mdf</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">book_name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">'BookName'</span><span class="p">]</span>
+    <span class="n">total_chapters</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">'TotalChapters'</span><span class="p">]</span>
+    
+    <span class="c1"># Generate URLs for each chapter</span>
+    <span class="k">for</span> <span class="n">ch_num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">total_chapters</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">durl</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">base_url</span><span class="si">}{</span><span class="n">book_name</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">ch_num</span><span class="si">}</span><span class="s1">.htm'</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">durl</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>https://biblehub.com/niv/Genesis/1.htm
+https://biblehub.com/niv/Genesis/2.htm
+https://biblehub.com/niv/Genesis/3.htm
+https://biblehub.com/niv/Genesis/4.htm
+https://biblehub.com/niv/Genesis/5.htm
+https://biblehub.com/niv/Genesis/6.htm
+https://biblehub.com/niv/Genesis/7.htm
+https://biblehub.com/niv/Genesis/8.htm
+https://biblehub.com/niv/Genesis/9.htm
+https://biblehub.com/niv/Genesis/10.htm
+https://biblehub.com/niv/Genesis/11.htm
+https://biblehub.com/niv/Genesis/12.htm
+https://biblehub.com/niv/Genesis/13.htm
+https://biblehub.com/niv/Genesis/14.htm
+https://biblehub.com/niv/Genesis/15.htm
+https://biblehub.com/niv/Genesis/16.htm
+https://biblehub.com/niv/Genesis/17.htm
+https://biblehub.com/niv/Genesis/18.htm
+https://biblehub.com/niv/Genesis/19.htm
+https://biblehub.com/niv/Genesis/20.htm
+https://biblehub.com/niv/Genesis/21.htm
+https://biblehub.com/niv/Genesis/22.htm
+https://biblehub.com/niv/Genesis/23.htm
+https://biblehub.com/niv/Genesis/24.htm
+https://biblehub.com/niv/Genesis/25.htm
+https://biblehub.com/niv/Genesis/26.htm
+https://biblehub.com/niv/Genesis/27.htm
+https://biblehub.com/niv/Genesis/28.htm
+https://biblehub.com/niv/Genesis/29.htm
+https://biblehub.com/niv/Genesis/30.htm
+https://biblehub.com/niv/Genesis/31.htm
+https://biblehub.com/niv/Genesis/32.htm
+https://biblehub.com/niv/Genesis/33.htm
+https://biblehub.com/niv/Genesis/34.htm
+https://biblehub.com/niv/Genesis/35.htm
+https://biblehub.com/niv/Genesis/36.htm
+https://biblehub.com/niv/Genesis/37.htm
+https://biblehub.com/niv/Genesis/38.htm
+https://biblehub.com/niv/Genesis/39.htm
+https://biblehub.com/niv/Genesis/40.htm
+https://biblehub.com/niv/Genesis/41.htm
+https://biblehub.com/niv/Genesis/42.htm
+https://biblehub.com/niv/Genesis/43.htm
+https://biblehub.com/niv/Genesis/44.htm
+https://biblehub.com/niv/Genesis/45.htm
+https://biblehub.com/niv/Genesis/46.htm
+https://biblehub.com/niv/Genesis/47.htm
+https://biblehub.com/niv/Genesis/48.htm
+https://biblehub.com/niv/Genesis/49.htm
+https://biblehub.com/niv/Genesis/50.htm
+https://biblehub.com/niv/Exodus/1.htm
+https://biblehub.com/niv/Exodus/2.htm
+https://biblehub.com/niv/Exodus/3.htm
+https://biblehub.com/niv/Exodus/4.htm
+https://biblehub.com/niv/Exodus/5.htm
+https://biblehub.com/niv/Exodus/6.htm
+https://biblehub.com/niv/Exodus/7.htm
+https://biblehub.com/niv/Exodus/8.htm
+https://biblehub.com/niv/Exodus/9.htm
+https://biblehub.com/niv/Exodus/10.htm
+https://biblehub.com/niv/Exodus/11.htm
+https://biblehub.com/niv/Exodus/12.htm
+https://biblehub.com/niv/Exodus/13.htm
+https://biblehub.com/niv/Exodus/14.htm
+https://biblehub.com/niv/Exodus/15.htm
+https://biblehub.com/niv/Exodus/16.htm
+https://biblehub.com/niv/Exodus/17.htm
+https://biblehub.com/niv/Exodus/18.htm
+https://biblehub.com/niv/Exodus/19.htm
+https://biblehub.com/niv/Exodus/20.htm
+https://biblehub.com/niv/Exodus/21.htm
+https://biblehub.com/niv/Exodus/22.htm
+https://biblehub.com/niv/Exodus/23.htm
+https://biblehub.com/niv/Exodus/24.htm
+https://biblehub.com/niv/Exodus/25.htm
+https://biblehub.com/niv/Exodus/26.htm
+https://biblehub.com/niv/Exodus/27.htm
+https://biblehub.com/niv/Exodus/28.htm
+https://biblehub.com/niv/Exodus/29.htm
+https://biblehub.com/niv/Exodus/30.htm
+https://biblehub.com/niv/Exodus/31.htm
+https://biblehub.com/niv/Exodus/32.htm
+https://biblehub.com/niv/Exodus/33.htm
+https://biblehub.com/niv/Exodus/34.htm
+https://biblehub.com/niv/Exodus/35.htm
+https://biblehub.com/niv/Exodus/36.htm
+https://biblehub.com/niv/Exodus/37.htm
+https://biblehub.com/niv/Exodus/38.htm
+https://biblehub.com/niv/Exodus/39.htm
+https://biblehub.com/niv/Exodus/40.htm
+https://biblehub.com/niv/Leviticus/1.htm
+https://biblehub.com/niv/Leviticus/2.htm
+https://biblehub.com/niv/Leviticus/3.htm
+https://biblehub.com/niv/Leviticus/4.htm
+https://biblehub.com/niv/Leviticus/5.htm
+https://biblehub.com/niv/Leviticus/6.htm
+https://biblehub.com/niv/Leviticus/7.htm
+https://biblehub.com/niv/Leviticus/8.htm
+https://biblehub.com/niv/Leviticus/9.htm
+https://biblehub.com/niv/Leviticus/10.htm
+https://biblehub.com/niv/Leviticus/11.htm
+https://biblehub.com/niv/Leviticus/12.htm
+https://biblehub.com/niv/Leviticus/13.htm
+https://biblehub.com/niv/Leviticus/14.htm
+https://biblehub.com/niv/Leviticus/15.htm
+https://biblehub.com/niv/Leviticus/16.htm
+https://biblehub.com/niv/Leviticus/17.htm
+https://biblehub.com/niv/Leviticus/18.htm
+https://biblehub.com/niv/Leviticus/19.htm
+https://biblehub.com/niv/Leviticus/20.htm
+https://biblehub.com/niv/Leviticus/21.htm
+https://biblehub.com/niv/Leviticus/22.htm
+https://biblehub.com/niv/Leviticus/23.htm
+https://biblehub.com/niv/Leviticus/24.htm
+https://biblehub.com/niv/Leviticus/25.htm
+https://biblehub.com/niv/Leviticus/26.htm
+https://biblehub.com/niv/Leviticus/27.htm
+https://biblehub.com/niv/Numbers/1.htm
+https://biblehub.com/niv/Numbers/2.htm
+https://biblehub.com/niv/Numbers/3.htm
+https://biblehub.com/niv/Numbers/4.htm
+https://biblehub.com/niv/Numbers/5.htm
+https://biblehub.com/niv/Numbers/6.htm
+https://biblehub.com/niv/Numbers/7.htm
+https://biblehub.com/niv/Numbers/8.htm
+https://biblehub.com/niv/Numbers/9.htm
+https://biblehub.com/niv/Numbers/10.htm
+https://biblehub.com/niv/Numbers/11.htm
+https://biblehub.com/niv/Numbers/12.htm
+https://biblehub.com/niv/Numbers/13.htm
+https://biblehub.com/niv/Numbers/14.htm
+https://biblehub.com/niv/Numbers/15.htm
+https://biblehub.com/niv/Numbers/16.htm
+https://biblehub.com/niv/Numbers/17.htm
+https://biblehub.com/niv/Numbers/18.htm
+https://biblehub.com/niv/Numbers/19.htm
+https://biblehub.com/niv/Numbers/20.htm
+https://biblehub.com/niv/Numbers/21.htm
+https://biblehub.com/niv/Numbers/22.htm
+https://biblehub.com/niv/Numbers/23.htm
+https://biblehub.com/niv/Numbers/24.htm
+https://biblehub.com/niv/Numbers/25.htm
+https://biblehub.com/niv/Numbers/26.htm
+https://biblehub.com/niv/Numbers/27.htm
+https://biblehub.com/niv/Numbers/28.htm
+https://biblehub.com/niv/Numbers/29.htm
+https://biblehub.com/niv/Numbers/30.htm
+https://biblehub.com/niv/Numbers/31.htm
+https://biblehub.com/niv/Numbers/32.htm
+https://biblehub.com/niv/Numbers/33.htm
+https://biblehub.com/niv/Numbers/34.htm
+https://biblehub.com/niv/Numbers/35.htm
+https://biblehub.com/niv/Numbers/36.htm
+https://biblehub.com/niv/Deuteronomy/1.htm
+https://biblehub.com/niv/Deuteronomy/2.htm
+https://biblehub.com/niv/Deuteronomy/3.htm
+https://biblehub.com/niv/Deuteronomy/4.htm
+https://biblehub.com/niv/Deuteronomy/5.htm
+https://biblehub.com/niv/Deuteronomy/6.htm
+https://biblehub.com/niv/Deuteronomy/7.htm
+https://biblehub.com/niv/Deuteronomy/8.htm
+https://biblehub.com/niv/Deuteronomy/9.htm
+https://biblehub.com/niv/Deuteronomy/10.htm
+https://biblehub.com/niv/Deuteronomy/11.htm
+https://biblehub.com/niv/Deuteronomy/12.htm
+https://biblehub.com/niv/Deuteronomy/13.htm
+https://biblehub.com/niv/Deuteronomy/14.htm
+https://biblehub.com/niv/Deuteronomy/15.htm
+https://biblehub.com/niv/Deuteronomy/16.htm
+https://biblehub.com/niv/Deuteronomy/17.htm
+https://biblehub.com/niv/Deuteronomy/18.htm
+https://biblehub.com/niv/Deuteronomy/19.htm
+https://biblehub.com/niv/Deuteronomy/20.htm
+https://biblehub.com/niv/Deuteronomy/21.htm
+https://biblehub.com/niv/Deuteronomy/22.htm
+https://biblehub.com/niv/Deuteronomy/23.htm
+https://biblehub.com/niv/Deuteronomy/24.htm
+https://biblehub.com/niv/Deuteronomy/25.htm
+https://biblehub.com/niv/Deuteronomy/26.htm
+https://biblehub.com/niv/Deuteronomy/27.htm
+https://biblehub.com/niv/Deuteronomy/28.htm
+https://biblehub.com/niv/Deuteronomy/29.htm
+https://biblehub.com/niv/Deuteronomy/30.htm
+https://biblehub.com/niv/Deuteronomy/31.htm
+https://biblehub.com/niv/Deuteronomy/32.htm
+https://biblehub.com/niv/Deuteronomy/33.htm
+https://biblehub.com/niv/Deuteronomy/34.htm
+https://biblehub.com/niv/Joshua/1.htm
+https://biblehub.com/niv/Joshua/2.htm
+https://biblehub.com/niv/Joshua/3.htm
+https://biblehub.com/niv/Joshua/4.htm
+https://biblehub.com/niv/Joshua/5.htm
+https://biblehub.com/niv/Joshua/6.htm
+https://biblehub.com/niv/Joshua/7.htm
+https://biblehub.com/niv/Joshua/8.htm
+https://biblehub.com/niv/Joshua/9.htm
+https://biblehub.com/niv/Joshua/10.htm
+https://biblehub.com/niv/Joshua/11.htm
+https://biblehub.com/niv/Joshua/12.htm
+https://biblehub.com/niv/Joshua/13.htm
+https://biblehub.com/niv/Joshua/14.htm
+https://biblehub.com/niv/Joshua/15.htm
+https://biblehub.com/niv/Joshua/16.htm
+https://biblehub.com/niv/Joshua/17.htm
+https://biblehub.com/niv/Joshua/18.htm
+https://biblehub.com/niv/Joshua/19.htm
+https://biblehub.com/niv/Joshua/20.htm
+https://biblehub.com/niv/Joshua/21.htm
+https://biblehub.com/niv/Joshua/22.htm
+https://biblehub.com/niv/Joshua/23.htm
+https://biblehub.com/niv/Joshua/24.htm
+https://biblehub.com/niv/Judges/1.htm
+https://biblehub.com/niv/Judges/2.htm
+https://biblehub.com/niv/Judges/3.htm
+https://biblehub.com/niv/Judges/4.htm
+https://biblehub.com/niv/Judges/5.htm
+https://biblehub.com/niv/Judges/6.htm
+https://biblehub.com/niv/Judges/7.htm
+https://biblehub.com/niv/Judges/8.htm
+https://biblehub.com/niv/Judges/9.htm
+https://biblehub.com/niv/Judges/10.htm
+https://biblehub.com/niv/Judges/11.htm
+https://biblehub.com/niv/Judges/12.htm
+https://biblehub.com/niv/Judges/13.htm
+https://biblehub.com/niv/Judges/14.htm
+https://biblehub.com/niv/Judges/15.htm
+https://biblehub.com/niv/Judges/16.htm
+https://biblehub.com/niv/Judges/17.htm
+https://biblehub.com/niv/Judges/18.htm
+https://biblehub.com/niv/Judges/19.htm
+https://biblehub.com/niv/Judges/20.htm
+https://biblehub.com/niv/Judges/21.htm
+https://biblehub.com/niv/Ruth/1.htm
+https://biblehub.com/niv/Ruth/2.htm
+https://biblehub.com/niv/Ruth/3.htm
+https://biblehub.com/niv/Ruth/4.htm
+https://biblehub.com/niv/1_Samuel/1.htm
+https://biblehub.com/niv/1_Samuel/2.htm
+https://biblehub.com/niv/1_Samuel/3.htm
+https://biblehub.com/niv/1_Samuel/4.htm
+https://biblehub.com/niv/1_Samuel/5.htm
+https://biblehub.com/niv/1_Samuel/6.htm
+https://biblehub.com/niv/1_Samuel/7.htm
+https://biblehub.com/niv/1_Samuel/8.htm
+https://biblehub.com/niv/1_Samuel/9.htm
+https://biblehub.com/niv/1_Samuel/10.htm
+https://biblehub.com/niv/1_Samuel/11.htm
+https://biblehub.com/niv/1_Samuel/12.htm
+https://biblehub.com/niv/1_Samuel/13.htm
+https://biblehub.com/niv/1_Samuel/14.htm
+https://biblehub.com/niv/1_Samuel/15.htm
+https://biblehub.com/niv/1_Samuel/16.htm
+https://biblehub.com/niv/1_Samuel/17.htm
+https://biblehub.com/niv/1_Samuel/18.htm
+https://biblehub.com/niv/1_Samuel/19.htm
+https://biblehub.com/niv/1_Samuel/20.htm
+https://biblehub.com/niv/1_Samuel/21.htm
+https://biblehub.com/niv/1_Samuel/22.htm
+https://biblehub.com/niv/1_Samuel/23.htm
+https://biblehub.com/niv/1_Samuel/24.htm
+https://biblehub.com/niv/1_Samuel/25.htm
+https://biblehub.com/niv/1_Samuel/26.htm
+https://biblehub.com/niv/1_Samuel/27.htm
+https://biblehub.com/niv/1_Samuel/28.htm
+https://biblehub.com/niv/1_Samuel/29.htm
+https://biblehub.com/niv/1_Samuel/30.htm
+https://biblehub.com/niv/1_Samuel/31.htm
+https://biblehub.com/niv/2_Samuel/1.htm
+https://biblehub.com/niv/2_Samuel/2.htm
+https://biblehub.com/niv/2_Samuel/3.htm
+https://biblehub.com/niv/2_Samuel/4.htm
+https://biblehub.com/niv/2_Samuel/5.htm
+https://biblehub.com/niv/2_Samuel/6.htm
+https://biblehub.com/niv/2_Samuel/7.htm
+https://biblehub.com/niv/2_Samuel/8.htm
+https://biblehub.com/niv/2_Samuel/9.htm
+https://biblehub.com/niv/2_Samuel/10.htm
+https://biblehub.com/niv/2_Samuel/11.htm
+https://biblehub.com/niv/2_Samuel/12.htm
+https://biblehub.com/niv/2_Samuel/13.htm
+https://biblehub.com/niv/2_Samuel/14.htm
+https://biblehub.com/niv/2_Samuel/15.htm
+https://biblehub.com/niv/2_Samuel/16.htm
+https://biblehub.com/niv/2_Samuel/17.htm
+https://biblehub.com/niv/2_Samuel/18.htm
+https://biblehub.com/niv/2_Samuel/19.htm
+https://biblehub.com/niv/2_Samuel/20.htm
+https://biblehub.com/niv/2_Samuel/21.htm
+https://biblehub.com/niv/2_Samuel/22.htm
+https://biblehub.com/niv/2_Samuel/23.htm
+https://biblehub.com/niv/2_Samuel/24.htm
+https://biblehub.com/niv/1_Kings/1.htm
+https://biblehub.com/niv/1_Kings/2.htm
+https://biblehub.com/niv/1_Kings/3.htm
+https://biblehub.com/niv/1_Kings/4.htm
+https://biblehub.com/niv/1_Kings/5.htm
+https://biblehub.com/niv/1_Kings/6.htm
+https://biblehub.com/niv/1_Kings/7.htm
+https://biblehub.com/niv/1_Kings/8.htm
+https://biblehub.com/niv/1_Kings/9.htm
+https://biblehub.com/niv/1_Kings/10.htm
+https://biblehub.com/niv/1_Kings/11.htm
+https://biblehub.com/niv/1_Kings/12.htm
+https://biblehub.com/niv/1_Kings/13.htm
+https://biblehub.com/niv/1_Kings/14.htm
+https://biblehub.com/niv/1_Kings/15.htm
+https://biblehub.com/niv/1_Kings/16.htm
+https://biblehub.com/niv/1_Kings/17.htm
+https://biblehub.com/niv/1_Kings/18.htm
+https://biblehub.com/niv/1_Kings/19.htm
+https://biblehub.com/niv/1_Kings/20.htm
+https://biblehub.com/niv/1_Kings/21.htm
+https://biblehub.com/niv/1_Kings/22.htm
+https://biblehub.com/niv/2_Kings/1.htm
+https://biblehub.com/niv/2_Kings/2.htm
+https://biblehub.com/niv/2_Kings/3.htm
+https://biblehub.com/niv/2_Kings/4.htm
+https://biblehub.com/niv/2_Kings/5.htm
+https://biblehub.com/niv/2_Kings/6.htm
+https://biblehub.com/niv/2_Kings/7.htm
+https://biblehub.com/niv/2_Kings/8.htm
+https://biblehub.com/niv/2_Kings/9.htm
+https://biblehub.com/niv/2_Kings/10.htm
+https://biblehub.com/niv/2_Kings/11.htm
+https://biblehub.com/niv/2_Kings/12.htm
+https://biblehub.com/niv/2_Kings/13.htm
+https://biblehub.com/niv/2_Kings/14.htm
+https://biblehub.com/niv/2_Kings/15.htm
+https://biblehub.com/niv/2_Kings/16.htm
+https://biblehub.com/niv/2_Kings/17.htm
+https://biblehub.com/niv/2_Kings/18.htm
+https://biblehub.com/niv/2_Kings/19.htm
+https://biblehub.com/niv/2_Kings/20.htm
+https://biblehub.com/niv/2_Kings/21.htm
+https://biblehub.com/niv/2_Kings/22.htm
+https://biblehub.com/niv/2_Kings/23.htm
+https://biblehub.com/niv/2_Kings/24.htm
+https://biblehub.com/niv/2_Kings/25.htm
+https://biblehub.com/niv/1_Chronicles/1.htm
+https://biblehub.com/niv/1_Chronicles/2.htm
+https://biblehub.com/niv/1_Chronicles/3.htm
+https://biblehub.com/niv/1_Chronicles/4.htm
+https://biblehub.com/niv/1_Chronicles/5.htm
+https://biblehub.com/niv/1_Chronicles/6.htm
+https://biblehub.com/niv/1_Chronicles/7.htm
+https://biblehub.com/niv/1_Chronicles/8.htm
+https://biblehub.com/niv/1_Chronicles/9.htm
+https://biblehub.com/niv/1_Chronicles/10.htm
+https://biblehub.com/niv/1_Chronicles/11.htm
+https://biblehub.com/niv/1_Chronicles/12.htm
+https://biblehub.com/niv/1_Chronicles/13.htm
+https://biblehub.com/niv/1_Chronicles/14.htm
+https://biblehub.com/niv/1_Chronicles/15.htm
+https://biblehub.com/niv/1_Chronicles/16.htm
+https://biblehub.com/niv/1_Chronicles/17.htm
+https://biblehub.com/niv/1_Chronicles/18.htm
+https://biblehub.com/niv/1_Chronicles/19.htm
+https://biblehub.com/niv/1_Chronicles/20.htm
+https://biblehub.com/niv/1_Chronicles/21.htm
+https://biblehub.com/niv/1_Chronicles/22.htm
+https://biblehub.com/niv/1_Chronicles/23.htm
+https://biblehub.com/niv/1_Chronicles/24.htm
+https://biblehub.com/niv/1_Chronicles/25.htm
+https://biblehub.com/niv/1_Chronicles/26.htm
+https://biblehub.com/niv/1_Chronicles/27.htm
+https://biblehub.com/niv/1_Chronicles/28.htm
+https://biblehub.com/niv/1_Chronicles/29.htm
+https://biblehub.com/niv/2_Chronicles/1.htm
+https://biblehub.com/niv/2_Chronicles/2.htm
+https://biblehub.com/niv/2_Chronicles/3.htm
+https://biblehub.com/niv/2_Chronicles/4.htm
+https://biblehub.com/niv/2_Chronicles/5.htm
+https://biblehub.com/niv/2_Chronicles/6.htm
+https://biblehub.com/niv/2_Chronicles/7.htm
+https://biblehub.com/niv/2_Chronicles/8.htm
+https://biblehub.com/niv/2_Chronicles/9.htm
+https://biblehub.com/niv/2_Chronicles/10.htm
+https://biblehub.com/niv/2_Chronicles/11.htm
+https://biblehub.com/niv/2_Chronicles/12.htm
+https://biblehub.com/niv/2_Chronicles/13.htm
+https://biblehub.com/niv/2_Chronicles/14.htm
+https://biblehub.com/niv/2_Chronicles/15.htm
+https://biblehub.com/niv/2_Chronicles/16.htm
+https://biblehub.com/niv/2_Chronicles/17.htm
+https://biblehub.com/niv/2_Chronicles/18.htm
+https://biblehub.com/niv/2_Chronicles/19.htm
+https://biblehub.com/niv/2_Chronicles/20.htm
+https://biblehub.com/niv/2_Chronicles/21.htm
+https://biblehub.com/niv/2_Chronicles/22.htm
+https://biblehub.com/niv/2_Chronicles/23.htm
+https://biblehub.com/niv/2_Chronicles/24.htm
+https://biblehub.com/niv/2_Chronicles/25.htm
+https://biblehub.com/niv/2_Chronicles/26.htm
+https://biblehub.com/niv/2_Chronicles/27.htm
+https://biblehub.com/niv/2_Chronicles/28.htm
+https://biblehub.com/niv/2_Chronicles/29.htm
+https://biblehub.com/niv/2_Chronicles/30.htm
+https://biblehub.com/niv/2_Chronicles/31.htm
+https://biblehub.com/niv/2_Chronicles/32.htm
+https://biblehub.com/niv/2_Chronicles/33.htm
+https://biblehub.com/niv/2_Chronicles/34.htm
+https://biblehub.com/niv/2_Chronicles/35.htm
+https://biblehub.com/niv/2_Chronicles/36.htm
+https://biblehub.com/niv/Ezra/1.htm
+https://biblehub.com/niv/Ezra/2.htm
+https://biblehub.com/niv/Ezra/3.htm
+https://biblehub.com/niv/Ezra/4.htm
+https://biblehub.com/niv/Ezra/5.htm
+https://biblehub.com/niv/Ezra/6.htm
+https://biblehub.com/niv/Ezra/7.htm
+https://biblehub.com/niv/Ezra/8.htm
+https://biblehub.com/niv/Ezra/9.htm
+https://biblehub.com/niv/Ezra/10.htm
+https://biblehub.com/niv/Nehemiah/1.htm
+https://biblehub.com/niv/Nehemiah/2.htm
+https://biblehub.com/niv/Nehemiah/3.htm
+https://biblehub.com/niv/Nehemiah/4.htm
+https://biblehub.com/niv/Nehemiah/5.htm
+https://biblehub.com/niv/Nehemiah/6.htm
+https://biblehub.com/niv/Nehemiah/7.htm
+https://biblehub.com/niv/Nehemiah/8.htm
+https://biblehub.com/niv/Nehemiah/9.htm
+https://biblehub.com/niv/Nehemiah/10.htm
+https://biblehub.com/niv/Nehemiah/11.htm
+https://biblehub.com/niv/Nehemiah/12.htm
+https://biblehub.com/niv/Nehemiah/13.htm
+https://biblehub.com/niv/Esther/1.htm
+https://biblehub.com/niv/Esther/2.htm
+https://biblehub.com/niv/Esther/3.htm
+https://biblehub.com/niv/Esther/4.htm
+https://biblehub.com/niv/Esther/5.htm
+https://biblehub.com/niv/Esther/6.htm
+https://biblehub.com/niv/Esther/7.htm
+https://biblehub.com/niv/Esther/8.htm
+https://biblehub.com/niv/Esther/9.htm
+https://biblehub.com/niv/Esther/10.htm
+https://biblehub.com/niv/Job/1.htm
+https://biblehub.com/niv/Job/2.htm
+https://biblehub.com/niv/Job/3.htm
+https://biblehub.com/niv/Job/4.htm
+https://biblehub.com/niv/Job/5.htm
+https://biblehub.com/niv/Job/6.htm
+https://biblehub.com/niv/Job/7.htm
+https://biblehub.com/niv/Job/8.htm
+https://biblehub.com/niv/Job/9.htm
+https://biblehub.com/niv/Job/10.htm
+https://biblehub.com/niv/Job/11.htm
+https://biblehub.com/niv/Job/12.htm
+https://biblehub.com/niv/Job/13.htm
+https://biblehub.com/niv/Job/14.htm
+https://biblehub.com/niv/Job/15.htm
+https://biblehub.com/niv/Job/16.htm
+https://biblehub.com/niv/Job/17.htm
+https://biblehub.com/niv/Job/18.htm
+https://biblehub.com/niv/Job/19.htm
+https://biblehub.com/niv/Job/20.htm
+https://biblehub.com/niv/Job/21.htm
+https://biblehub.com/niv/Job/22.htm
+https://biblehub.com/niv/Job/23.htm
+https://biblehub.com/niv/Job/24.htm
+https://biblehub.com/niv/Job/25.htm
+https://biblehub.com/niv/Job/26.htm
+https://biblehub.com/niv/Job/27.htm
+https://biblehub.com/niv/Job/28.htm
+https://biblehub.com/niv/Job/29.htm
+https://biblehub.com/niv/Job/30.htm
+https://biblehub.com/niv/Job/31.htm
+https://biblehub.com/niv/Job/32.htm
+https://biblehub.com/niv/Job/33.htm
+https://biblehub.com/niv/Job/34.htm
+https://biblehub.com/niv/Job/35.htm
+https://biblehub.com/niv/Job/36.htm
+https://biblehub.com/niv/Job/37.htm
+https://biblehub.com/niv/Job/38.htm
+https://biblehub.com/niv/Job/39.htm
+https://biblehub.com/niv/Job/40.htm
+https://biblehub.com/niv/Job/41.htm
+https://biblehub.com/niv/Job/42.htm
+https://biblehub.com/niv/Psalms/1.htm
+https://biblehub.com/niv/Psalms/2.htm
+https://biblehub.com/niv/Psalms/3.htm
+https://biblehub.com/niv/Psalms/4.htm
+https://biblehub.com/niv/Psalms/5.htm
+https://biblehub.com/niv/Psalms/6.htm
+https://biblehub.com/niv/Psalms/7.htm
+https://biblehub.com/niv/Psalms/8.htm
+https://biblehub.com/niv/Psalms/9.htm
+https://biblehub.com/niv/Psalms/10.htm
+https://biblehub.com/niv/Psalms/11.htm
+https://biblehub.com/niv/Psalms/12.htm
+https://biblehub.com/niv/Psalms/13.htm
+https://biblehub.com/niv/Psalms/14.htm
+https://biblehub.com/niv/Psalms/15.htm
+https://biblehub.com/niv/Psalms/16.htm
+https://biblehub.com/niv/Psalms/17.htm
+https://biblehub.com/niv/Psalms/18.htm
+https://biblehub.com/niv/Psalms/19.htm
+https://biblehub.com/niv/Psalms/20.htm
+https://biblehub.com/niv/Psalms/21.htm
+https://biblehub.com/niv/Psalms/22.htm
+https://biblehub.com/niv/Psalms/23.htm
+https://biblehub.com/niv/Psalms/24.htm
+https://biblehub.com/niv/Psalms/25.htm
+https://biblehub.com/niv/Psalms/26.htm
+https://biblehub.com/niv/Psalms/27.htm
+https://biblehub.com/niv/Psalms/28.htm
+https://biblehub.com/niv/Psalms/29.htm
+https://biblehub.com/niv/Psalms/30.htm
+https://biblehub.com/niv/Psalms/31.htm
+https://biblehub.com/niv/Psalms/32.htm
+https://biblehub.com/niv/Psalms/33.htm
+https://biblehub.com/niv/Psalms/34.htm
+https://biblehub.com/niv/Psalms/35.htm
+https://biblehub.com/niv/Psalms/36.htm
+https://biblehub.com/niv/Psalms/37.htm
+https://biblehub.com/niv/Psalms/38.htm
+https://biblehub.com/niv/Psalms/39.htm
+https://biblehub.com/niv/Psalms/40.htm
+https://biblehub.com/niv/Psalms/41.htm
+https://biblehub.com/niv/Psalms/42.htm
+https://biblehub.com/niv/Psalms/43.htm
+https://biblehub.com/niv/Psalms/44.htm
+https://biblehub.com/niv/Psalms/45.htm
+https://biblehub.com/niv/Psalms/46.htm
+https://biblehub.com/niv/Psalms/47.htm
+https://biblehub.com/niv/Psalms/48.htm
+https://biblehub.com/niv/Psalms/49.htm
+https://biblehub.com/niv/Psalms/50.htm
+https://biblehub.com/niv/Psalms/51.htm
+https://biblehub.com/niv/Psalms/52.htm
+https://biblehub.com/niv/Psalms/53.htm
+https://biblehub.com/niv/Psalms/54.htm
+https://biblehub.com/niv/Psalms/55.htm
+https://biblehub.com/niv/Psalms/56.htm
+https://biblehub.com/niv/Psalms/57.htm
+https://biblehub.com/niv/Psalms/58.htm
+https://biblehub.com/niv/Psalms/59.htm
+https://biblehub.com/niv/Psalms/60.htm
+https://biblehub.com/niv/Psalms/61.htm
+https://biblehub.com/niv/Psalms/62.htm
+https://biblehub.com/niv/Psalms/63.htm
+https://biblehub.com/niv/Psalms/64.htm
+https://biblehub.com/niv/Psalms/65.htm
+https://biblehub.com/niv/Psalms/66.htm
+https://biblehub.com/niv/Psalms/67.htm
+https://biblehub.com/niv/Psalms/68.htm
+https://biblehub.com/niv/Psalms/69.htm
+https://biblehub.com/niv/Psalms/70.htm
+https://biblehub.com/niv/Psalms/71.htm
+https://biblehub.com/niv/Psalms/72.htm
+https://biblehub.com/niv/Psalms/73.htm
+https://biblehub.com/niv/Psalms/74.htm
+https://biblehub.com/niv/Psalms/75.htm
+https://biblehub.com/niv/Psalms/76.htm
+https://biblehub.com/niv/Psalms/77.htm
+https://biblehub.com/niv/Psalms/78.htm
+https://biblehub.com/niv/Psalms/79.htm
+https://biblehub.com/niv/Psalms/80.htm
+https://biblehub.com/niv/Psalms/81.htm
+https://biblehub.com/niv/Psalms/82.htm
+https://biblehub.com/niv/Psalms/83.htm
+https://biblehub.com/niv/Psalms/84.htm
+https://biblehub.com/niv/Psalms/85.htm
+https://biblehub.com/niv/Psalms/86.htm
+https://biblehub.com/niv/Psalms/87.htm
+https://biblehub.com/niv/Psalms/88.htm
+https://biblehub.com/niv/Psalms/89.htm
+https://biblehub.com/niv/Psalms/90.htm
+https://biblehub.com/niv/Psalms/91.htm
+https://biblehub.com/niv/Psalms/92.htm
+https://biblehub.com/niv/Psalms/93.htm
+https://biblehub.com/niv/Psalms/94.htm
+https://biblehub.com/niv/Psalms/95.htm
+https://biblehub.com/niv/Psalms/96.htm
+https://biblehub.com/niv/Psalms/97.htm
+https://biblehub.com/niv/Psalms/98.htm
+https://biblehub.com/niv/Psalms/99.htm
+https://biblehub.com/niv/Psalms/100.htm
+https://biblehub.com/niv/Psalms/101.htm
+https://biblehub.com/niv/Psalms/102.htm
+https://biblehub.com/niv/Psalms/103.htm
+https://biblehub.com/niv/Psalms/104.htm
+https://biblehub.com/niv/Psalms/105.htm
+https://biblehub.com/niv/Psalms/106.htm
+https://biblehub.com/niv/Psalms/107.htm
+https://biblehub.com/niv/Psalms/108.htm
+https://biblehub.com/niv/Psalms/109.htm
+https://biblehub.com/niv/Psalms/110.htm
+https://biblehub.com/niv/Psalms/111.htm
+https://biblehub.com/niv/Psalms/112.htm
+https://biblehub.com/niv/Psalms/113.htm
+https://biblehub.com/niv/Psalms/114.htm
+https://biblehub.com/niv/Psalms/115.htm
+https://biblehub.com/niv/Psalms/116.htm
+https://biblehub.com/niv/Psalms/117.htm
+https://biblehub.com/niv/Psalms/118.htm
+https://biblehub.com/niv/Psalms/119.htm
+https://biblehub.com/niv/Psalms/120.htm
+https://biblehub.com/niv/Psalms/121.htm
+https://biblehub.com/niv/Psalms/122.htm
+https://biblehub.com/niv/Psalms/123.htm
+https://biblehub.com/niv/Psalms/124.htm
+https://biblehub.com/niv/Psalms/125.htm
+https://biblehub.com/niv/Psalms/126.htm
+https://biblehub.com/niv/Psalms/127.htm
+https://biblehub.com/niv/Psalms/128.htm
+https://biblehub.com/niv/Psalms/129.htm
+https://biblehub.com/niv/Psalms/130.htm
+https://biblehub.com/niv/Psalms/131.htm
+https://biblehub.com/niv/Psalms/132.htm
+https://biblehub.com/niv/Psalms/133.htm
+https://biblehub.com/niv/Psalms/134.htm
+https://biblehub.com/niv/Psalms/135.htm
+https://biblehub.com/niv/Psalms/136.htm
+https://biblehub.com/niv/Psalms/137.htm
+https://biblehub.com/niv/Psalms/138.htm
+https://biblehub.com/niv/Psalms/139.htm
+https://biblehub.com/niv/Psalms/140.htm
+https://biblehub.com/niv/Psalms/141.htm
+https://biblehub.com/niv/Psalms/142.htm
+https://biblehub.com/niv/Psalms/143.htm
+https://biblehub.com/niv/Psalms/144.htm
+https://biblehub.com/niv/Psalms/145.htm
+https://biblehub.com/niv/Psalms/146.htm
+https://biblehub.com/niv/Psalms/147.htm
+https://biblehub.com/niv/Psalms/148.htm
+https://biblehub.com/niv/Psalms/149.htm
+https://biblehub.com/niv/Psalms/150.htm
+https://biblehub.com/niv/Proverbs/1.htm
+https://biblehub.com/niv/Proverbs/2.htm
+https://biblehub.com/niv/Proverbs/3.htm
+https://biblehub.com/niv/Proverbs/4.htm
+https://biblehub.com/niv/Proverbs/5.htm
+https://biblehub.com/niv/Proverbs/6.htm
+https://biblehub.com/niv/Proverbs/7.htm
+https://biblehub.com/niv/Proverbs/8.htm
+https://biblehub.com/niv/Proverbs/9.htm
+https://biblehub.com/niv/Proverbs/10.htm
+https://biblehub.com/niv/Proverbs/11.htm
+https://biblehub.com/niv/Proverbs/12.htm
+https://biblehub.com/niv/Proverbs/13.htm
+https://biblehub.com/niv/Proverbs/14.htm
+https://biblehub.com/niv/Proverbs/15.htm
+https://biblehub.com/niv/Proverbs/16.htm
+https://biblehub.com/niv/Proverbs/17.htm
+https://biblehub.com/niv/Proverbs/18.htm
+https://biblehub.com/niv/Proverbs/19.htm
+https://biblehub.com/niv/Proverbs/20.htm
+https://biblehub.com/niv/Proverbs/21.htm
+https://biblehub.com/niv/Proverbs/22.htm
+https://biblehub.com/niv/Proverbs/23.htm
+https://biblehub.com/niv/Proverbs/24.htm
+https://biblehub.com/niv/Proverbs/25.htm
+https://biblehub.com/niv/Proverbs/26.htm
+https://biblehub.com/niv/Proverbs/27.htm
+https://biblehub.com/niv/Proverbs/28.htm
+https://biblehub.com/niv/Proverbs/29.htm
+https://biblehub.com/niv/Proverbs/30.htm
+https://biblehub.com/niv/Proverbs/31.htm
+https://biblehub.com/niv/Ecclesiastes/1.htm
+https://biblehub.com/niv/Ecclesiastes/2.htm
+https://biblehub.com/niv/Ecclesiastes/3.htm
+https://biblehub.com/niv/Ecclesiastes/4.htm
+https://biblehub.com/niv/Ecclesiastes/5.htm
+https://biblehub.com/niv/Ecclesiastes/6.htm
+https://biblehub.com/niv/Ecclesiastes/7.htm
+https://biblehub.com/niv/Ecclesiastes/8.htm
+https://biblehub.com/niv/Ecclesiastes/9.htm
+https://biblehub.com/niv/Ecclesiastes/10.htm
+https://biblehub.com/niv/Ecclesiastes/11.htm
+https://biblehub.com/niv/Ecclesiastes/12.htm
+https://biblehub.com/niv/Song_of_Solomon/1.htm
+https://biblehub.com/niv/Song_of_Solomon/2.htm
+https://biblehub.com/niv/Song_of_Solomon/3.htm
+https://biblehub.com/niv/Song_of_Solomon/4.htm
+https://biblehub.com/niv/Song_of_Solomon/5.htm
+https://biblehub.com/niv/Song_of_Solomon/6.htm
+https://biblehub.com/niv/Song_of_Solomon/7.htm
+https://biblehub.com/niv/Song_of_Solomon/8.htm
+https://biblehub.com/niv/Isaiah/1.htm
+https://biblehub.com/niv/Isaiah/2.htm
+https://biblehub.com/niv/Isaiah/3.htm
+https://biblehub.com/niv/Isaiah/4.htm
+https://biblehub.com/niv/Isaiah/5.htm
+https://biblehub.com/niv/Isaiah/6.htm
+https://biblehub.com/niv/Isaiah/7.htm
+https://biblehub.com/niv/Isaiah/8.htm
+https://biblehub.com/niv/Isaiah/9.htm
+https://biblehub.com/niv/Isaiah/10.htm
+https://biblehub.com/niv/Isaiah/11.htm
+https://biblehub.com/niv/Isaiah/12.htm
+https://biblehub.com/niv/Isaiah/13.htm
+https://biblehub.com/niv/Isaiah/14.htm
+https://biblehub.com/niv/Isaiah/15.htm
+https://biblehub.com/niv/Isaiah/16.htm
+https://biblehub.com/niv/Isaiah/17.htm
+https://biblehub.com/niv/Isaiah/18.htm
+https://biblehub.com/niv/Isaiah/19.htm
+https://biblehub.com/niv/Isaiah/20.htm
+https://biblehub.com/niv/Isaiah/21.htm
+https://biblehub.com/niv/Isaiah/22.htm
+https://biblehub.com/niv/Isaiah/23.htm
+https://biblehub.com/niv/Isaiah/24.htm
+https://biblehub.com/niv/Isaiah/25.htm
+https://biblehub.com/niv/Isaiah/26.htm
+https://biblehub.com/niv/Isaiah/27.htm
+https://biblehub.com/niv/Isaiah/28.htm
+https://biblehub.com/niv/Isaiah/29.htm
+https://biblehub.com/niv/Isaiah/30.htm
+https://biblehub.com/niv/Isaiah/31.htm
+https://biblehub.com/niv/Isaiah/32.htm
+https://biblehub.com/niv/Isaiah/33.htm
+https://biblehub.com/niv/Isaiah/34.htm
+https://biblehub.com/niv/Isaiah/35.htm
+https://biblehub.com/niv/Isaiah/36.htm
+https://biblehub.com/niv/Isaiah/37.htm
+https://biblehub.com/niv/Isaiah/38.htm
+https://biblehub.com/niv/Isaiah/39.htm
+https://biblehub.com/niv/Isaiah/40.htm
+https://biblehub.com/niv/Isaiah/41.htm
+https://biblehub.com/niv/Isaiah/42.htm
+https://biblehub.com/niv/Isaiah/43.htm
+https://biblehub.com/niv/Isaiah/44.htm
+https://biblehub.com/niv/Isaiah/45.htm
+https://biblehub.com/niv/Isaiah/46.htm
+https://biblehub.com/niv/Isaiah/47.htm
+https://biblehub.com/niv/Isaiah/48.htm
+https://biblehub.com/niv/Isaiah/49.htm
+https://biblehub.com/niv/Isaiah/50.htm
+https://biblehub.com/niv/Isaiah/51.htm
+https://biblehub.com/niv/Isaiah/52.htm
+https://biblehub.com/niv/Isaiah/53.htm
+https://biblehub.com/niv/Isaiah/54.htm
+https://biblehub.com/niv/Isaiah/55.htm
+https://biblehub.com/niv/Isaiah/56.htm
+https://biblehub.com/niv/Isaiah/57.htm
+https://biblehub.com/niv/Isaiah/58.htm
+https://biblehub.com/niv/Isaiah/59.htm
+https://biblehub.com/niv/Isaiah/60.htm
+https://biblehub.com/niv/Isaiah/61.htm
+https://biblehub.com/niv/Isaiah/62.htm
+https://biblehub.com/niv/Isaiah/63.htm
+https://biblehub.com/niv/Isaiah/64.htm
+https://biblehub.com/niv/Isaiah/65.htm
+https://biblehub.com/niv/Isaiah/66.htm
+https://biblehub.com/niv/Jeremiah/1.htm
+https://biblehub.com/niv/Jeremiah/2.htm
+https://biblehub.com/niv/Jeremiah/3.htm
+https://biblehub.com/niv/Jeremiah/4.htm
+https://biblehub.com/niv/Jeremiah/5.htm
+https://biblehub.com/niv/Jeremiah/6.htm
+https://biblehub.com/niv/Jeremiah/7.htm
+https://biblehub.com/niv/Jeremiah/8.htm
+https://biblehub.com/niv/Jeremiah/9.htm
+https://biblehub.com/niv/Jeremiah/10.htm
+https://biblehub.com/niv/Jeremiah/11.htm
+https://biblehub.com/niv/Jeremiah/12.htm
+https://biblehub.com/niv/Jeremiah/13.htm
+https://biblehub.com/niv/Jeremiah/14.htm
+https://biblehub.com/niv/Jeremiah/15.htm
+https://biblehub.com/niv/Jeremiah/16.htm
+https://biblehub.com/niv/Jeremiah/17.htm
+https://biblehub.com/niv/Jeremiah/18.htm
+https://biblehub.com/niv/Jeremiah/19.htm
+https://biblehub.com/niv/Jeremiah/20.htm
+https://biblehub.com/niv/Jeremiah/21.htm
+https://biblehub.com/niv/Jeremiah/22.htm
+https://biblehub.com/niv/Jeremiah/23.htm
+https://biblehub.com/niv/Jeremiah/24.htm
+https://biblehub.com/niv/Jeremiah/25.htm
+https://biblehub.com/niv/Jeremiah/26.htm
+https://biblehub.com/niv/Jeremiah/27.htm
+https://biblehub.com/niv/Jeremiah/28.htm
+https://biblehub.com/niv/Jeremiah/29.htm
+https://biblehub.com/niv/Jeremiah/30.htm
+https://biblehub.com/niv/Jeremiah/31.htm
+https://biblehub.com/niv/Jeremiah/32.htm
+https://biblehub.com/niv/Jeremiah/33.htm
+https://biblehub.com/niv/Jeremiah/34.htm
+https://biblehub.com/niv/Jeremiah/35.htm
+https://biblehub.com/niv/Jeremiah/36.htm
+https://biblehub.com/niv/Jeremiah/37.htm
+https://biblehub.com/niv/Jeremiah/38.htm
+https://biblehub.com/niv/Jeremiah/39.htm
+https://biblehub.com/niv/Jeremiah/40.htm
+https://biblehub.com/niv/Jeremiah/41.htm
+https://biblehub.com/niv/Jeremiah/42.htm
+https://biblehub.com/niv/Jeremiah/43.htm
+https://biblehub.com/niv/Jeremiah/44.htm
+https://biblehub.com/niv/Jeremiah/45.htm
+https://biblehub.com/niv/Jeremiah/46.htm
+https://biblehub.com/niv/Jeremiah/47.htm
+https://biblehub.com/niv/Jeremiah/48.htm
+https://biblehub.com/niv/Jeremiah/49.htm
+https://biblehub.com/niv/Jeremiah/50.htm
+https://biblehub.com/niv/Jeremiah/51.htm
+https://biblehub.com/niv/Jeremiah/52.htm
+https://biblehub.com/niv/Lamentations/1.htm
+https://biblehub.com/niv/Lamentations/2.htm
+https://biblehub.com/niv/Lamentations/3.htm
+https://biblehub.com/niv/Lamentations/4.htm
+https://biblehub.com/niv/Lamentations/5.htm
+https://biblehub.com/niv/Ezekiel/1.htm
+https://biblehub.com/niv/Ezekiel/2.htm
+https://biblehub.com/niv/Ezekiel/3.htm
+https://biblehub.com/niv/Ezekiel/4.htm
+https://biblehub.com/niv/Ezekiel/5.htm
+https://biblehub.com/niv/Ezekiel/6.htm
+https://biblehub.com/niv/Ezekiel/7.htm
+https://biblehub.com/niv/Ezekiel/8.htm
+https://biblehub.com/niv/Ezekiel/9.htm
+https://biblehub.com/niv/Ezekiel/10.htm
+https://biblehub.com/niv/Ezekiel/11.htm
+https://biblehub.com/niv/Ezekiel/12.htm
+https://biblehub.com/niv/Ezekiel/13.htm
+https://biblehub.com/niv/Ezekiel/14.htm
+https://biblehub.com/niv/Ezekiel/15.htm
+https://biblehub.com/niv/Ezekiel/16.htm
+https://biblehub.com/niv/Ezekiel/17.htm
+https://biblehub.com/niv/Ezekiel/18.htm
+https://biblehub.com/niv/Ezekiel/19.htm
+https://biblehub.com/niv/Ezekiel/20.htm
+https://biblehub.com/niv/Ezekiel/21.htm
+https://biblehub.com/niv/Ezekiel/22.htm
+https://biblehub.com/niv/Ezekiel/23.htm
+https://biblehub.com/niv/Ezekiel/24.htm
+https://biblehub.com/niv/Ezekiel/25.htm
+https://biblehub.com/niv/Ezekiel/26.htm
+https://biblehub.com/niv/Ezekiel/27.htm
+https://biblehub.com/niv/Ezekiel/28.htm
+https://biblehub.com/niv/Ezekiel/29.htm
+https://biblehub.com/niv/Ezekiel/30.htm
+https://biblehub.com/niv/Ezekiel/31.htm
+https://biblehub.com/niv/Ezekiel/32.htm
+https://biblehub.com/niv/Ezekiel/33.htm
+https://biblehub.com/niv/Ezekiel/34.htm
+https://biblehub.com/niv/Ezekiel/35.htm
+https://biblehub.com/niv/Ezekiel/36.htm
+https://biblehub.com/niv/Ezekiel/37.htm
+https://biblehub.com/niv/Ezekiel/38.htm
+https://biblehub.com/niv/Ezekiel/39.htm
+https://biblehub.com/niv/Ezekiel/40.htm
+https://biblehub.com/niv/Ezekiel/41.htm
+https://biblehub.com/niv/Ezekiel/42.htm
+https://biblehub.com/niv/Ezekiel/43.htm
+https://biblehub.com/niv/Ezekiel/44.htm
+https://biblehub.com/niv/Ezekiel/45.htm
+https://biblehub.com/niv/Ezekiel/46.htm
+https://biblehub.com/niv/Ezekiel/47.htm
+https://biblehub.com/niv/Ezekiel/48.htm
+https://biblehub.com/niv/Daniel/1.htm
+https://biblehub.com/niv/Daniel/2.htm
+https://biblehub.com/niv/Daniel/3.htm
+https://biblehub.com/niv/Daniel/4.htm
+https://biblehub.com/niv/Daniel/5.htm
+https://biblehub.com/niv/Daniel/6.htm
+https://biblehub.com/niv/Daniel/7.htm
+https://biblehub.com/niv/Daniel/8.htm
+https://biblehub.com/niv/Daniel/9.htm
+https://biblehub.com/niv/Daniel/10.htm
+https://biblehub.com/niv/Daniel/11.htm
+https://biblehub.com/niv/Daniel/12.htm
+https://biblehub.com/niv/Hosea/1.htm
+https://biblehub.com/niv/Hosea/2.htm
+https://biblehub.com/niv/Hosea/3.htm
+https://biblehub.com/niv/Hosea/4.htm
+https://biblehub.com/niv/Hosea/5.htm
+https://biblehub.com/niv/Hosea/6.htm
+https://biblehub.com/niv/Hosea/7.htm
+https://biblehub.com/niv/Hosea/8.htm
+https://biblehub.com/niv/Hosea/9.htm
+https://biblehub.com/niv/Hosea/10.htm
+https://biblehub.com/niv/Hosea/11.htm
+https://biblehub.com/niv/Hosea/12.htm
+https://biblehub.com/niv/Hosea/13.htm
+https://biblehub.com/niv/Hosea/14.htm
+https://biblehub.com/niv/Joel/1.htm
+https://biblehub.com/niv/Joel/2.htm
+https://biblehub.com/niv/Joel/3.htm
+https://biblehub.com/niv/Amos/1.htm
+https://biblehub.com/niv/Amos/2.htm
+https://biblehub.com/niv/Amos/3.htm
+https://biblehub.com/niv/Amos/4.htm
+https://biblehub.com/niv/Amos/5.htm
+https://biblehub.com/niv/Amos/6.htm
+https://biblehub.com/niv/Amos/7.htm
+https://biblehub.com/niv/Amos/8.htm
+https://biblehub.com/niv/Amos/9.htm
+https://biblehub.com/niv/Obadiah/1.htm
+https://biblehub.com/niv/Jonah/1.htm
+https://biblehub.com/niv/Jonah/2.htm
+https://biblehub.com/niv/Jonah/3.htm
+https://biblehub.com/niv/Jonah/4.htm
+https://biblehub.com/niv/Micah/1.htm
+https://biblehub.com/niv/Micah/2.htm
+https://biblehub.com/niv/Micah/3.htm
+https://biblehub.com/niv/Micah/4.htm
+https://biblehub.com/niv/Micah/5.htm
+https://biblehub.com/niv/Micah/6.htm
+https://biblehub.com/niv/Micah/7.htm
+https://biblehub.com/niv/Nahum/1.htm
+https://biblehub.com/niv/Nahum/2.htm
+https://biblehub.com/niv/Nahum/3.htm
+https://biblehub.com/niv/Habakkuk/1.htm
+https://biblehub.com/niv/Habakkuk/2.htm
+https://biblehub.com/niv/Habakkuk/3.htm
+https://biblehub.com/niv/Zephaniah/1.htm
+https://biblehub.com/niv/Zephaniah/2.htm
+https://biblehub.com/niv/Zephaniah/3.htm
+https://biblehub.com/niv/Haggai/1.htm
+https://biblehub.com/niv/Haggai/2.htm
+https://biblehub.com/niv/Zechariah/1.htm
+https://biblehub.com/niv/Zechariah/2.htm
+https://biblehub.com/niv/Zechariah/3.htm
+https://biblehub.com/niv/Zechariah/4.htm
+https://biblehub.com/niv/Zechariah/5.htm
+https://biblehub.com/niv/Zechariah/6.htm
+https://biblehub.com/niv/Zechariah/7.htm
+https://biblehub.com/niv/Zechariah/8.htm
+https://biblehub.com/niv/Zechariah/9.htm
+https://biblehub.com/niv/Zechariah/10.htm
+https://biblehub.com/niv/Zechariah/11.htm
+https://biblehub.com/niv/Zechariah/12.htm
+https://biblehub.com/niv/Zechariah/13.htm
+https://biblehub.com/niv/Zechariah/14.htm
+https://biblehub.com/niv/Malachi/1.htm
+https://biblehub.com/niv/Malachi/2.htm
+https://biblehub.com/niv/Malachi/3.htm
+https://biblehub.com/niv/Malachi/4.htm
+https://biblehub.com/niv/Matthew/1.htm
+https://biblehub.com/niv/Matthew/2.htm
+https://biblehub.com/niv/Matthew/3.htm
+https://biblehub.com/niv/Matthew/4.htm
+https://biblehub.com/niv/Matthew/5.htm
+https://biblehub.com/niv/Matthew/6.htm
+https://biblehub.com/niv/Matthew/7.htm
+https://biblehub.com/niv/Matthew/8.htm
+https://biblehub.com/niv/Matthew/9.htm
+https://biblehub.com/niv/Matthew/10.htm
+https://biblehub.com/niv/Matthew/11.htm
+https://biblehub.com/niv/Matthew/12.htm
+https://biblehub.com/niv/Matthew/13.htm
+https://biblehub.com/niv/Matthew/14.htm
+https://biblehub.com/niv/Matthew/15.htm
+https://biblehub.com/niv/Matthew/16.htm
+https://biblehub.com/niv/Matthew/17.htm
+https://biblehub.com/niv/Matthew/18.htm
+https://biblehub.com/niv/Matthew/19.htm
+https://biblehub.com/niv/Matthew/20.htm
+https://biblehub.com/niv/Matthew/21.htm
+https://biblehub.com/niv/Matthew/22.htm
+https://biblehub.com/niv/Matthew/23.htm
+https://biblehub.com/niv/Matthew/24.htm
+https://biblehub.com/niv/Matthew/25.htm
+https://biblehub.com/niv/Matthew/26.htm
+https://biblehub.com/niv/Matthew/27.htm
+https://biblehub.com/niv/Matthew/28.htm
+https://biblehub.com/niv/Mark/1.htm
+https://biblehub.com/niv/Mark/2.htm
+https://biblehub.com/niv/Mark/3.htm
+https://biblehub.com/niv/Mark/4.htm
+https://biblehub.com/niv/Mark/5.htm
+https://biblehub.com/niv/Mark/6.htm
+https://biblehub.com/niv/Mark/7.htm
+https://biblehub.com/niv/Mark/8.htm
+https://biblehub.com/niv/Mark/9.htm
+https://biblehub.com/niv/Mark/10.htm
+https://biblehub.com/niv/Mark/11.htm
+https://biblehub.com/niv/Mark/12.htm
+https://biblehub.com/niv/Mark/13.htm
+https://biblehub.com/niv/Mark/14.htm
+https://biblehub.com/niv/Mark/15.htm
+https://biblehub.com/niv/Mark/16.htm
+https://biblehub.com/niv/Luke/1.htm
+https://biblehub.com/niv/Luke/2.htm
+https://biblehub.com/niv/Luke/3.htm
+https://biblehub.com/niv/Luke/4.htm
+https://biblehub.com/niv/Luke/5.htm
+https://biblehub.com/niv/Luke/6.htm
+https://biblehub.com/niv/Luke/7.htm
+https://biblehub.com/niv/Luke/8.htm
+https://biblehub.com/niv/Luke/9.htm
+https://biblehub.com/niv/Luke/10.htm
+https://biblehub.com/niv/Luke/11.htm
+https://biblehub.com/niv/Luke/12.htm
+https://biblehub.com/niv/Luke/13.htm
+https://biblehub.com/niv/Luke/14.htm
+https://biblehub.com/niv/Luke/15.htm
+https://biblehub.com/niv/Luke/16.htm
+https://biblehub.com/niv/Luke/17.htm
+https://biblehub.com/niv/Luke/18.htm
+https://biblehub.com/niv/Luke/19.htm
+https://biblehub.com/niv/Luke/20.htm
+https://biblehub.com/niv/Luke/21.htm
+https://biblehub.com/niv/Luke/22.htm
+https://biblehub.com/niv/Luke/23.htm
+https://biblehub.com/niv/Luke/24.htm
+https://biblehub.com/niv/John/1.htm
+https://biblehub.com/niv/John/2.htm
+https://biblehub.com/niv/John/3.htm
+https://biblehub.com/niv/John/4.htm
+https://biblehub.com/niv/John/5.htm
+https://biblehub.com/niv/John/6.htm
+https://biblehub.com/niv/John/7.htm
+https://biblehub.com/niv/John/8.htm
+https://biblehub.com/niv/John/9.htm
+https://biblehub.com/niv/John/10.htm
+https://biblehub.com/niv/John/11.htm
+https://biblehub.com/niv/John/12.htm
+https://biblehub.com/niv/John/13.htm
+https://biblehub.com/niv/John/14.htm
+https://biblehub.com/niv/John/15.htm
+https://biblehub.com/niv/John/16.htm
+https://biblehub.com/niv/John/17.htm
+https://biblehub.com/niv/John/18.htm
+https://biblehub.com/niv/John/19.htm
+https://biblehub.com/niv/John/20.htm
+https://biblehub.com/niv/John/21.htm
+https://biblehub.com/niv/Acts/1.htm
+https://biblehub.com/niv/Acts/2.htm
+https://biblehub.com/niv/Acts/3.htm
+https://biblehub.com/niv/Acts/4.htm
+https://biblehub.com/niv/Acts/5.htm
+https://biblehub.com/niv/Acts/6.htm
+https://biblehub.com/niv/Acts/7.htm
+https://biblehub.com/niv/Acts/8.htm
+https://biblehub.com/niv/Acts/9.htm
+https://biblehub.com/niv/Acts/10.htm
+https://biblehub.com/niv/Acts/11.htm
+https://biblehub.com/niv/Acts/12.htm
+https://biblehub.com/niv/Acts/13.htm
+https://biblehub.com/niv/Acts/14.htm
+https://biblehub.com/niv/Acts/15.htm
+https://biblehub.com/niv/Acts/16.htm
+https://biblehub.com/niv/Acts/17.htm
+https://biblehub.com/niv/Acts/18.htm
+https://biblehub.com/niv/Acts/19.htm
+https://biblehub.com/niv/Acts/20.htm
+https://biblehub.com/niv/Acts/21.htm
+https://biblehub.com/niv/Acts/22.htm
+https://biblehub.com/niv/Acts/23.htm
+https://biblehub.com/niv/Acts/24.htm
+https://biblehub.com/niv/Acts/25.htm
+https://biblehub.com/niv/Acts/26.htm
+https://biblehub.com/niv/Acts/27.htm
+https://biblehub.com/niv/Acts/28.htm
+https://biblehub.com/niv/Romans/1.htm
+https://biblehub.com/niv/Romans/2.htm
+https://biblehub.com/niv/Romans/3.htm
+https://biblehub.com/niv/Romans/4.htm
+https://biblehub.com/niv/Romans/5.htm
+https://biblehub.com/niv/Romans/6.htm
+https://biblehub.com/niv/Romans/7.htm
+https://biblehub.com/niv/Romans/8.htm
+https://biblehub.com/niv/Romans/9.htm
+https://biblehub.com/niv/Romans/10.htm
+https://biblehub.com/niv/Romans/11.htm
+https://biblehub.com/niv/Romans/12.htm
+https://biblehub.com/niv/Romans/13.htm
+https://biblehub.com/niv/Romans/14.htm
+https://biblehub.com/niv/Romans/15.htm
+https://biblehub.com/niv/Romans/16.htm
+https://biblehub.com/niv/1_Corinthians/1.htm
+https://biblehub.com/niv/1_Corinthians/2.htm
+https://biblehub.com/niv/1_Corinthians/3.htm
+https://biblehub.com/niv/1_Corinthians/4.htm
+https://biblehub.com/niv/1_Corinthians/5.htm
+https://biblehub.com/niv/1_Corinthians/6.htm
+https://biblehub.com/niv/1_Corinthians/7.htm
+https://biblehub.com/niv/1_Corinthians/8.htm
+https://biblehub.com/niv/1_Corinthians/9.htm
+https://biblehub.com/niv/1_Corinthians/10.htm
+https://biblehub.com/niv/1_Corinthians/11.htm
+https://biblehub.com/niv/1_Corinthians/12.htm
+https://biblehub.com/niv/1_Corinthians/13.htm
+https://biblehub.com/niv/1_Corinthians/14.htm
+https://biblehub.com/niv/1_Corinthians/15.htm
+https://biblehub.com/niv/1_Corinthians/16.htm
+https://biblehub.com/niv/2_Corinthians/1.htm
+https://biblehub.com/niv/2_Corinthians/2.htm
+https://biblehub.com/niv/2_Corinthians/3.htm
+https://biblehub.com/niv/2_Corinthians/4.htm
+https://biblehub.com/niv/2_Corinthians/5.htm
+https://biblehub.com/niv/2_Corinthians/6.htm
+https://biblehub.com/niv/2_Corinthians/7.htm
+https://biblehub.com/niv/2_Corinthians/8.htm
+https://biblehub.com/niv/2_Corinthians/9.htm
+https://biblehub.com/niv/2_Corinthians/10.htm
+https://biblehub.com/niv/2_Corinthians/11.htm
+https://biblehub.com/niv/2_Corinthians/12.htm
+https://biblehub.com/niv/2_Corinthians/13.htm
+https://biblehub.com/niv/Galatians/1.htm
+https://biblehub.com/niv/Galatians/2.htm
+https://biblehub.com/niv/Galatians/3.htm
+https://biblehub.com/niv/Galatians/4.htm
+https://biblehub.com/niv/Galatians/5.htm
+https://biblehub.com/niv/Galatians/6.htm
+https://biblehub.com/niv/Ephesians/1.htm
+https://biblehub.com/niv/Ephesians/2.htm
+https://biblehub.com/niv/Ephesians/3.htm
+https://biblehub.com/niv/Ephesians/4.htm
+https://biblehub.com/niv/Ephesians/5.htm
+https://biblehub.com/niv/Ephesians/6.htm
+https://biblehub.com/niv/Philippians/1.htm
+https://biblehub.com/niv/Philippians/2.htm
+https://biblehub.com/niv/Philippians/3.htm
+https://biblehub.com/niv/Philippians/4.htm
+https://biblehub.com/niv/Colossians/1.htm
+https://biblehub.com/niv/Colossians/2.htm
+https://biblehub.com/niv/Colossians/3.htm
+https://biblehub.com/niv/Colossians/4.htm
+https://biblehub.com/niv/1_Thessalonians/1.htm
+https://biblehub.com/niv/1_Thessalonians/2.htm
+https://biblehub.com/niv/1_Thessalonians/3.htm
+https://biblehub.com/niv/1_Thessalonians/4.htm
+https://biblehub.com/niv/1_Thessalonians/5.htm
+https://biblehub.com/niv/2_Thessalonians/1.htm
+https://biblehub.com/niv/2_Thessalonians/2.htm
+https://biblehub.com/niv/2_Thessalonians/3.htm
+https://biblehub.com/niv/1_Timothy/1.htm
+https://biblehub.com/niv/1_Timothy/2.htm
+https://biblehub.com/niv/1_Timothy/3.htm
+https://biblehub.com/niv/1_Timothy/4.htm
+https://biblehub.com/niv/1_Timothy/5.htm
+https://biblehub.com/niv/1_Timothy/6.htm
+https://biblehub.com/niv/2_Timothy/1.htm
+https://biblehub.com/niv/2_Timothy/2.htm
+https://biblehub.com/niv/2_Timothy/3.htm
+https://biblehub.com/niv/2_Timothy/4.htm
+https://biblehub.com/niv/Titus/1.htm
+https://biblehub.com/niv/Titus/2.htm
+https://biblehub.com/niv/Titus/3.htm
+https://biblehub.com/niv/Philemon/1.htm
+https://biblehub.com/niv/Hebrews/1.htm
+https://biblehub.com/niv/Hebrews/2.htm
+https://biblehub.com/niv/Hebrews/3.htm
+https://biblehub.com/niv/Hebrews/4.htm
+https://biblehub.com/niv/Hebrews/5.htm
+https://biblehub.com/niv/Hebrews/6.htm
+https://biblehub.com/niv/Hebrews/7.htm
+https://biblehub.com/niv/Hebrews/8.htm
+https://biblehub.com/niv/Hebrews/9.htm
+https://biblehub.com/niv/Hebrews/10.htm
+https://biblehub.com/niv/Hebrews/11.htm
+https://biblehub.com/niv/Hebrews/12.htm
+https://biblehub.com/niv/Hebrews/13.htm
+https://biblehub.com/niv/James/1.htm
+https://biblehub.com/niv/James/2.htm
+https://biblehub.com/niv/James/3.htm
+https://biblehub.com/niv/James/4.htm
+https://biblehub.com/niv/James/5.htm
+https://biblehub.com/niv/1_Peter/1.htm
+https://biblehub.com/niv/1_Peter/2.htm
+https://biblehub.com/niv/1_Peter/3.htm
+https://biblehub.com/niv/1_Peter/4.htm
+https://biblehub.com/niv/1_Peter/5.htm
+https://biblehub.com/niv/2_Peter/1.htm
+https://biblehub.com/niv/2_Peter/2.htm
+https://biblehub.com/niv/2_Peter/3.htm
+https://biblehub.com/niv/1_John/1.htm
+https://biblehub.com/niv/1_John/2.htm
+https://biblehub.com/niv/1_John/3.htm
+https://biblehub.com/niv/1_John/4.htm
+https://biblehub.com/niv/1_John/5.htm
+https://biblehub.com/niv/2_John/1.htm
+https://biblehub.com/niv/3_John/1.htm
+https://biblehub.com/niv/Jude/1.htm
+https://biblehub.com/niv/Revelation/1.htm
+https://biblehub.com/niv/Revelation/2.htm
+https://biblehub.com/niv/Revelation/3.htm
+https://biblehub.com/niv/Revelation/4.htm
+https://biblehub.com/niv/Revelation/5.htm
+https://biblehub.com/niv/Revelation/6.htm
+https://biblehub.com/niv/Revelation/7.htm
+https://biblehub.com/niv/Revelation/8.htm
+https://biblehub.com/niv/Revelation/9.htm
+https://biblehub.com/niv/Revelation/10.htm
+https://biblehub.com/niv/Revelation/11.htm
+https://biblehub.com/niv/Revelation/12.htm
+https://biblehub.com/niv/Revelation/13.htm
+https://biblehub.com/niv/Revelation/14.htm
+https://biblehub.com/niv/Revelation/15.htm
+https://biblehub.com/niv/Revelation/16.htm
+https://biblehub.com/niv/Revelation/17.htm
+https://biblehub.com/niv/Revelation/18.htm
+https://biblehub.com/niv/Revelation/19.htm
+https://biblehub.com/niv/Revelation/20.htm
+https://biblehub.com/niv/Revelation/21.htm
+https://biblehub.com/niv/Revelation/22.htm
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Combine-into-the-for-loop,-code-necessary-for-scraping-text-from-given-URL">Combine into the for loop, code necessary for scraping text from given URL<a class="anchor-link" href="#Combine-into-the-for-loop,-code-necessary-for-scraping-text-from-given-URL">¶</a></h3><h3 id="and-outputting-dataframe-of-verses.-The-book-names-had-to-made-lowercase-for-URL-to-work.">and outputting dataframe of verses. The book names had to made lowercase for URL to work.<a class="anchor-link" href="#and-outputting-dataframe-of-verses.-The-book-names-had-to-made-lowercase-for-URL-to-work.">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">base_url</span> <span class="o">=</span> <span class="s1">'https://biblehub.com/niv/'</span>
+<span class="n">all_verses</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Iterate through the DataFrame</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">mdf</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">book_name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">'BookName'</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">total_chapters</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">'TotalChapters'</span><span class="p">]</span>
+    
+    <span class="c1"># Generate URLs for each chapter</span>
+    <span class="k">for</span> <span class="n">ch_num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">total_chapters</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">base_url</span><span class="si">}{</span><span class="n">book_name</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">ch_num</span><span class="si">}</span><span class="s1">.htm'</span>
+        <span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">'html'</span><span class="p">)</span>
+        <span class="n">chap_div</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'div'</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">'padleft'</span><span class="p">)</span>
+        <span class="n">chap_soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">chap_div</span><span class="p">),</span> <span class="s1">'html.parser'</span><span class="p">)</span>
+        <span class="n">v_heading</span> <span class="o">=</span> <span class="n">chap_soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'div'</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">'vheading'</span><span class="p">)</span>
+        <span class="n">find_span</span> <span class="o">=</span> <span class="n">chap_soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'span'</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">'mainfootnotes'</span><span class="p">)</span>
+        <span class="n">section_head</span> <span class="o">=</span> <span class="n">chap_soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'p'</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">'sectionhead'</span><span class="p">)</span>
+        <span class="n">bot_box</span> <span class="o">=</span> <span class="n">chap_soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'div'</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s1">'botbox'</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">v_heading</span><span class="p">:</span>
+            <span class="n">v_heading</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">find_span</span><span class="p">:</span>
+            <span class="n">find_span</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">section_head</span><span class="p">:</span>
+            <span class="n">section_head</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">bot_box</span><span class="p">:</span>
+            <span class="n">bot_box</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+
+        <span class="n">chapter</span> <span class="o">=</span> <span class="n">chap_soup</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">verse_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">'(\d+)([^0-9]+)'</span><span class="p">)</span>
+        <span class="n">verses</span> <span class="o">=</span> <span class="n">verse_pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">chapter</span><span class="p">)</span>
+        
+        <span class="n">all_verses</span><span class="o">.</span><span class="n">extend</span><span class="p">([(</span><span class="n">book_name</span><span class="p">,</span> <span class="n">ch_num</span><span class="p">,</span> <span class="n">verse</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">verse</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">verse</span> <span class="ow">in</span> <span class="n">verses</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Getting text from </span><span class="si">{</span><span class="n">book_name</span><span class="si">}</span><span class="s1"> Chapter </span><span class="si">{</span><span class="n">ch_num</span><span class="si">}</span><span class="s1">.'</span><span class="p">)</span>
+
+<span class="c1"># Create a DataFrame from all verses</span>
+<span class="n">cdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_verses</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'BookName'</span><span class="p">,</span> <span class="s1">'ChapterNum'</span><span class="p">,</span> <span class="s1">'VerseID'</span><span class="p">,</span> <span class="s1">'VerseText'</span><span class="p">])</span>
+<span class="n">cdf</span><span class="p">[</span><span class="s1">'VerseID'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdf</span><span class="p">[</span><span class="s1">'VerseID'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Getting text from genesis Chapter 1.
+Getting text from genesis Chapter 2.
+Getting text from genesis Chapter 3.
+Getting text from genesis Chapter 4.
+Getting text from genesis Chapter 5.
+Getting text from genesis Chapter 6.
+Getting text from genesis Chapter 7.
+Getting text from genesis Chapter 8.
+Getting text from genesis Chapter 9.
+Getting text from genesis Chapter 10.
+Getting text from genesis Chapter 11.
+Getting text from genesis Chapter 12.
+Getting text from genesis Chapter 13.
+Getting text from genesis Chapter 14.
+Getting text from genesis Chapter 15.
+Getting text from genesis Chapter 16.
+Getting text from genesis Chapter 17.
+Getting text from genesis Chapter 18.
+Getting text from genesis Chapter 19.
+Getting text from genesis Chapter 20.
+Getting text from genesis Chapter 21.
+Getting text from genesis Chapter 22.
+Getting text from genesis Chapter 23.
+Getting text from genesis Chapter 24.
+Getting text from genesis Chapter 25.
+Getting text from genesis Chapter 26.
+Getting text from genesis Chapter 27.
+Getting text from genesis Chapter 28.
+Getting text from genesis Chapter 29.
+Getting text from genesis Chapter 30.
+Getting text from genesis Chapter 31.
+Getting text from genesis Chapter 32.
+Getting text from genesis Chapter 33.
+Getting text from genesis Chapter 34.
+Getting text from genesis Chapter 35.
+Getting text from genesis Chapter 36.
+Getting text from genesis Chapter 37.
+Getting text from genesis Chapter 38.
+Getting text from genesis Chapter 39.
+Getting text from genesis Chapter 40.
+Getting text from genesis Chapter 41.
+Getting text from genesis Chapter 42.
+Getting text from genesis Chapter 43.
+Getting text from genesis Chapter 44.
+Getting text from genesis Chapter 45.
+Getting text from genesis Chapter 46.
+Getting text from genesis Chapter 47.
+Getting text from genesis Chapter 48.
+Getting text from genesis Chapter 49.
+Getting text from genesis Chapter 50.
+Getting text from exodus Chapter 1.
+Getting text from exodus Chapter 2.
+Getting text from exodus Chapter 3.
+Getting text from exodus Chapter 4.
+Getting text from exodus Chapter 5.
+Getting text from exodus Chapter 6.
+Getting text from exodus Chapter 7.
+Getting text from exodus Chapter 8.
+Getting text from exodus Chapter 9.
+Getting text from exodus Chapter 10.
+Getting text from exodus Chapter 11.
+Getting text from exodus Chapter 12.
+Getting text from exodus Chapter 13.
+Getting text from exodus Chapter 14.
+Getting text from exodus Chapter 15.
+Getting text from exodus Chapter 16.
+Getting text from exodus Chapter 17.
+Getting text from exodus Chapter 18.
+Getting text from exodus Chapter 19.
+Getting text from exodus Chapter 20.
+Getting text from exodus Chapter 21.
+Getting text from exodus Chapter 22.
+Getting text from exodus Chapter 23.
+Getting text from exodus Chapter 24.
+Getting text from exodus Chapter 25.
+Getting text from exodus Chapter 26.
+Getting text from exodus Chapter 27.
+Getting text from exodus Chapter 28.
+Getting text from exodus Chapter 29.
+Getting text from exodus Chapter 30.
+Getting text from exodus Chapter 31.
+Getting text from exodus Chapter 32.
+Getting text from exodus Chapter 33.
+Getting text from exodus Chapter 34.
+Getting text from exodus Chapter 35.
+Getting text from exodus Chapter 36.
+Getting text from exodus Chapter 37.
+Getting text from exodus Chapter 38.
+Getting text from exodus Chapter 39.
+Getting text from exodus Chapter 40.
+Getting text from leviticus Chapter 1.
+Getting text from leviticus Chapter 2.
+Getting text from leviticus Chapter 3.
+Getting text from leviticus Chapter 4.
+Getting text from leviticus Chapter 5.
+Getting text from leviticus Chapter 6.
+Getting text from leviticus Chapter 7.
+Getting text from leviticus Chapter 8.
+Getting text from leviticus Chapter 9.
+Getting text from leviticus Chapter 10.
+Getting text from leviticus Chapter 11.
+Getting text from leviticus Chapter 12.
+Getting text from leviticus Chapter 13.
+Getting text from leviticus Chapter 14.
+Getting text from leviticus Chapter 15.
+Getting text from leviticus Chapter 16.
+Getting text from leviticus Chapter 17.
+Getting text from leviticus Chapter 18.
+Getting text from leviticus Chapter 19.
+Getting text from leviticus Chapter 20.
+Getting text from leviticus Chapter 21.
+Getting text from leviticus Chapter 22.
+Getting text from leviticus Chapter 23.
+Getting text from leviticus Chapter 24.
+Getting text from leviticus Chapter 25.
+Getting text from leviticus Chapter 26.
+Getting text from leviticus Chapter 27.
+Getting text from numbers Chapter 1.
+Getting text from numbers Chapter 2.
+Getting text from numbers Chapter 3.
+Getting text from numbers Chapter 4.
+Getting text from numbers Chapter 5.
+Getting text from numbers Chapter 6.
+Getting text from numbers Chapter 7.
+Getting text from numbers Chapter 8.
+Getting text from numbers Chapter 9.
+Getting text from numbers Chapter 10.
+Getting text from numbers Chapter 11.
+Getting text from numbers Chapter 12.
+Getting text from numbers Chapter 13.
+Getting text from numbers Chapter 14.
+Getting text from numbers Chapter 15.
+Getting text from numbers Chapter 16.
+Getting text from numbers Chapter 17.
+Getting text from numbers Chapter 18.
+Getting text from numbers Chapter 19.
+Getting text from numbers Chapter 20.
+Getting text from numbers Chapter 21.
+Getting text from numbers Chapter 22.
+Getting text from numbers Chapter 23.
+Getting text from numbers Chapter 24.
+Getting text from numbers Chapter 25.
+Getting text from numbers Chapter 26.
+Getting text from numbers Chapter 27.
+Getting text from numbers Chapter 28.
+Getting text from numbers Chapter 29.
+Getting text from numbers Chapter 30.
+Getting text from numbers Chapter 31.
+Getting text from numbers Chapter 32.
+Getting text from numbers Chapter 33.
+Getting text from numbers Chapter 34.
+Getting text from numbers Chapter 35.
+Getting text from numbers Chapter 36.
+Getting text from deuteronomy Chapter 1.
+Getting text from deuteronomy Chapter 2.
+Getting text from deuteronomy Chapter 3.
+Getting text from deuteronomy Chapter 4.
+Getting text from deuteronomy Chapter 5.
+Getting text from deuteronomy Chapter 6.
+Getting text from deuteronomy Chapter 7.
+Getting text from deuteronomy Chapter 8.
+Getting text from deuteronomy Chapter 9.
+Getting text from deuteronomy Chapter 10.
+Getting text from deuteronomy Chapter 11.
+Getting text from deuteronomy Chapter 12.
+Getting text from deuteronomy Chapter 13.
+Getting text from deuteronomy Chapter 14.
+Getting text from deuteronomy Chapter 15.
+Getting text from deuteronomy Chapter 16.
+Getting text from deuteronomy Chapter 17.
+Getting text from deuteronomy Chapter 18.
+Getting text from deuteronomy Chapter 19.
+Getting text from deuteronomy Chapter 20.
+Getting text from deuteronomy Chapter 21.
+Getting text from deuteronomy Chapter 22.
+Getting text from deuteronomy Chapter 23.
+Getting text from deuteronomy Chapter 24.
+Getting text from deuteronomy Chapter 25.
+Getting text from deuteronomy Chapter 26.
+Getting text from deuteronomy Chapter 27.
+Getting text from deuteronomy Chapter 28.
+Getting text from deuteronomy Chapter 29.
+Getting text from deuteronomy Chapter 30.
+Getting text from deuteronomy Chapter 31.
+Getting text from deuteronomy Chapter 32.
+Getting text from deuteronomy Chapter 33.
+Getting text from deuteronomy Chapter 34.
+Getting text from joshua Chapter 1.
+Getting text from joshua Chapter 2.
+Getting text from joshua Chapter 3.
+Getting text from joshua Chapter 4.
+Getting text from joshua Chapter 5.
+Getting text from joshua Chapter 6.
+Getting text from joshua Chapter 7.
+Getting text from joshua Chapter 8.
+Getting text from joshua Chapter 9.
+Getting text from joshua Chapter 10.
+Getting text from joshua Chapter 11.
+Getting text from joshua Chapter 12.
+Getting text from joshua Chapter 13.
+Getting text from joshua Chapter 14.
+Getting text from joshua Chapter 15.
+Getting text from joshua Chapter 16.
+Getting text from joshua Chapter 17.
+Getting text from joshua Chapter 18.
+Getting text from joshua Chapter 19.
+Getting text from joshua Chapter 20.
+Getting text from joshua Chapter 21.
+Getting text from joshua Chapter 22.
+Getting text from joshua Chapter 23.
+Getting text from joshua Chapter 24.
+Getting text from judges Chapter 1.
+Getting text from judges Chapter 2.
+Getting text from judges Chapter 3.
+Getting text from judges Chapter 4.
+Getting text from judges Chapter 5.
+Getting text from judges Chapter 6.
+Getting text from judges Chapter 7.
+Getting text from judges Chapter 8.
+Getting text from judges Chapter 9.
+Getting text from judges Chapter 10.
+Getting text from judges Chapter 11.
+Getting text from judges Chapter 12.
+Getting text from judges Chapter 13.
+Getting text from judges Chapter 14.
+Getting text from judges Chapter 15.
+Getting text from judges Chapter 16.
+Getting text from judges Chapter 17.
+Getting text from judges Chapter 18.
+Getting text from judges Chapter 19.
+Getting text from judges Chapter 20.
+Getting text from judges Chapter 21.
+Getting text from ruth Chapter 1.
+Getting text from ruth Chapter 2.
+Getting text from ruth Chapter 3.
+Getting text from ruth Chapter 4.
+Getting text from 1_samuel Chapter 1.
+Getting text from 1_samuel Chapter 2.
+Getting text from 1_samuel Chapter 3.
+Getting text from 1_samuel Chapter 4.
+Getting text from 1_samuel Chapter 5.
+Getting text from 1_samuel Chapter 6.
+Getting text from 1_samuel Chapter 7.
+Getting text from 1_samuel Chapter 8.
+Getting text from 1_samuel Chapter 9.
+Getting text from 1_samuel Chapter 10.
+Getting text from 1_samuel Chapter 11.
+Getting text from 1_samuel Chapter 12.
+Getting text from 1_samuel Chapter 13.
+Getting text from 1_samuel Chapter 14.
+Getting text from 1_samuel Chapter 15.
+Getting text from 1_samuel Chapter 16.
+Getting text from 1_samuel Chapter 17.
+Getting text from 1_samuel Chapter 18.
+Getting text from 1_samuel Chapter 19.
+Getting text from 1_samuel Chapter 20.
+Getting text from 1_samuel Chapter 21.
+Getting text from 1_samuel Chapter 22.
+Getting text from 1_samuel Chapter 23.
+Getting text from 1_samuel Chapter 24.
+Getting text from 1_samuel Chapter 25.
+Getting text from 1_samuel Chapter 26.
+Getting text from 1_samuel Chapter 27.
+Getting text from 1_samuel Chapter 28.
+Getting text from 1_samuel Chapter 29.
+Getting text from 1_samuel Chapter 30.
+Getting text from 1_samuel Chapter 31.
+Getting text from 2_samuel Chapter 1.
+Getting text from 2_samuel Chapter 2.
+Getting text from 2_samuel Chapter 3.
+Getting text from 2_samuel Chapter 4.
+Getting text from 2_samuel Chapter 5.
+Getting text from 2_samuel Chapter 6.
+Getting text from 2_samuel Chapter 7.
+Getting text from 2_samuel Chapter 8.
+Getting text from 2_samuel Chapter 9.
+Getting text from 2_samuel Chapter 10.
+Getting text from 2_samuel Chapter 11.
+Getting text from 2_samuel Chapter 12.
+Getting text from 2_samuel Chapter 13.
+Getting text from 2_samuel Chapter 14.
+Getting text from 2_samuel Chapter 15.
+Getting text from 2_samuel Chapter 16.
+Getting text from 2_samuel Chapter 17.
+Getting text from 2_samuel Chapter 18.
+Getting text from 2_samuel Chapter 19.
+Getting text from 2_samuel Chapter 20.
+Getting text from 2_samuel Chapter 21.
+Getting text from 2_samuel Chapter 22.
+Getting text from 2_samuel Chapter 23.
+Getting text from 2_samuel Chapter 24.
+Getting text from 1_kings Chapter 1.
+Getting text from 1_kings Chapter 2.
+Getting text from 1_kings Chapter 3.
+Getting text from 1_kings Chapter 4.
+Getting text from 1_kings Chapter 5.
+Getting text from 1_kings Chapter 6.
+Getting text from 1_kings Chapter 7.
+Getting text from 1_kings Chapter 8.
+Getting text from 1_kings Chapter 9.
+Getting text from 1_kings Chapter 10.
+Getting text from 1_kings Chapter 11.
+Getting text from 1_kings Chapter 12.
+Getting text from 1_kings Chapter 13.
+Getting text from 1_kings Chapter 14.
+Getting text from 1_kings Chapter 15.
+Getting text from 1_kings Chapter 16.
+Getting text from 1_kings Chapter 17.
+Getting text from 1_kings Chapter 18.
+Getting text from 1_kings Chapter 19.
+Getting text from 1_kings Chapter 20.
+Getting text from 1_kings Chapter 21.
+Getting text from 1_kings Chapter 22.
+Getting text from 2_kings Chapter 1.
+Getting text from 2_kings Chapter 2.
+Getting text from 2_kings Chapter 3.
+Getting text from 2_kings Chapter 4.
+Getting text from 2_kings Chapter 5.
+Getting text from 2_kings Chapter 6.
+Getting text from 2_kings Chapter 7.
+Getting text from 2_kings Chapter 8.
+Getting text from 2_kings Chapter 9.
+Getting text from 2_kings Chapter 10.
+Getting text from 2_kings Chapter 11.
+Getting text from 2_kings Chapter 12.
+Getting text from 2_kings Chapter 13.
+Getting text from 2_kings Chapter 14.
+Getting text from 2_kings Chapter 15.
+Getting text from 2_kings Chapter 16.
+Getting text from 2_kings Chapter 17.
+Getting text from 2_kings Chapter 18.
+Getting text from 2_kings Chapter 19.
+Getting text from 2_kings Chapter 20.
+Getting text from 2_kings Chapter 21.
+Getting text from 2_kings Chapter 22.
+Getting text from 2_kings Chapter 23.
+Getting text from 2_kings Chapter 24.
+Getting text from 2_kings Chapter 25.
+Getting text from 1_chronicles Chapter 1.
+Getting text from 1_chronicles Chapter 2.
+Getting text from 1_chronicles Chapter 3.
+Getting text from 1_chronicles Chapter 4.
+Getting text from 1_chronicles Chapter 5.
+Getting text from 1_chronicles Chapter 6.
+Getting text from 1_chronicles Chapter 7.
+Getting text from 1_chronicles Chapter 8.
+Getting text from 1_chronicles Chapter 9.
+Getting text from 1_chronicles Chapter 10.
+Getting text from 1_chronicles Chapter 11.
+Getting text from 1_chronicles Chapter 12.
+Getting text from 1_chronicles Chapter 13.
+Getting text from 1_chronicles Chapter 14.
+Getting text from 1_chronicles Chapter 15.
+Getting text from 1_chronicles Chapter 16.
+Getting text from 1_chronicles Chapter 17.
+Getting text from 1_chronicles Chapter 18.
+Getting text from 1_chronicles Chapter 19.
+Getting text from 1_chronicles Chapter 20.
+Getting text from 1_chronicles Chapter 21.
+Getting text from 1_chronicles Chapter 22.
+Getting text from 1_chronicles Chapter 23.
+Getting text from 1_chronicles Chapter 24.
+Getting text from 1_chronicles Chapter 25.
+Getting text from 1_chronicles Chapter 26.
+Getting text from 1_chronicles Chapter 27.
+Getting text from 1_chronicles Chapter 28.
+Getting text from 1_chronicles Chapter 29.
+Getting text from 2_chronicles Chapter 1.
+Getting text from 2_chronicles Chapter 2.
+Getting text from 2_chronicles Chapter 3.
+Getting text from 2_chronicles Chapter 4.
+Getting text from 2_chronicles Chapter 5.
+Getting text from 2_chronicles Chapter 6.
+Getting text from 2_chronicles Chapter 7.
+Getting text from 2_chronicles Chapter 8.
+Getting text from 2_chronicles Chapter 9.
+Getting text from 2_chronicles Chapter 10.
+Getting text from 2_chronicles Chapter 11.
+Getting text from 2_chronicles Chapter 12.
+Getting text from 2_chronicles Chapter 13.
+Getting text from 2_chronicles Chapter 14.
+Getting text from 2_chronicles Chapter 15.
+Getting text from 2_chronicles Chapter 16.
+Getting text from 2_chronicles Chapter 17.
+Getting text from 2_chronicles Chapter 18.
+Getting text from 2_chronicles Chapter 19.
+Getting text from 2_chronicles Chapter 20.
+Getting text from 2_chronicles Chapter 21.
+Getting text from 2_chronicles Chapter 22.
+Getting text from 2_chronicles Chapter 23.
+Getting text from 2_chronicles Chapter 24.
+Getting text from 2_chronicles Chapter 25.
+Getting text from 2_chronicles Chapter 26.
+Getting text from 2_chronicles Chapter 27.
+Getting text from 2_chronicles Chapter 28.
+Getting text from 2_chronicles Chapter 29.
+Getting text from 2_chronicles Chapter 30.
+Getting text from 2_chronicles Chapter 31.
+Getting text from 2_chronicles Chapter 32.
+Getting text from 2_chronicles Chapter 33.
+Getting text from 2_chronicles Chapter 34.
+Getting text from 2_chronicles Chapter 35.
+Getting text from 2_chronicles Chapter 36.
+Getting text from ezra Chapter 1.
+Getting text from ezra Chapter 2.
+Getting text from ezra Chapter 3.
+Getting text from ezra Chapter 4.
+Getting text from ezra Chapter 5.
+Getting text from ezra Chapter 6.
+Getting text from ezra Chapter 7.
+Getting text from ezra Chapter 8.
+Getting text from ezra Chapter 9.
+Getting text from ezra Chapter 10.
+Getting text from nehemiah Chapter 1.
+Getting text from nehemiah Chapter 2.
+Getting text from nehemiah Chapter 3.
+Getting text from nehemiah Chapter 4.
+Getting text from nehemiah Chapter 5.
+Getting text from nehemiah Chapter 6.
+Getting text from nehemiah Chapter 7.
+Getting text from nehemiah Chapter 8.
+Getting text from nehemiah Chapter 9.
+Getting text from nehemiah Chapter 10.
+Getting text from nehemiah Chapter 11.
+Getting text from nehemiah Chapter 12.
+Getting text from nehemiah Chapter 13.
+Getting text from esther Chapter 1.
+Getting text from esther Chapter 2.
+Getting text from esther Chapter 3.
+Getting text from esther Chapter 4.
+Getting text from esther Chapter 5.
+Getting text from esther Chapter 6.
+Getting text from esther Chapter 7.
+Getting text from esther Chapter 8.
+Getting text from esther Chapter 9.
+Getting text from esther Chapter 10.
+Getting text from job Chapter 1.
+Getting text from job Chapter 2.
+Getting text from job Chapter 3.
+Getting text from job Chapter 4.
+Getting text from job Chapter 5.
+Getting text from job Chapter 6.
+Getting text from job Chapter 7.
+Getting text from job Chapter 8.
+Getting text from job Chapter 9.
+Getting text from job Chapter 10.
+Getting text from job Chapter 11.
+Getting text from job Chapter 12.
+Getting text from job Chapter 13.
+Getting text from job Chapter 14.
+Getting text from job Chapter 15.
+Getting text from job Chapter 16.
+Getting text from job Chapter 17.
+Getting text from job Chapter 18.
+Getting text from job Chapter 19.
+Getting text from job Chapter 20.
+Getting text from job Chapter 21.
+Getting text from job Chapter 22.
+Getting text from job Chapter 23.
+Getting text from job Chapter 24.
+Getting text from job Chapter 25.
+Getting text from job Chapter 26.
+Getting text from job Chapter 27.
+Getting text from job Chapter 28.
+Getting text from job Chapter 29.
+Getting text from job Chapter 30.
+Getting text from job Chapter 31.
+Getting text from job Chapter 32.
+Getting text from job Chapter 33.
+Getting text from job Chapter 34.
+Getting text from job Chapter 35.
+Getting text from job Chapter 36.
+Getting text from job Chapter 37.
+Getting text from job Chapter 38.
+Getting text from job Chapter 39.
+Getting text from job Chapter 40.
+Getting text from job Chapter 41.
+Getting text from job Chapter 42.
+Getting text from psalms Chapter 1.
+Getting text from psalms Chapter 2.
+Getting text from psalms Chapter 3.
+Getting text from psalms Chapter 4.
+Getting text from psalms Chapter 5.
+Getting text from psalms Chapter 6.
+Getting text from psalms Chapter 7.
+Getting text from psalms Chapter 8.
+Getting text from psalms Chapter 9.
+Getting text from psalms Chapter 10.
+Getting text from psalms Chapter 11.
+Getting text from psalms Chapter 12.
+Getting text from psalms Chapter 13.
+Getting text from psalms Chapter 14.
+Getting text from psalms Chapter 15.
+Getting text from psalms Chapter 16.
+Getting text from psalms Chapter 17.
+Getting text from psalms Chapter 18.
+Getting text from psalms Chapter 19.
+Getting text from psalms Chapter 20.
+Getting text from psalms Chapter 21.
+Getting text from psalms Chapter 22.
+Getting text from psalms Chapter 23.
+Getting text from psalms Chapter 24.
+Getting text from psalms Chapter 25.
+Getting text from psalms Chapter 26.
+Getting text from psalms Chapter 27.
+Getting text from psalms Chapter 28.
+Getting text from psalms Chapter 29.
+Getting text from psalms Chapter 30.
+Getting text from psalms Chapter 31.
+Getting text from psalms Chapter 32.
+Getting text from psalms Chapter 33.
+Getting text from psalms Chapter 34.
+Getting text from psalms Chapter 35.
+Getting text from psalms Chapter 36.
+Getting text from psalms Chapter 37.
+Getting text from psalms Chapter 38.
+Getting text from psalms Chapter 39.
+Getting text from psalms Chapter 40.
+Getting text from psalms Chapter 41.
+Getting text from psalms Chapter 42.
+Getting text from psalms Chapter 43.
+Getting text from psalms Chapter 44.
+Getting text from psalms Chapter 45.
+Getting text from psalms Chapter 46.
+Getting text from psalms Chapter 47.
+Getting text from psalms Chapter 48.
+Getting text from psalms Chapter 49.
+Getting text from psalms Chapter 50.
+Getting text from psalms Chapter 51.
+Getting text from psalms Chapter 52.
+Getting text from psalms Chapter 53.
+Getting text from psalms Chapter 54.
+Getting text from psalms Chapter 55.
+Getting text from psalms Chapter 56.
+Getting text from psalms Chapter 57.
+Getting text from psalms Chapter 58.
+Getting text from psalms Chapter 59.
+Getting text from psalms Chapter 60.
+Getting text from psalms Chapter 61.
+Getting text from psalms Chapter 62.
+Getting text from psalms Chapter 63.
+Getting text from psalms Chapter 64.
+Getting text from psalms Chapter 65.
+Getting text from psalms Chapter 66.
+Getting text from psalms Chapter 67.
+Getting text from psalms Chapter 68.
+Getting text from psalms Chapter 69.
+Getting text from psalms Chapter 70.
+Getting text from psalms Chapter 71.
+Getting text from psalms Chapter 72.
+Getting text from psalms Chapter 73.
+Getting text from psalms Chapter 74.
+Getting text from psalms Chapter 75.
+Getting text from psalms Chapter 76.
+Getting text from psalms Chapter 77.
+Getting text from psalms Chapter 78.
+Getting text from psalms Chapter 79.
+Getting text from psalms Chapter 80.
+Getting text from psalms Chapter 81.
+Getting text from psalms Chapter 82.
+Getting text from psalms Chapter 83.
+Getting text from psalms Chapter 84.
+Getting text from psalms Chapter 85.
+Getting text from psalms Chapter 86.
+Getting text from psalms Chapter 87.
+Getting text from psalms Chapter 88.
+Getting text from psalms Chapter 89.
+Getting text from psalms Chapter 90.
+Getting text from psalms Chapter 91.
+Getting text from psalms Chapter 92.
+Getting text from psalms Chapter 93.
+Getting text from psalms Chapter 94.
+Getting text from psalms Chapter 95.
+Getting text from psalms Chapter 96.
+Getting text from psalms Chapter 97.
+Getting text from psalms Chapter 98.
+Getting text from psalms Chapter 99.
+Getting text from psalms Chapter 100.
+Getting text from psalms Chapter 101.
+Getting text from psalms Chapter 102.
+Getting text from psalms Chapter 103.
+Getting text from psalms Chapter 104.
+Getting text from psalms Chapter 105.
+Getting text from psalms Chapter 106.
+Getting text from psalms Chapter 107.
+Getting text from psalms Chapter 108.
+Getting text from psalms Chapter 109.
+Getting text from psalms Chapter 110.
+Getting text from psalms Chapter 111.
+Getting text from psalms Chapter 112.
+Getting text from psalms Chapter 113.
+Getting text from psalms Chapter 114.
+Getting text from psalms Chapter 115.
+Getting text from psalms Chapter 116.
+Getting text from psalms Chapter 117.
+Getting text from psalms Chapter 118.
+Getting text from psalms Chapter 119.
+Getting text from psalms Chapter 120.
+Getting text from psalms Chapter 121.
+Getting text from psalms Chapter 122.
+Getting text from psalms Chapter 123.
+Getting text from psalms Chapter 124.
+Getting text from psalms Chapter 125.
+Getting text from psalms Chapter 126.
+Getting text from psalms Chapter 127.
+Getting text from psalms Chapter 128.
+Getting text from psalms Chapter 129.
+Getting text from psalms Chapter 130.
+Getting text from psalms Chapter 131.
+Getting text from psalms Chapter 132.
+Getting text from psalms Chapter 133.
+Getting text from psalms Chapter 134.
+Getting text from psalms Chapter 135.
+Getting text from psalms Chapter 136.
+Getting text from psalms Chapter 137.
+Getting text from psalms Chapter 138.
+Getting text from psalms Chapter 139.
+Getting text from psalms Chapter 140.
+Getting text from psalms Chapter 141.
+Getting text from psalms Chapter 142.
+Getting text from psalms Chapter 143.
+Getting text from psalms Chapter 144.
+Getting text from psalms Chapter 145.
+Getting text from psalms Chapter 146.
+Getting text from psalms Chapter 147.
+Getting text from psalms Chapter 148.
+Getting text from psalms Chapter 149.
+Getting text from psalms Chapter 150.
+Getting text from proverbs Chapter 1.
+Getting text from proverbs Chapter 2.
+Getting text from proverbs Chapter 3.
+Getting text from proverbs Chapter 4.
+Getting text from proverbs Chapter 5.
+Getting text from proverbs Chapter 6.
+Getting text from proverbs Chapter 7.
+Getting text from proverbs Chapter 8.
+Getting text from proverbs Chapter 9.
+Getting text from proverbs Chapter 10.
+Getting text from proverbs Chapter 11.
+Getting text from proverbs Chapter 12.
+Getting text from proverbs Chapter 13.
+Getting text from proverbs Chapter 14.
+Getting text from proverbs Chapter 15.
+Getting text from proverbs Chapter 16.
+Getting text from proverbs Chapter 17.
+Getting text from proverbs Chapter 18.
+Getting text from proverbs Chapter 19.
+Getting text from proverbs Chapter 20.
+Getting text from proverbs Chapter 21.
+Getting text from proverbs Chapter 22.
+Getting text from proverbs Chapter 23.
+Getting text from proverbs Chapter 24.
+Getting text from proverbs Chapter 25.
+Getting text from proverbs Chapter 26.
+Getting text from proverbs Chapter 27.
+Getting text from proverbs Chapter 28.
+Getting text from proverbs Chapter 29.
+Getting text from proverbs Chapter 30.
+Getting text from proverbs Chapter 31.
+Getting text from ecclesiastes Chapter 1.
+Getting text from ecclesiastes Chapter 2.
+Getting text from ecclesiastes Chapter 3.
+Getting text from ecclesiastes Chapter 4.
+Getting text from ecclesiastes Chapter 5.
+Getting text from ecclesiastes Chapter 6.
+Getting text from ecclesiastes Chapter 7.
+Getting text from ecclesiastes Chapter 8.
+Getting text from ecclesiastes Chapter 9.
+Getting text from ecclesiastes Chapter 10.
+Getting text from ecclesiastes Chapter 11.
+Getting text from ecclesiastes Chapter 12.
+Getting text from song_of_solomon Chapter 1.
+Getting text from song_of_solomon Chapter 2.
+Getting text from song_of_solomon Chapter 3.
+Getting text from song_of_solomon Chapter 4.
+Getting text from song_of_solomon Chapter 5.
+Getting text from song_of_solomon Chapter 6.
+Getting text from song_of_solomon Chapter 7.
+Getting text from song_of_solomon Chapter 8.
+Getting text from isaiah Chapter 1.
+Getting text from isaiah Chapter 2.
+Getting text from isaiah Chapter 3.
+Getting text from isaiah Chapter 4.
+Getting text from isaiah Chapter 5.
+Getting text from isaiah Chapter 6.
+Getting text from isaiah Chapter 7.
+Getting text from isaiah Chapter 8.
+Getting text from isaiah Chapter 9.
+Getting text from isaiah Chapter 10.
+Getting text from isaiah Chapter 11.
+Getting text from isaiah Chapter 12.
+Getting text from isaiah Chapter 13.
+Getting text from isaiah Chapter 14.
+Getting text from isaiah Chapter 15.
+Getting text from isaiah Chapter 16.
+Getting text from isaiah Chapter 17.
+Getting text from isaiah Chapter 18.
+Getting text from isaiah Chapter 19.
+Getting text from isaiah Chapter 20.
+Getting text from isaiah Chapter 21.
+Getting text from isaiah Chapter 22.
+Getting text from isaiah Chapter 23.
+Getting text from isaiah Chapter 24.
+Getting text from isaiah Chapter 25.
+Getting text from isaiah Chapter 26.
+Getting text from isaiah Chapter 27.
+Getting text from isaiah Chapter 28.
+Getting text from isaiah Chapter 29.
+Getting text from isaiah Chapter 30.
+Getting text from isaiah Chapter 31.
+Getting text from isaiah Chapter 32.
+Getting text from isaiah Chapter 33.
+Getting text from isaiah Chapter 34.
+Getting text from isaiah Chapter 35.
+Getting text from isaiah Chapter 36.
+Getting text from isaiah Chapter 37.
+Getting text from isaiah Chapter 38.
+Getting text from isaiah Chapter 39.
+Getting text from isaiah Chapter 40.
+Getting text from isaiah Chapter 41.
+Getting text from isaiah Chapter 42.
+Getting text from isaiah Chapter 43.
+Getting text from isaiah Chapter 44.
+Getting text from isaiah Chapter 45.
+Getting text from isaiah Chapter 46.
+Getting text from isaiah Chapter 47.
+Getting text from isaiah Chapter 48.
+Getting text from isaiah Chapter 49.
+Getting text from isaiah Chapter 50.
+Getting text from isaiah Chapter 51.
+Getting text from isaiah Chapter 52.
+Getting text from isaiah Chapter 53.
+Getting text from isaiah Chapter 54.
+Getting text from isaiah Chapter 55.
+Getting text from isaiah Chapter 56.
+Getting text from isaiah Chapter 57.
+Getting text from isaiah Chapter 58.
+Getting text from isaiah Chapter 59.
+Getting text from isaiah Chapter 60.
+Getting text from isaiah Chapter 61.
+Getting text from isaiah Chapter 62.
+Getting text from isaiah Chapter 63.
+Getting text from isaiah Chapter 64.
+Getting text from isaiah Chapter 65.
+Getting text from isaiah Chapter 66.
+Getting text from jeremiah Chapter 1.
+Getting text from jeremiah Chapter 2.
+Getting text from jeremiah Chapter 3.
+Getting text from jeremiah Chapter 4.
+Getting text from jeremiah Chapter 5.
+Getting text from jeremiah Chapter 6.
+Getting text from jeremiah Chapter 7.
+Getting text from jeremiah Chapter 8.
+Getting text from jeremiah Chapter 9.
+Getting text from jeremiah Chapter 10.
+Getting text from jeremiah Chapter 11.
+Getting text from jeremiah Chapter 12.
+Getting text from jeremiah Chapter 13.
+Getting text from jeremiah Chapter 14.
+Getting text from jeremiah Chapter 15.
+Getting text from jeremiah Chapter 16.
+Getting text from jeremiah Chapter 17.
+Getting text from jeremiah Chapter 18.
+Getting text from jeremiah Chapter 19.
+Getting text from jeremiah Chapter 20.
+Getting text from jeremiah Chapter 21.
+Getting text from jeremiah Chapter 22.
+Getting text from jeremiah Chapter 23.
+Getting text from jeremiah Chapter 24.
+Getting text from jeremiah Chapter 25.
+Getting text from jeremiah Chapter 26.
+Getting text from jeremiah Chapter 27.
+Getting text from jeremiah Chapter 28.
+Getting text from jeremiah Chapter 29.
+Getting text from jeremiah Chapter 30.
+Getting text from jeremiah Chapter 31.
+Getting text from jeremiah Chapter 32.
+Getting text from jeremiah Chapter 33.
+Getting text from jeremiah Chapter 34.
+Getting text from jeremiah Chapter 35.
+Getting text from jeremiah Chapter 36.
+Getting text from jeremiah Chapter 37.
+Getting text from jeremiah Chapter 38.
+Getting text from jeremiah Chapter 39.
+Getting text from jeremiah Chapter 40.
+Getting text from jeremiah Chapter 41.
+Getting text from jeremiah Chapter 42.
+Getting text from jeremiah Chapter 43.
+Getting text from jeremiah Chapter 44.
+Getting text from jeremiah Chapter 45.
+Getting text from jeremiah Chapter 46.
+Getting text from jeremiah Chapter 47.
+Getting text from jeremiah Chapter 48.
+Getting text from jeremiah Chapter 49.
+Getting text from jeremiah Chapter 50.
+Getting text from jeremiah Chapter 51.
+Getting text from jeremiah Chapter 52.
+Getting text from lamentations Chapter 1.
+Getting text from lamentations Chapter 2.
+Getting text from lamentations Chapter 3.
+Getting text from lamentations Chapter 4.
+Getting text from lamentations Chapter 5.
+Getting text from ezekiel Chapter 1.
+Getting text from ezekiel Chapter 2.
+Getting text from ezekiel Chapter 3.
+Getting text from ezekiel Chapter 4.
+Getting text from ezekiel Chapter 5.
+Getting text from ezekiel Chapter 6.
+Getting text from ezekiel Chapter 7.
+Getting text from ezekiel Chapter 8.
+Getting text from ezekiel Chapter 9.
+Getting text from ezekiel Chapter 10.
+Getting text from ezekiel Chapter 11.
+Getting text from ezekiel Chapter 12.
+Getting text from ezekiel Chapter 13.
+Getting text from ezekiel Chapter 14.
+Getting text from ezekiel Chapter 15.
+Getting text from ezekiel Chapter 16.
+Getting text from ezekiel Chapter 17.
+Getting text from ezekiel Chapter 18.
+Getting text from ezekiel Chapter 19.
+Getting text from ezekiel Chapter 20.
+Getting text from ezekiel Chapter 21.
+Getting text from ezekiel Chapter 22.
+Getting text from ezekiel Chapter 23.
+Getting text from ezekiel Chapter 24.
+Getting text from ezekiel Chapter 25.
+Getting text from ezekiel Chapter 26.
+Getting text from ezekiel Chapter 27.
+Getting text from ezekiel Chapter 28.
+Getting text from ezekiel Chapter 29.
+Getting text from ezekiel Chapter 30.
+Getting text from ezekiel Chapter 31.
+Getting text from ezekiel Chapter 32.
+Getting text from ezekiel Chapter 33.
+Getting text from ezekiel Chapter 34.
+Getting text from ezekiel Chapter 35.
+Getting text from ezekiel Chapter 36.
+Getting text from ezekiel Chapter 37.
+Getting text from ezekiel Chapter 38.
+Getting text from ezekiel Chapter 39.
+Getting text from ezekiel Chapter 40.
+Getting text from ezekiel Chapter 41.
+Getting text from ezekiel Chapter 42.
+Getting text from ezekiel Chapter 43.
+Getting text from ezekiel Chapter 44.
+Getting text from ezekiel Chapter 45.
+Getting text from ezekiel Chapter 46.
+Getting text from ezekiel Chapter 47.
+Getting text from ezekiel Chapter 48.
+Getting text from daniel Chapter 1.
+Getting text from daniel Chapter 2.
+Getting text from daniel Chapter 3.
+Getting text from daniel Chapter 4.
+Getting text from daniel Chapter 5.
+Getting text from daniel Chapter 6.
+Getting text from daniel Chapter 7.
+Getting text from daniel Chapter 8.
+Getting text from daniel Chapter 9.
+Getting text from daniel Chapter 10.
+Getting text from daniel Chapter 11.
+Getting text from daniel Chapter 12.
+Getting text from hosea Chapter 1.
+Getting text from hosea Chapter 2.
+Getting text from hosea Chapter 3.
+Getting text from hosea Chapter 4.
+Getting text from hosea Chapter 5.
+Getting text from hosea Chapter 6.
+Getting text from hosea Chapter 7.
+Getting text from hosea Chapter 8.
+Getting text from hosea Chapter 9.
+Getting text from hosea Chapter 10.
+Getting text from hosea Chapter 11.
+Getting text from hosea Chapter 12.
+Getting text from hosea Chapter 13.
+Getting text from hosea Chapter 14.
+Getting text from joel Chapter 1.
+Getting text from joel Chapter 2.
+Getting text from joel Chapter 3.
+Getting text from amos Chapter 1.
+Getting text from amos Chapter 2.
+Getting text from amos Chapter 3.
+Getting text from amos Chapter 4.
+Getting text from amos Chapter 5.
+Getting text from amos Chapter 6.
+Getting text from amos Chapter 7.
+Getting text from amos Chapter 8.
+Getting text from amos Chapter 9.
+Getting text from obadiah Chapter 1.
+Getting text from jonah Chapter 1.
+Getting text from jonah Chapter 2.
+Getting text from jonah Chapter 3.
+Getting text from jonah Chapter 4.
+Getting text from micah Chapter 1.
+Getting text from micah Chapter 2.
+Getting text from micah Chapter 3.
+Getting text from micah Chapter 4.
+Getting text from micah Chapter 5.
+Getting text from micah Chapter 6.
+Getting text from micah Chapter 7.
+Getting text from nahum Chapter 1.
+Getting text from nahum Chapter 2.
+Getting text from nahum Chapter 3.
+Getting text from habakkuk Chapter 1.
+Getting text from habakkuk Chapter 2.
+Getting text from habakkuk Chapter 3.
+Getting text from zephaniah Chapter 1.
+Getting text from zephaniah Chapter 2.
+Getting text from zephaniah Chapter 3.
+Getting text from haggai Chapter 1.
+Getting text from haggai Chapter 2.
+Getting text from zechariah Chapter 1.
+Getting text from zechariah Chapter 2.
+Getting text from zechariah Chapter 3.
+Getting text from zechariah Chapter 4.
+Getting text from zechariah Chapter 5.
+Getting text from zechariah Chapter 6.
+Getting text from zechariah Chapter 7.
+Getting text from zechariah Chapter 8.
+Getting text from zechariah Chapter 9.
+Getting text from zechariah Chapter 10.
+Getting text from zechariah Chapter 11.
+Getting text from zechariah Chapter 12.
+Getting text from zechariah Chapter 13.
+Getting text from zechariah Chapter 14.
+Getting text from malachi Chapter 1.
+Getting text from malachi Chapter 2.
+Getting text from malachi Chapter 3.
+Getting text from malachi Chapter 4.
+Getting text from matthew Chapter 1.
+Getting text from matthew Chapter 2.
+Getting text from matthew Chapter 3.
+Getting text from matthew Chapter 4.
+Getting text from matthew Chapter 5.
+Getting text from matthew Chapter 6.
+Getting text from matthew Chapter 7.
+Getting text from matthew Chapter 8.
+Getting text from matthew Chapter 9.
+Getting text from matthew Chapter 10.
+Getting text from matthew Chapter 11.
+Getting text from matthew Chapter 12.
+Getting text from matthew Chapter 13.
+Getting text from matthew Chapter 14.
+Getting text from matthew Chapter 15.
+Getting text from matthew Chapter 16.
+Getting text from matthew Chapter 17.
+Getting text from matthew Chapter 18.
+Getting text from matthew Chapter 19.
+Getting text from matthew Chapter 20.
+Getting text from matthew Chapter 21.
+Getting text from matthew Chapter 22.
+Getting text from matthew Chapter 23.
+Getting text from matthew Chapter 24.
+Getting text from matthew Chapter 25.
+Getting text from matthew Chapter 26.
+Getting text from matthew Chapter 27.
+Getting text from matthew Chapter 28.
+Getting text from mark Chapter 1.
+Getting text from mark Chapter 2.
+Getting text from mark Chapter 3.
+Getting text from mark Chapter 4.
+Getting text from mark Chapter 5.
+Getting text from mark Chapter 6.
+Getting text from mark Chapter 7.
+Getting text from mark Chapter 8.
+Getting text from mark Chapter 9.
+Getting text from mark Chapter 10.
+Getting text from mark Chapter 11.
+Getting text from mark Chapter 12.
+Getting text from mark Chapter 13.
+Getting text from mark Chapter 14.
+Getting text from mark Chapter 15.
+Getting text from mark Chapter 16.
+Getting text from luke Chapter 1.
+Getting text from luke Chapter 2.
+Getting text from luke Chapter 3.
+Getting text from luke Chapter 4.
+Getting text from luke Chapter 5.
+Getting text from luke Chapter 6.
+Getting text from luke Chapter 7.
+Getting text from luke Chapter 8.
+Getting text from luke Chapter 9.
+Getting text from luke Chapter 10.
+Getting text from luke Chapter 11.
+Getting text from luke Chapter 12.
+Getting text from luke Chapter 13.
+Getting text from luke Chapter 14.
+Getting text from luke Chapter 15.
+Getting text from luke Chapter 16.
+Getting text from luke Chapter 17.
+Getting text from luke Chapter 18.
+Getting text from luke Chapter 19.
+Getting text from luke Chapter 20.
+Getting text from luke Chapter 21.
+Getting text from luke Chapter 22.
+Getting text from luke Chapter 23.
+Getting text from luke Chapter 24.
+Getting text from john Chapter 1.
+Getting text from john Chapter 2.
+Getting text from john Chapter 3.
+Getting text from john Chapter 4.
+Getting text from john Chapter 5.
+Getting text from john Chapter 6.
+Getting text from john Chapter 7.
+Getting text from john Chapter 8.
+Getting text from john Chapter 9.
+Getting text from john Chapter 10.
+Getting text from john Chapter 11.
+Getting text from john Chapter 12.
+Getting text from john Chapter 13.
+Getting text from john Chapter 14.
+Getting text from john Chapter 15.
+Getting text from john Chapter 16.
+Getting text from john Chapter 17.
+Getting text from john Chapter 18.
+Getting text from john Chapter 19.
+Getting text from john Chapter 20.
+Getting text from john Chapter 21.
+Getting text from acts Chapter 1.
+Getting text from acts Chapter 2.
+Getting text from acts Chapter 3.
+Getting text from acts Chapter 4.
+Getting text from acts Chapter 5.
+Getting text from acts Chapter 6.
+Getting text from acts Chapter 7.
+Getting text from acts Chapter 8.
+Getting text from acts Chapter 9.
+Getting text from acts Chapter 10.
+Getting text from acts Chapter 11.
+Getting text from acts Chapter 12.
+Getting text from acts Chapter 13.
+Getting text from acts Chapter 14.
+Getting text from acts Chapter 15.
+Getting text from acts Chapter 16.
+Getting text from acts Chapter 17.
+Getting text from acts Chapter 18.
+Getting text from acts Chapter 19.
+Getting text from acts Chapter 20.
+Getting text from acts Chapter 21.
+Getting text from acts Chapter 22.
+Getting text from acts Chapter 23.
+Getting text from acts Chapter 24.
+Getting text from acts Chapter 25.
+Getting text from acts Chapter 26.
+Getting text from acts Chapter 27.
+Getting text from acts Chapter 28.
+Getting text from romans Chapter 1.
+Getting text from romans Chapter 2.
+Getting text from romans Chapter 3.
+Getting text from romans Chapter 4.
+Getting text from romans Chapter 5.
+Getting text from romans Chapter 6.
+Getting text from romans Chapter 7.
+Getting text from romans Chapter 8.
+Getting text from romans Chapter 9.
+Getting text from romans Chapter 10.
+Getting text from romans Chapter 11.
+Getting text from romans Chapter 12.
+Getting text from romans Chapter 13.
+Getting text from romans Chapter 14.
+Getting text from romans Chapter 15.
+Getting text from romans Chapter 16.
+Getting text from 1_corinthians Chapter 1.
+Getting text from 1_corinthians Chapter 2.
+Getting text from 1_corinthians Chapter 3.
+Getting text from 1_corinthians Chapter 4.
+Getting text from 1_corinthians Chapter 5.
+Getting text from 1_corinthians Chapter 6.
+Getting text from 1_corinthians Chapter 7.
+Getting text from 1_corinthians Chapter 8.
+Getting text from 1_corinthians Chapter 9.
+Getting text from 1_corinthians Chapter 10.
+Getting text from 1_corinthians Chapter 11.
+Getting text from 1_corinthians Chapter 12.
+Getting text from 1_corinthians Chapter 13.
+Getting text from 1_corinthians Chapter 14.
+Getting text from 1_corinthians Chapter 15.
+Getting text from 1_corinthians Chapter 16.
+Getting text from 2_corinthians Chapter 1.
+Getting text from 2_corinthians Chapter 2.
+Getting text from 2_corinthians Chapter 3.
+Getting text from 2_corinthians Chapter 4.
+Getting text from 2_corinthians Chapter 5.
+Getting text from 2_corinthians Chapter 6.
+Getting text from 2_corinthians Chapter 7.
+Getting text from 2_corinthians Chapter 8.
+Getting text from 2_corinthians Chapter 9.
+Getting text from 2_corinthians Chapter 10.
+Getting text from 2_corinthians Chapter 11.
+Getting text from 2_corinthians Chapter 12.
+Getting text from 2_corinthians Chapter 13.
+Getting text from galatians Chapter 1.
+Getting text from galatians Chapter 2.
+Getting text from galatians Chapter 3.
+Getting text from galatians Chapter 4.
+Getting text from galatians Chapter 5.
+Getting text from galatians Chapter 6.
+Getting text from ephesians Chapter 1.
+Getting text from ephesians Chapter 2.
+Getting text from ephesians Chapter 3.
+Getting text from ephesians Chapter 4.
+Getting text from ephesians Chapter 5.
+Getting text from ephesians Chapter 6.
+Getting text from philippians Chapter 1.
+Getting text from philippians Chapter 2.
+Getting text from philippians Chapter 3.
+Getting text from philippians Chapter 4.
+Getting text from colossians Chapter 1.
+Getting text from colossians Chapter 2.
+Getting text from colossians Chapter 3.
+Getting text from colossians Chapter 4.
+Getting text from 1_thessalonians Chapter 1.
+Getting text from 1_thessalonians Chapter 2.
+Getting text from 1_thessalonians Chapter 3.
+Getting text from 1_thessalonians Chapter 4.
+Getting text from 1_thessalonians Chapter 5.
+Getting text from 2_thessalonians Chapter 1.
+Getting text from 2_thessalonians Chapter 2.
+Getting text from 2_thessalonians Chapter 3.
+Getting text from 1_timothy Chapter 1.
+Getting text from 1_timothy Chapter 2.
+Getting text from 1_timothy Chapter 3.
+Getting text from 1_timothy Chapter 4.
+Getting text from 1_timothy Chapter 5.
+Getting text from 1_timothy Chapter 6.
+Getting text from 2_timothy Chapter 1.
+Getting text from 2_timothy Chapter 2.
+Getting text from 2_timothy Chapter 3.
+Getting text from 2_timothy Chapter 4.
+Getting text from titus Chapter 1.
+Getting text from titus Chapter 2.
+Getting text from titus Chapter 3.
+Getting text from philemon Chapter 1.
+Getting text from hebrews Chapter 1.
+Getting text from hebrews Chapter 2.
+Getting text from hebrews Chapter 3.
+Getting text from hebrews Chapter 4.
+Getting text from hebrews Chapter 5.
+Getting text from hebrews Chapter 6.
+Getting text from hebrews Chapter 7.
+Getting text from hebrews Chapter 8.
+Getting text from hebrews Chapter 9.
+Getting text from hebrews Chapter 10.
+Getting text from hebrews Chapter 11.
+Getting text from hebrews Chapter 12.
+Getting text from hebrews Chapter 13.
+Getting text from james Chapter 1.
+Getting text from james Chapter 2.
+Getting text from james Chapter 3.
+Getting text from james Chapter 4.
+Getting text from james Chapter 5.
+Getting text from 1_peter Chapter 1.
+Getting text from 1_peter Chapter 2.
+Getting text from 1_peter Chapter 3.
+Getting text from 1_peter Chapter 4.
+Getting text from 1_peter Chapter 5.
+Getting text from 2_peter Chapter 1.
+Getting text from 2_peter Chapter 2.
+Getting text from 2_peter Chapter 3.
+Getting text from 1_john Chapter 1.
+Getting text from 1_john Chapter 2.
+Getting text from 1_john Chapter 3.
+Getting text from 1_john Chapter 4.
+Getting text from 1_john Chapter 5.
+Getting text from 2_john Chapter 1.
+Getting text from 3_john Chapter 1.
+Getting text from jude Chapter 1.
+Getting text from revelation Chapter 1.
+Getting text from revelation Chapter 2.
+Getting text from revelation Chapter 3.
+Getting text from revelation Chapter 4.
+Getting text from revelation Chapter 5.
+Getting text from revelation Chapter 6.
+Getting text from revelation Chapter 7.
+Getting text from revelation Chapter 8.
+Getting text from revelation Chapter 9.
+Getting text from revelation Chapter 10.
+Getting text from revelation Chapter 11.
+Getting text from revelation Chapter 12.
+Getting text from revelation Chapter 13.
+Getting text from revelation Chapter 14.
+Getting text from revelation Chapter 15.
+Getting text from revelation Chapter 16.
+Getting text from revelation Chapter 17.
+Getting text from revelation Chapter 18.
+Getting text from revelation Chapter 19.
+Getting text from revelation Chapter 20.
+Getting text from revelation Chapter 21.
+Getting text from revelation Chapter 22.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">cdf</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>BookName</th>
+<th>ChapterNum</th>
+<th>VerseID</th>
+<th>VerseText</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>genesis</td>
+<td>1</td>
+<td>1</td>
+<td>In the beginning God created the heavens and t...</td>
+</tr>
+<tr>
+<th>1</th>
+<td>genesis</td>
+<td>1</td>
+<td>2</td>
+<td>Now the earth was formless and empty, darkness...</td>
+</tr>
+<tr>
+<th>2</th>
+<td>genesis</td>
+<td>1</td>
+<td>3</td>
+<td>And God said, “Let there be light,” and there ...</td>
+</tr>
+<tr>
+<th>3</th>
+<td>genesis</td>
+<td>1</td>
+<td>4</td>
+<td>God saw that the light was good, and he separa...</td>
+</tr>
+<tr>
+<th>4</th>
+<td>genesis</td>
+<td>1</td>
+<td>5</td>
+<td>God called the light “day,” and the darkness h...</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>32055</th>
+<td>revelation</td>
+<td>22</td>
+<td>17</td>
+<td>The Spirit and the bride say, “Come!” And let ...</td>
+</tr>
+<tr>
+<th>32056</th>
+<td>revelation</td>
+<td>22</td>
+<td>18</td>
+<td>I warn everyone who hears the words of the pro...</td>
+</tr>
+<tr>
+<th>32057</th>
+<td>revelation</td>
+<td>22</td>
+<td>19</td>
+<td>And if anyone takes words away from this scrol...</td>
+</tr>
+<tr>
+<th>32058</th>
+<td>revelation</td>
+<td>22</td>
+<td>20</td>
+<td>He who testifies to these things says, “Yes, I...</td>
+</tr>
+<tr>
+<th>32059</th>
+<td>revelation</td>
+<td>22</td>
+<td>21</td>
+<td>The grace of the Lord Jesus be with God’s peop...</td>
+</tr>
+</tbody>
+</table>
+<p>32060 rows × 4 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Convert-dataframe-to-CSV-file.">Convert dataframe to CSV file.<a class="anchor-link" href="#Convert-dataframe-to-CSV-file.">¶</a></h3>
 </div>
 </div>
 </div>
@@ -8087,7 +10977,10 @@ a
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">csv_file_path</span> <span class="o">=</span> <span class="s1">'Bible.csv'</span>
+
+<span class="c1"># Use the to_csv() method to export the DataFrame to a CSV file</span>
+<span class="n">cdf</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">csv_file_path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
