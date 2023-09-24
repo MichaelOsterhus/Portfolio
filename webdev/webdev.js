@@ -40,16 +40,7 @@ bodyElement.insertAdjacentHTML('afterbegin', menuContent);
  const projArray = [
        "Scraping_Bible/index.html",
        "Scraping_Sacred_Texts/index.html",
-       "Puzzle_App/index.html",   
-       "News_Query/index.html",
-       "Dynamic_Map_Data_Visualization/index.html",
-       "Speed_Read_Sacred_Texts/index.html",
-       "",
-       "",
-       "",
-       "",
-       "",
-       "", 
+ 
        
 ]
  
