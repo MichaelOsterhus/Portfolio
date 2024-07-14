@@ -5,25 +5,32 @@
   <script src="js/header.js"></script>
    <title>Michael Osterhus</title>
    <style>
-    #test{
-      width: 50px;
-      height: 50px;
-      background-color: #222;
-      position: fixed;
-      top: 20px;
-      right: 20px;
+
+
+    #current-content{
+      width:800px;
+      margin: auto;
     }
-    #greeting{
-      width: 1200px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    #project{
+      background-color: #000000;
+      padding: 10px;
+      margin-top: 40px;
+      /* border: 5px solid #796454; */
+    }
+    #project h1{
+      color: #b5977d;
+      font-size: 36px;
+      
+      font-family:'Courier New', Courier, monospace;
+      font-weight: bold;
       text-align: center;
     }
-    
-    #greeting h2{
-      font-size: 36px;
+    #project h2{
+      color: #ccc;
+      text-align: center;
+    }
+    #space{
+      letter-spacing: 30px;
     }
    </style>
 </head>
@@ -31,10 +38,21 @@
   <script src="js/menu.js"></script>
 
 
+  <div id="current-content">
 
-  <div id = "test">
-    <a href="test.html">Test Page</a>
+    <a target="_blank" href="Remembrance/index.html">
+      <div id="project">
+        <h1>- <span id="space">FUNDRAISE</span>R -</h1>
+        <img width="780" src="Remembrance/img/thumbnail.png">
+        
+        <h2>Remembrance: An Analysis of Game of Thrones</h2>
+      </div>
+    </a>
+
+  
+
   </div>
+
   
 </body>
 </html>

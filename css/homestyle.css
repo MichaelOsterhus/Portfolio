@@ -2,15 +2,18 @@
 body{
    margin: 0px;
    padding: 0px;
-   background-color: rgb(24, 24, 24);
+   background-color: rgb(10, 10, 10);
    
-
+   background-image: url("../img/background.png");
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
    color: white;
    font-family: 'Gruppo', sans-serif;
 }
-body::before {
+/* body::before {
    content: "";
-   background-image: url(../img/4EC_logo.png);
+    background-image: url(../img/4EC_logo.png); 
    background-repeat: no-repeat;
    background-attachment: fixed;
    background-position: center;
@@ -30,17 +33,10 @@ body::before {
  @keyframes blur-animation {
    0% { filter: blur(0); opacity: 1;}
    100% { filter: blur(10px); opacity: 0.3}
- }
+ } */
 
 
-.homepage{
 
-
-}
-.portfolio-piece{
-
-
-}
 
 .logo{
    width: 1000px;
@@ -64,6 +60,7 @@ body::before {
 h1{
    color: #cccccc;
    margin-top: 5px;
+   margin-bottom: 15px;
    font-size: 20px;
    font-family: 'Abel', Tahoma, Geneva, Verdana, sans-serif, Helvetica, sans-serif;
    
