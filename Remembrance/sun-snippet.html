@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="icon" type="image/png" href="/img/remembrance_favicon.png">
+    <title>The Eternal Sun and the Seasons of Westeros</title>
+    <style>
+        #astrolabe_scenes{
+            display: flex;
+        }
+
+        .astrolabe{
+            background-color: #222;
+            border-radius: 5px;
+            display: flex;
+            margin-top: 20px;
+            margin-right: 5px;            
+        }
+        .astrolabe h3{
+            color: rgb(204, 203, 190);
+            width: 200px;
+            padding-left: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .astrolabe img{
+            width: 100px;
+            background-size: cover;
+        }
+        .center{
+            text-align: center;
+        }
+        .gallery-thumb {
+
+            cursor: pointer;
+        }
+
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .gallery-modal-img {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            height: 100%;
+        }
+
+        .gallery-controls {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .gallery-controls button {
+            font-size: 24px;
+            padding: 5px 10px;
+        }
+        .gallery-display{
+            margin: 0 auto;
+            width: 80%;
+            height: 80%;
+        }
+        .gallery-modal-caption{
+            color: white;
+            line-height: 20px;
+        }
+        .got-img-heading h3{
+            background-color: #222;
+            padding: 5px;
+            
+        }
+        .got-img-footer{
+            background-color: #222;
+            width: 120px;
+            padding: 5px;
+            position: absolute;
+            bottom: 0px;
+        }
+        .got-img-container{
+            position: relative;
+            width:600px; 
+            height: 338px; 
+
+        }
+
+        .season{
+            width: 300px;
+        }
+        .season-header{
+            width: 200px;
+            margin: auto;
+            background-color: #494444;
+            color: #ddd;
+            text-align: center; 
+            text-shadow: #fff;
+            font-weight:bold;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="nav">
+    
+
+        <script>
+            const sidebarToggle = document.querySelector('.nav-toggle');
+            const sidebar = document.querySelector('.nav');
+
+            sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            });
+        </script>
+    </div>
+    <div id="content">
+  
+     
+        <p>If Game of Thrones is an allegory of Illumination, then there must be a light.  And, for a story thoroughly preoccupied
+             with the changing of the seasons, what better candidate for that light than the Sun. 
+            Indeed, we see evidence for this in the show's opening title sequence. 
+            
+        </p>
+        <h2 style="text-decoration:double" class="center">A Heliocentric Story</h2>
+        <br/>
+        <div id="astrolabe_scenes">
+            <div class="season">
+                <div class="season-header">Seasons 1 - 7</div>
+                <div class="astrolabe"><h3>The Doom of Valyria</h3><img src="img/seq1_Doom_of_Valyria.png" alt="The Doom of Valyria" class="gallery-thumb"></div>
+                <div class="astrolabe"><h3>Robert's Rebellion</h3><img src="img/seq2_Robert_s_rebelion.jpg" alt="Robert's Rebellion" class="gallery-thumb"></div>
+                <div class="astrolabe"><h3>Robert's Ascension</h3><img src="img/seq3_Roberts_ascension.jpg" alt="Robert's Ascension" class="gallery-thumb"></div>
+            </div>
+            <div class="season">
+                <div class="season-header">Season 8</div>
+                <div class="astrolabe"><h3>Death Breaching the Wall</h3><img src="img/seq4_Dead_breaching_the_Wall.png" alt="Death Breaching the Wall" class="gallery-thumb"></div>
+                <div class="astrolabe"><h3>The Red Wedding</h3><img src="img/seq5_the_Red_Wedding.png" alt="The Red Wedding" class="gallery-thumb"></div>
+                <div class="astrolabe"><h3>Birth of the Dragons</h3><img src="img/seq6_the_RedComet_and_birth_of_Dragons.png" alt="Birth of the Dragons" class="gallery-thumb"></div>
+            </div>
+            
+        </div>
+        <div style="width: 180px; margin: auto;"><span style="font-size: small;"><em>Click on the images to enlarge.</em></span></div>
+          <div class="gallery-modal">
+            <span class="close-btn">&times;</span>
+            <div class="gallery-display">
+                <img src="" alt="" class="gallery-modal-img">
+                <h2 class="gallery-modal-caption"></h2>
+            </div>
+
+            <div class="gallery-controls">
+              <button class="prev-btn">&lt;</button>
+              <button class="next-btn">&gt;</button>
+            </div>
+          </div>
+          <br/>
+        <p>The bands we see in the images above belong to a now obsolete device called an astrolabe.  
+            In the past, an astrolabe was used for observing and measuring the positions
+            of celstial bodies, but what is it doing here? Here used for a different purpose as we see the story 
+            of Game of Thrones engraved on its bands.  
+        </p>
+        <p>
+            But what does this import? 
+            Does it mean the Sun is the real protagonist of the story?
+            Or does it mean the Sun the author, i.e. that the story we're about to witness 
+            was written in the stars, a subject of Fate?
+        </p>
+        <hr>
+        <div class="quote-div">
+            <p class="quote-text">
+                This world is but foam full of floating jetsam. Yet, through the turning of the waves, 
+                and the rhythmic surging of the sea in constant motion, this foam takes on a certain beauty. 
+                But this beauty is a borrowed thing coming from elsewhere. It is a false coin that sparkles to the eye. 
+            </p>
+            <p class="qoute-text">
+
+            </p>
+            <p class="quote-text">
+                People are the astrolabe of God, but it requires an astronomer to use the astrolabe. 
+                If a vegetableseller or a greengrocer should find the astrolabe, what good would it do them? 
+                From that astrolabe, what could they know of the movements of the circling stars and the positions of the planets, 
+                their influences and so forth? But in the hands of the astronomer, the astrolabe becomes truly valuable. 
+                Just as this copper astrolabe reflects the movements of the heavens like a mirror, so the human being is 
+                the astrolabe of God. 
+            </p>
+            <p class="quote-text">
+                “We have honored the children of Adam.” <br/>
+                <span><small><em>(quoting the Qur'an)</em></small></span>
+            </p> 
+            <p class="quote-text">
+                Those who have been moved by God to see the one 
+                reality and learn Its ways through the astrolabe of their own being, behold moment by moment, flash by flash, 
+                the testament of God. Indeed, it is an infinite beauty that never leaves their mirror. 
+            </p>
+
+
+    
+            <span><em>--Rumi, Fihi Ma Fihi</em></span>
+        </div>
+        <hr>
+        
+        <p>In our own world it is the relationship of the Earth to the Sun that is responsible 
+           for the changing of the seasons, it is known. Because the Earth tilts relative to its orbit around the Sun, the part of 
+           the planet we live on may be turned towards or turned away from the Sun, relatively speaking, at different times throughout
+           the year.
+           So, in Game of Thrones, it would seem that there must be a similar relationship. However, as the seasons in this story are 
+           irregular, we must assume there is a different relationship, and as this analysis already takes the assumption that the 
+           story is about a relationship, the changing of the seasons might express a change in the relationship.  But the irregularity gives us a clue, and given the premise
+           that the story is about a relationship (between Ice and Fire) we might guess that that the changing of the seasons
+           has something to do with Westeros's attitude towards the Light of the World.  
+           But let us consider for a moment 
+           that the Sun has a story of its own.
+        </p>
+
+
+ 
+
+    <script>
+        const galleryThumbs = document.querySelectorAll('.gallery-thumb');
+        const galleryModal = document.querySelector('.gallery-modal');
+        const galleryModalImg = document.querySelector('.gallery-modal-img');
+        const galleryModalCaption = document.querySelector('.gallery-modal-caption');
+        const closeBtn = document.querySelector('.close-btn');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+
+        let currentIndex = 0;
+
+        galleryThumbs.forEach((thumb, index) => {
+        thumb.addEventListener('click', () => {
+            currentIndex = index;
+            galleryModalImg.src = thumb.src;
+            galleryModalImg.alt = thumb.alt;
+            galleryModalCaption.textContent = thumb.alt;
+            galleryModal.style.display = 'block';
+        });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            galleryModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+        if (event.target === galleryModal) {
+            galleryModal.style.display = 'none';
+        }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + galleryThumbs.length) % galleryThumbs.length;
+            galleryModalImg.src = galleryThumbs[currentIndex].src;
+            galleryModalImg.alt = galleryThumbs[currentIndex].alt;
+            galleryModalCaption.textContent = galleryThumbs[currentIndex].alt;
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % galleryThumbs.length;
+            galleryModalImg.src = galleryThumbs[currentIndex].src;
+            galleryModalImg.alt = galleryThumbs[currentIndex].alt;
+            galleryModalCaption.textContent = galleryThumbs[currentIndex].alt;
+        });
+    </script>
+
+    <script src="articles.js"></script>
+</body>
+</html>

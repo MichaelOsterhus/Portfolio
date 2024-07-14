@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="452.03873mm"
+   height="134.38634mm"
+   viewBox="0 0 452.03872 134.38634"
+   version="1.1"
+   id="svg1"
+   inkscape:export-filename="stone.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   sodipodi:docname="stone.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.57119758"
+     inkscape:cx="894.61163"
+     inkscape:cy="471.81572"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(100.7489,-97.118734)">
+    <path
+       sodipodi:type="star"
+       style="fill:#ff0000;stroke-width:2;stroke-linecap:round;stroke-dashoffset:407.029;paint-order:markers stroke fill"
+       id="path2"
+       inkscape:flatsided="true"
+       sodipodi:sides="3"
+       sodipodi:cx="89.826256"
+       sodipodi:cy="135.31274"
+       sodipodi:r1="67.890274"
+       sodipodi:r2="33.945137"
+       sodipodi:arg1="0.52359878"
+       sodipodi:arg2="1.5707963"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 148.62096,169.25788 -117.589406,0 58.794702,-101.83541 z"
+       inkscape:transform-center-x="5.9743667e-06"
+       inkscape:transform-center-y="-13.299997"
+       transform="matrix(0.78361716,0,0,0.78361716,-125.06576,57.452395)" />
+    <path
+       sodipodi:type="star"
+       style="fill:#0000ff;stroke-width:2;stroke-linecap:round;stroke-dashoffset:407.029;paint-order:markers stroke fill"
+       id="path3"
+       inkscape:flatsided="true"
+       sodipodi:sides="3"
+       sodipodi:cx="89.826256"
+       sodipodi:cy="135.31274"
+       sodipodi:r1="67.890274"
+       sodipodi:r2="33.945137"
+       sodipodi:arg1="0.52359878"
+       sodipodi:arg2="1.5707963"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 148.62096,169.25788 -117.589406,0 58.794702,-101.83541 z"
+       inkscape:transform-center-y="13.299993"
+       transform="matrix(0.78361716,0,0,-0.78361716,234.82789,242.91918)" />
+    <g
+       id="g11"
+       transform="matrix(0.79799975,0,0,0.79799975,42.326107,39.045242)">
+      <g
+         id="g9">
+        <path
+           sodipodi:type="star"
+           style="fill:#ff0000;stroke-width:2;stroke-linecap:round;stroke-dashoffset:407.029;paint-order:markers stroke fill"
+           id="path4"
+           inkscape:flatsided="true"
+           sodipodi:sides="3"
+           sodipodi:cx="89.826256"
+           sodipodi:cy="135.31274"
+           sodipodi:r1="67.890274"
+           sodipodi:r2="33.945137"
+           sodipodi:arg1="0.52359878"
+           sodipodi:arg2="1.5707963"
+           inkscape:rounded="0"
+           inkscape:randomized="0"
+           d="m 148.62096,169.25788 -117.589406,0 58.794702,-101.83541 z"
+           inkscape:transform-center-x="1.1546162e-06"
+           inkscape:transform-center-y="-16.666668"
+           transform="matrix(0.98197666,0,0,0.98197666,15.733036,6.5665301)" />
+        <path
+           sodipodi:type="star"
+           style="mix-blend-mode:lighten;fill:#0000ff;stroke-width:2;stroke-linecap:round;stroke-dashoffset:407.029;paint-order:markers stroke fill"
+           id="path5"
+           inkscape:flatsided="true"
+           sodipodi:sides="3"
+           sodipodi:cx="89.826256"
+           sodipodi:cy="135.31274"
+           sodipodi:r1="67.890274"
+           sodipodi:r2="33.945137"
+           sodipodi:arg1="0.52359878"
+           sodipodi:arg2="1.5707963"
+           inkscape:rounded="0"
+           inkscape:randomized="0"
+           d="m 148.62096,169.25788 -117.589406,0 58.794702,-101.83541 z"
+           inkscape:transform-center-x="1.1546162e-06"
+           inkscape:transform-center-y="16.666673"
+           transform="matrix(0.98197666,0,0,-0.98197666,15.733036,271.98129)" />
+      </g>
+      <path
+         id="path8"
+         style="fill:#a926d4;fill-opacity:1;stroke-width:1.96395;stroke-linecap:round;stroke-dashoffset:407.029;paint-order:markers stroke fill"
+         inkscape:transform-center-x="1.1546162e-06"
+         inkscape:transform-center-y="-16.666668"
+         d="m 84.887223,106.30331 -19.340939,33.49976 19.341455,33.49978 H 122.9929 l 19.34146,-33.49978 -19.34094,-33.49976 z" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:21.6547px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;letter-spacing:1.16008px;text-anchor:middle;fill:#ffe680;fill-opacity:1;stroke-width:4.38453;stroke-linecap:round;stroke-dashoffset:407.029;paint-order:markers stroke fill"
+       x="-57.77914"
+       y="231.46278"
+       id="text9"><tspan
+         sodipodi:role="line"
+         id="tspan9"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:21.6547px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffe680;stroke-width:4.38453"
+         x="-57.1991"
+         y="231.46278">FIRE</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:21.6547px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;letter-spacing:1.16008px;text-anchor:middle;fill:#ffe680;fill-opacity:1;stroke-width:4.38453;stroke-linecap:round;stroke-dashoffset:407.029;paint-order:markers stroke fill"
+       x="125.4872"
+       y="231.46278"
+       id="text10"><tspan
+         sodipodi:role="line"
+         id="tspan10"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:21.6547px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffe680;stroke-width:4.38453"
+         x="126.06724"
+         y="231.46278">THE GOAL OF MYSTICS</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:21.6547px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;letter-spacing:1.16008px;text-anchor:middle;fill:#ffe680;fill-opacity:1;stroke-width:4.38453;stroke-linecap:round;stroke-dashoffset:407.029;paint-order:markers stroke fill"
+       x="308.23544"
+       y="231.46278"
+       id="text11"
+       inkscape:export-filename="text11.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan11"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:21.6547px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffe680;stroke-width:4.38453"
+         x="308.81549"
+         y="231.46278">WATER</tspan></text>
+  </g>
+</svg>

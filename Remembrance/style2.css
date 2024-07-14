@@ -1,0 +1,311 @@
+@font-face { font-family: 'GOT'; src: url('Game_of_Thrones.ttf') }
+@font-face { font-family: 'Dominica'; src: url('fonts/DOMINICA.TTF')}
+a{
+    text-decoration: none;
+}
+#articles{
+    
+}
+a{
+    color: #e1ddb5;
+}
+#articles a{
+    text-decoration: none;
+
+}
+.article{
+    width: 700px;
+    height: 100px;
+    background-color: #333;
+    border-radius: 10px;
+    display: flex;
+}
+.titlebox{
+    width: 450px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.article img{
+    width: 200px;
+    height: 100px;
+    background-size: cover;
+    
+}
+.article h2{
+    font-family:'Helvetica', sans-serif;
+    letter-spacing: 2px;
+}
+#articles-link{
+    position: fixed;
+    top: 60px;
+    left: 155px;
+
+}
+
+body{
+    background-color: #111;
+    color: #bbb;
+}
+.button{
+    width: 140px;
+    height: 40px;
+    vertical-align: center; 
+    margin: auto;
+    text-align: center;
+    background-color: rgb(47, 33, 17);
+    border-radius: 14px;
+    border: 12px solid #3d382f;
+}
+.button h3{
+    color: rgb(202, 163, 106);
+    /* margin-top: 4px; */
+    font-family: 'GOT';
+}
+.center{
+    margin: auto;
+
+}
+
+#chapters a{
+    margin-top: 5px;
+    display: block;
+}
+#content{
+    width: 600px;
+    margin-left: 550px;
+    line-height: 25px;
+    font-family: 'Helvetica', sans-serif;
+}
+.caption{
+    height: 13px;
+    margin-top: 2px;
+    margin-bottom: 40px;
+}
+.got-img-heading{
+    position: absolute;
+    top: 60px;
+}
+.got-img-heading h3{
+    background-color: #222;
+    padding: 5px;
+
+    
+}
+.got-img-footer{
+    background-color: #222;
+    width: 130px;
+    padding: 5px;
+    position: absolute;
+    bottom: 0px;
+}
+.got-img-container{
+    position: relative;
+    width:600px; 
+    height: 338px; 
+
+}
+
+h1{
+    font-family: 'Dominica', serif;
+    color: #bbb;
+    /* font-family: 'Impact'; */
+    letter-spacing: 6px;
+    font-size: 32px;
+    line-height: 40px;
+    text-align: center;
+}
+h2 {
+    color: #f1deb6;
+    font-family: 'Helvetica';
+    letter-spacing: 8px;
+    font-size: 18px;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+h3{
+    font-family: 'Helvetica';
+    color: rgb(250, 248, 238);
+}
+hr{
+    border: 1px solid #ddd;
+}
+.img-p{
+    width: 300px;
+    padding-right: 10px;
+}
+#link-svg{
+    margin:auto;
+    margin-top: 140px;
+}
+#link-svg > svg{
+    width: 400px;
+    height: 400px;
+}
+.logo-links{
+    position: fixed;
+    top: 200px;
+}
+.note{
+    background-color: #343466;
+    padding: 4px;
+}
+p{
+    color: #b8b8b8;
+}
+ol{
+    
+}
+#title{
+    width: 100%;
+    margin: auto;
+    line-height: 28px;
+}
+#subtitle{
+    font-size: 10px;
+}
+
+#sources-link{
+    position: fixed;
+    bottom: 100px;
+    left: 155px;
+
+}
+.small{
+    font-size: 13px;
+}
+
+.nav{
+    background-color: rgb(28, 25, 23);
+    /* background-image: url('img/remembrance_cover.svg'); */
+    
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 450px;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    transition: transform 0.3s ease-in-out;
+}
+.nav-content {
+    height: 100%;
+    overflow-y: auto;
+  }
+.nav-toggle {
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+.nav.collapsed {
+    transform: translateX(-100%);
+  }
+.nav a{
+    text-decoration: none;
+    color: rgb(181, 191, 197);
+    font-size: 16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.nav h2{
+    margin: 0px;
+    margin-top: 8px;
+    line-height: 26px;
+}
+#menu{
+    margin-top: 40px;
+}
+.poem{
+    white-space: pre-line;
+}
+.quote{
+    width: 560px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 16px;
+    padding-bottom: 2px;
+    background-color: #2f2929;
+    margin: auto;
+    margin-top: 40px;
+    border: 1px solid #6a6863;
+    position: relative;
+}
+.quote-header{
+    
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: #2f2929;
+    margin: auto;
+    border: 1px solid #6a6863;
+    position: absolute;
+    top: -15px;
+    left: 50px;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 4px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.quote-container{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.quote-div{
+    font-size: 16px;
+    margin: auto;
+    width: 560px;
+    padding-bottom: 15px;
+
+    
+    
+}
+.quote-text{
+    letter-spacing: 3px;
+    font-size: 16px;
+
+}
+.remembrance{
+    
+    font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 14px;
+    margin: 0px;
+}
+.subremember{
+    font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+    line-height: 20px;
+    margin-bottom: 0px;
+    margin: 0px;
+    letter-spacing: 4px;
+}
+#articles a{
+    display: block;
+    margin-bottom: 16px;
+}
+.nav h3{
+    font-size: 14px;
+    /* font-family: 'courier new', 'monospace'; */
+    letter-spacing: 2px;
+    /* margin-top: 40px; */
+}
+.sign{
+    width: 600px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.source{
+    background-color: #242424;
+
+    padding-left: 18px;
+    border-radius: 10px;
+}
+#sources a{
+    display: block;
+    margin-bottom: 16px;
+}
