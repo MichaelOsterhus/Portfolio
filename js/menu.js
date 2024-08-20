@@ -10,7 +10,7 @@ const menuContent = `<a href="index.html">
 
    <h3>PROJECTS</h3>
    <a class="goal" href="webdev/webdev.html">Coding Projects</a>
-   <a class="goal" href="blogs.html">Blogs</a>
+   <a class="goal" href="blogs.html">Writing Projects</a>
    <a class="goal" href="vidanim.html">Video / Animation</a>
    <a class="goal" href="digpaint.html">Digital Painting</a>   
    
