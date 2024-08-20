@@ -4,6 +4,10 @@ a{
 }
 body{
     background-color: #1c1c1c;
+    background-image: url('img/rose2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
     color: #ccc;
     font-family: 'Helvetica', sans-serif;
     
@@ -29,6 +33,11 @@ h1{
 .content{
     width: 700px;
     margin: auto;
+}
+#content-background{
+    width: 800px;
+    margin: auto;
+    background-color: #1c1c1c;
 }
 .grid-container {
     display: grid;
