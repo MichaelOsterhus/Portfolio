@@ -20,7 +20,9 @@ links = [
 links.forEach((link) => {
     const page = document.getElementById('menu')
     const a = document.createElement('a')
+    const header = document.createElement('h3')
     a.href = link.url
-    a.innerHTML = link.title
+    header.textContent = link.title
+    a.appendChild(header)
     page.appendChild(a)
 })

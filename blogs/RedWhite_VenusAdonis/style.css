@@ -36,7 +36,7 @@ h1{
 }
 #content-background{
     width: 800px;
-    margin: auto;
+    margin-left: 400px;
     background-color: #1c1c1c;
 }
 .grid-container {
@@ -101,13 +101,17 @@ li{
     object-fit: cover; /* Ensures images fill the squares without distortion */
 }
 #menu{
+    position: fixed;
     width: 300px;
     height: 100vh;
+    padding-left: 20px;
 
 }
 #menu a{
     display: block;
     margin-top: 20px;
+    margin-left: 10px;
+    color:rgb(150, 137, 122);
 }
 #planets{
     display: flex;
