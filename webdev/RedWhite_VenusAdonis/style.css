@@ -1,0 +1,197 @@
+a{
+    color:rgb(225, 194, 154);
+    text-decoration: none;
+}
+body{
+    background-color: #1c1c1c;
+    color: #ccc;
+    font-family: 'Helvetica', sans-serif;
+    
+}
+.center{
+    text-align:center;
+}
+.citation{
+    text-align: right; 
+    font-size:14px;
+}
+#container{
+    display: flex;
+}
+h1{
+    color: #eee;
+}
+#colors{
+    width: 700px;
+    margin:auto;
+    border: 1px solid #555;
+}
+.content{
+    width: 700px;
+    margin: auto;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 2fr);
+    gap: 10px;
+}
+.grid-item {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+#matrix-container {
+    display: grid;
+    grid-template-columns: repeat(20, 3fr);
+    gap: 4px;
+}
+.matrix-item {
+    padding: 4px;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 11px;
+}
+.key {
+    width: 30px;
+    height: 20px;
+    margin-right: 15px;
+}
+.key-holder{
+    display: flex;
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 18px;
+}
+.red-stanza {
+    background-color: red;
+}
+.white-stanza {
+    background-color: white;
+    color: black;
+}
+.red-white-stanza {
+    background-color:rgb(238, 191, 131);
+    color:rgb(0, 0, 0);
+}
+li{
+    /* color: #aaa; */
+    margin-bottom: 20px;
+    /* font-family: monospace; */
+    /* font-size: 15px; */
+}
+.img-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* Adjust the gap between images */
+}
+
+.img-grid img {
+    /* width: 100%; */
+    height: auto;
+    object-fit: cover; /* Ensures images fill the squares without distortion */
+}
+#menu{
+    width: 300px;
+    height: 100vh;
+
+}
+#menu a{
+    display: block;
+    margin-top: 20px;
+}
+#planets{
+    display: flex;
+}
+.planet{
+    width: 350px;
+    text-align: center;
+}
+.large-symbol{
+    text-align:center;
+    font-size: 140px;
+    margin:40px;
+}
+.large-symbols{
+    display: flex;
+    justify-content: space-between;
+}
+.large-symbol-pair{
+    width: 700px;
+    display:flex;
+    border: 1px solid #ccc;
+}
+.large-symbol-case{
+    text-align:center;
+    width: 350px;
+    border: 1px solid #ccc;
+}
+.large-symbol-case h3{
+    margin: 0px;
+    margin-top:10px;
+}
+p{
+    line-height: 24px;
+}
+.symbol{
+    text-align:center;
+    font-size: 80px;
+    margin: 40px;
+}
+.symbols{
+    display: flex;
+    justify-content: space-between;
+}
+.symbol-pair{
+    width: 300px;
+    display:flex;
+    border: 1px solid #ccc;
+}
+.symbol-case{
+    text-align:center;
+    width: 150px;
+    border: 1px solid #ccc;
+}
+.symbol-case h3{
+    margin: 0px;
+    margin-top:10px;
+}
+.white{
+    color: white;
+
+}
+.red{
+    color: rgb(255, 93, 93);
+}
+.quote{
+    color: #aaa;
+    margin-left: 20px;
+    font-family: monospace;
+    font-size: 15px;
+}
+.shake{
+    margin: 0px;
+    white-space: pre;
+}
+.stanza{
+    display:flex;
+}
+.stan-num{
+    width: 100px;
+    line-height: 112px;
+    
+
+}
+.stan{
+    width: 5s00px;
+}
+table{
+    width: 900px;
+}
+th{
+    padding:5px;
+    text-align: left;
+}
+td{
+    padding: 5px;
+}

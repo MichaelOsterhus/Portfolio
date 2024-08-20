@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Red + White: Surverying Alchemical Symbolism In Shakespeare's 'Venus and Adonis'</title>
+    <link rel="stylesheet" href="style.css">      
+</head>
+<body>
+    <div id="container">
+        <div id="menu"></div>
+    <div class="content">
+        <h2>The Strategy</h2>
+        <p>Initially the plan was only to count how many times the words "red" and "white" or words which imply those colors, such as 
+          "blushing" and "pale" appeared together either in the same verse or in the same stanza.  As there are 199 stanzas of 6 verses 
+          each = 1194 verses, this seemed
+          like a good opportunity to try the programming language Python to accelerate the process but then the question became, how do
+          I come up with an adequate list of words to search for? Seeing as it is Shakespeare, the prospect of trying to think of words
+          that might be used seemed inadequate in a way that I could hear the creator of his own vocabulary rolling in his grave.  
+          Not only might I miss numerous
+          words, but also, why search for words that aren't there?  So, I used Python to count unique words in the text and put them into 
+          a <a  href="python/outputfile.csv">CSV file</a> which lists the 2574 unique words and the number of times each appears in the text.
+         
+          </p>
+        
+          <p>Going through the list to find relevant words I noticed a lot of pairs of opposites and so gave the list to ChatGPT and 
+            asked the bot to sort out pairs of opposites from it. It returned a list of more than 60 pairs. Some of those were 
+            redundant such as quick/slow and fast/slow, and some had been missed.  So, I addded and removed from the original list of pairs 
+            and settled on 72 pairs simply for the sake of presentation--if 72 pairs doesn't make the point, 73 won't either.  Note that 
+            only single words are searched for here and more opposites would likely be found if phrases were included, such as danger / 
+            "where never serpent hisses", nor did I include traditional Alchemical pairings: gold / silver, sun / moon, fire / water or red / white.
+
+        </p>
+        
+        <!-- <div style="width:250px; float:right; margin-left:20px; margin-right:20px;">
+            <img width="250" src="img/AlchemyTable.png">
+        </div> -->
+
+ 
+        <h2 class="center">Opposites Unite </h2> 
+          <h3 class="center">Pairs of opposites found in 'Venus and Adonis'</h3>
+        <div class="grid-container">
+            <span class="grid-item">big / small</span>
+            <span class="grid-item">love / hate</span>
+            <span class="grid-item">easy / difficult</span>
+            <span class="grid-item">light / dark</span>
+            <span class="grid-item">hot / cold</span>
+            <span class="grid-item">warm / cool</span>
+            <span class="grid-item">new / old</span>
+            <span class="grid-item">near / far</span>
+            <span class="grid-item">young / old</span>
+            <span class="grid-item">day / night</span>
+            <span class="grid-item">summer / winter</span>
+            <span class="grid-item">right / wrong</span>
+            <span class="grid-item">true / false</span>
+            <span class="grid-item">good / bad</span>
+            <span class="grid-item">better / worse</span>
+            <span class="grid-item">extenu. / insinu.</span>
+            <span class="grid-item">fast / slow</span>
+            <span class="grid-item">high / low</span>
+            <span class="grid-item">over / under</span>
+            <span class="grid-item">life / death</span>
+            <span class="grid-item">cloy / famish</span>
+            <span class="grid-item">full / empty</span>
+            <span class="grid-item">open / close</span>
+            <span class="grid-item">up / down</span>
+            <span class="grid-item">heavy / light</span>
+            <span class="grid-item">hard / soft</span>
+            <span class="grid-item">wide / narrow</span>
+            <span class="grid-item">weak / strong</span>
+            <span class="grid-item">rich / poor</span>
+            <span class="grid-item">inward / outward</span>
+            <span class="grid-item">left / right</span>
+            <span class="grid-item">early / late</span>
+            <span class="grid-item">before / after</span>
+            <span class="grid-item">rise / fall</span>
+            <span class="grid-item">aspire / sink</span>
+            <span class="grid-item">short / tall</span>
+            <span class="grid-item">wet / dry</span>
+            <span class="grid-item">sweet / sour</span>
+            <span class="grid-item">sharp / dull</span>
+            <span class="grid-item">more / less</span>
+            <span class="grid-item">first / last</span>
+            <span class="grid-item">live / die</span>
+            <span class="grid-item">grow / wither</span>
+            <span class="grid-item">unyielding / yielding</span>
+            <span class="grid-item">perfecti. / defeatu.</span>
+            <span class="grid-item">joy / sorrow</span>
+            <span class="grid-item">increase / decrease</span>
+            <span class="grid-item">have / lack</span>
+            <span class="grid-item">clean / dirty</span>
+            <span class="grid-item">thick / thin</span>
+            <span class="grid-item">top / bottom</span>
+            <span class="grid-item">happy / sad</span>
+            <span class="grid-item">smile / frown</span>
+            <span class="grid-item">win / lose</span>
+            <span class="grid-item">aloud / quietly</span>
+            <span class="grid-item">cure / bane</span>
+            <span class="grid-item">front / back</span>
+            <span class="grid-item">pull / push</span>
+            <span class="grid-item">give / take</span>
+            <span class="grid-item">laugh / cry</span>
+            <span class="grid-item">begin / end</span>
+            <span class="grid-item">sovereign / subject</span>
+            <span class="grid-item">immortal / mortal</span>
+            <span class="grid-item">pure / gross</span>
+            <span class="grid-item">heavenly / earthly</span>
+            <span class="grid-item">heaven / earth</span>
+            <span class="grid-item">sky / ground</span>
+            <span class="grid-item">above / below</span>
+            <span class="grid-item">sweetsmelling / foul</span>
+            <span class="grid-item">pride / shame</span>
+            <span class="grid-item">courage / fear</span>
+            <span class="grid-item">smooth / rough</span>
+        </div>
+        <p class="center">* abbreviated pairs are extenuate / insinuate and perfection / defeature</p>
+        <p>Resuming the search for red and white, the list of unique words posed its own challenges as I meant to include words 
+          that imply color such as blood, snow, milk, etc. as I already know they are used for such purposes--as in the following verses </p>
+        <p class="quote shake">
+          Whose <span class="white">frothy</span> mouth bepainted all with <span class="red">red</span>,
+          Like <span class="white">milk</span> and <span class="red">blood</span> being mingled both together,
+        </p>
+        <p> but where to draw the line?  Coming up with 
+          a list of red and white terms was to serve two purposes.
+          <ol>
+            <li>to compare all colors by count</li>
+            <li>to count pairings of red and white terms within stanzas and verses.</li>
+          </ol>
+          The word "<span class="red">fire</span>" Shakespeare uses three times to imply red or with red, but fire is 
+          used 14 times in the text and most of those it appears only to imply heat, anger, love, or passion, more than color.  
+          For the color comparision, fire was left out of the grouping of red, though the results show that including 
+          it would 
+          be superfluous.
+        </p>
+        <h2>Color Comparison</h2>
+ 
+
+    <table id="colors" border="1" class="dataframe">
+        <thead>
+          <tr >
+            <th>Red</th>
+            <th>41</th>
+            <th>&nbsp;</th>
+            <th>White</th>
+            <th>43</th>
+            <th>&nbsp;</th>
+            <th>Golden</th>
+            <th>6</th>
+            <th>&nbsp;</th>
+            <th>Blue</th>
+            <th>2</th>
+            <th>&nbsp;</th>
+            <th>Black</th>
+            <th>4</th>
+            <th>&nbsp;</th>
+            <th>Green</th>
+            <th>5</th>
+            <th>&nbsp;</th>
+            <th>Purple</th>
+            <th>5</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>red</td>
+            <td>13</td>
+            <td></td>
+            <td>white</td>
+            <td>9</td>
+            <td></td>
+            <td>golden</td>
+            <td>3</td>
+            <td></td>
+            <td>blueveind</td>
+            <td>1</td>
+            <td></td>
+            <td>black</td>
+            <td>2</td>
+            <td></td>
+            <td>green</td>
+            <td>4</td>
+            <td></td>
+            <td>purple</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>blood</td>
+            <td>10</td>
+            <td></td>
+            <td>pale</td>
+            <td>8</td>
+            <td></td>
+            <td>gold</td>
+            <td>3</td>
+            <td></td>
+            <td>blue</td>
+            <td>1</td>
+            <td></td>
+            <td>coalblack</td>
+            <td>1</td>
+            <td></td>
+            <td>verdure</td>
+            <td>1</td>
+            <td></td>
+            <td>purplecolourd</td>
+            <td>1</td>
+          </tr>
+          <tr>
+
+            <td>rose</td>
+            <td>3</td>
+            <td></td>
+            <td>silver</td>
+            <td>5</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>blackfacd</td>
+            <td>1</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>violets</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>crimson</td>
+            <td>2</td>
+            <td></td>
+            <td>doves</td>
+            <td>4</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>violet</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>bloody</td>
+            <td>2</td>
+            <td></td>
+  
+            <td>lily</td>
+            <td>3</td>
+
+          </tr>
+          <tr>
+            <td>rosecheekd</td>
+            <td>1</td>
+            <td></td>
+            <td>snow</td>
+            <td>2</td>
+
+          </tr>
+          <tr>
+            <td>roses</td>
+            <td>1</td>
+            <td></td>
+
+            <td>ivory</td>
+            <td>2</td>
+
+          </tr>
+          <tr>
+            <td>blushd</td>
+            <td>1</td>
+            <td></td>
+            <td>ashypale</td>
+            <td>1</td>
+
+          </tr>
+          <tr>
+            <td>redrose</td>
+            <td>1</td>
+            <td></td>
+            <td>alabaster</td>
+            <td>1</td>
+
+          </tr>
+          <tr>
+            <td>rubycolourd</td>
+            <td>1</td>
+            <td></td>
+            <td>whiter</td>
+            <td>1</td>
+
+          </tr>
+          <tr>
+            <td>wax-red</td>
+            <td>1</td>
+            <td></td>
+            <td>frozen</td>
+            <td>1</td>
+
+          </tr>
+          <tr>
+            <td>plum</td>
+            <td>1</td>
+            <td></td>
+            <td>palefacd</td>
+            <td>1</td>
+
+          </tr>
+          <tr>
+
+            <td>coral</td>
+            <td>1</td>
+            <td></td>
+            <td>coldpale</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>blush</td>
+            <td>1</td>
+            <td></td>
+            <td>frothy</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>blushing</td>
+            <td>1</td>
+            <td></td>
+            <td>milk</td>
+            <td>1</td>
+          </tr>
+          <tr>
+
+            <td>ripe-red</td>
+            <td>1</td>
+            <td></td>
+            <td>whiteness</td>
+            <td>1</td>
+
+          </tr>
+          <tr>
+
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>frosty</td>
+            <td>1</td>
+
+          </tr>
+          <tr>
+
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>lawn</td>
+            <td>1</td>
+
+          </tr>
+  
+
+      
+         
+        </tbody>
+      </table>
+      <p>
+        Using the list of red and white terms above, a second search was done using Python to find stanzas and verses where a red and white term 
+        appear together.  One change to the list was made though. Purple was added to the red column, as purple didn't mean in Shakespeare's time what 
+        it does now, i.e. a mix of red and blue, but could be used for a range of hue from violet to dark or rich reds.  Twice in the poem, Shakespeare
+        uses purple to denote the color of blood. It was put in its own column above simply for the benefit of the doubt.
+      </p>
+      <p>
+        
+      </p>
+ 
+        <div class="stanza">
+            <div class="stan-num"><h3>Stanza 2</h3></div>
+            <div class="stan">
+                <p class="shake quote">
+    ‘Thrice fairer than myself’ thus she began
+    ‘The field’s chief flower sweet above compare   
+    Stain to all nymphs more lovely than a man
+    More <span class="white">white</span> and <span class="red">red</span> than <span class="white">doves</span> or <span class="red">roses</span> are
+        Nature that made thee with herself at strife
+        Saith that the world hath ending with thy life
+                </p>
+            </div>
+        </div>
+        <div class="stanza">
+            <div class="stan-num"><h3>Stanza 4</h3></div>
+            <div class="stan">
+                <p class="shake quote">
+    ‘And yet not cloy thy lips with loath’d satiety
+    But rather famish them amid their plenty    
+    Making them <span class="red">red</span> and <span class="white">pale</span> with fresh variety
+    Ten kisses short as one one long as twenty
+        A summer’s day will seem an hour but short
+        Being wasted in such time-beguiling sport’     
+                </p>
+            </div>
+        </div>
+    
+        <div class="stanza">
+            <div class="stan-num"><h3>Stanza 6</h3></div>
+            <div class="stan">
+                <p class="shake quote">
+    Over one arm the lusty courser’s rein
+    Under her other was the tender boy
+    Who <span class="red"></span>blush’d and pouted in a dull disdain
+    With leaden appetite unapt to toy
+        She <span class="red">red</span> and hot as coals of glowing fire
+        He <span class="red">red</span> for shame but <span class="white">frosty</span> in desire
+                </p>
+            </div>
+        </div>
+
+        <div class="stanza">
+            <div class="stan-num"><h3>Stanza 13</h3></div>
+            <div class="stan">
+                <p class="shake quote">
+    Still she entreats and prettily entreats
+    For to a pretty ear she tunes her tale
+    Still is he sullen still he lours and frets
+    ‘Twixt <span class="red">crimson</span> shame and anger <span class="white">ashy-pale</span>    
+        Being <span class="red">red</span> she loves him best and being <span class="white">white</span>
+        Her best is better’d with a more delight
+                </p>
+            </div>
+        </div>
+
+        <div class="stanza">
+            <div class="stan-num"><h3>Stanza 58</h3></div>
+            <div class="stan">
+                <p class="shake quote">
+    O! what a sight it was wistly to view
+    How she came stealing to the wayward boy   
+    To note the fighting conflict of her hue
+    How <span class="white">white</span> and <span class="red">red</span> each other did destroy
+        But now her cheek was <span class="white">pale</span> and by and by
+        It flash’d forth <span class="red">fire</span> as lightning from the sky 
+                </p>
+            </div>
+        </div>
+
+        <div class="stanza">
+            <div class="stan-num"><h3>Stanza 78</h3></div>
+            <div class="stan">
+                <p class="shake quote">
+    And at his look she flatly falleth down
+    For looks kill love and love by looks reviveth
+    A smile recures the wounding of a frown
+    But blessed bankrupt that by love so thriveth!
+        The silly boy believing she is dead
+        Claps her <span class="white">pale</span> cheek till clapping makes it <span class="red">red</span> 
+                </p>
+            </div>
+        </div>
+        <div class="stanza">
+            <div class="stan-num"><h3>Stanza 99</h3></div>
+            <div class="stan">
+                <p class="shake quote">
+    ‘The boar!’ quoth she whereat a sudden <span class="white">pale</span>
+    Like <span class="white">lawn</span> being spread upon the <span class="red">blushing rose</span>
+    Usurps her cheeks she trembles at his tale
+    And on his neck her yoking arms she throws
+        She sinketh down still hanging by his neck
+        He on her belly falls she on her back
+                </p>
+            </div>
+        </div>
+
+
+
+        <div class="stanza">
+            <div class="stan-num"><h3>Stanza 151</h3></div>
+            <div class="stan">
+                <p class="shake quote">
+    Whose <span class="white">frothy</span> mouth bepainted all with <span class="red">red</span>  
+    Like <span class="white">milk</span> and <span class="red">blood</span> being mingled both together
+    A second fear through all her sinews spread
+    Which madly hurries her she knows not whither  
+        This way she runs and now she will no further
+        But back retires to rate the boar for murther
+                </p>
+            </div>
+        </div>
+        <div class="stanza">
+            <div class="stan-num"><h3>Stanza 195</h3></div>
+            <div class="stan">
+                <p class="shake quote">
+    By this the boy that by her side lay kill’d
+    Was melted like a vapour from her sight
+    And in his <span class="red">blood</span> that on the ground lay spill’d
+    A <span class="red">purple</span> flower sprung up chequer’d with <span class="white">white</span>   
+        Resembling well his <span class="white">pale</span> cheeks and the <span class="red">blood</span>
+        Which in round drops upon their <span class="white">whiteness</span> stood
+                </p>
+            </div>
+        </div>
+
+        <p> Looking at the first and last stanzas above, we see in both a description of a red and white flower.  The first 
+          is a description of Adonis by Venus who calls him "the field's chief flower, sweet above compare (...)
+          more white and red than doves and roses are." and the last is of the flower that grows from his blood, 
+          "resembling well his pale cheeks and the blood which in round drops upon their whiteness stood."</p>
+        <p>Recall that in the Orphic Hymn to Adonis, he is called "Sweet plant of Aphrodite (Venus), Love's (Eros/Cupid)
+          delightful flower."
+        </p>
+
+            color of blood and once for the Sun's face at sunset. So, what we see in the last stanza listed above 
+            calls back not only to the second stanza of the poem where Adonis is 
+            “The field’s chief flower, sweet above compare,
+           (...) More white and red than doves or roses are," but also to the first three verses of the poem:
+        </p> 
+        <p class='quote shake'>
+            Even as the sun with purple-colored face
+            Had ta’en his last leave of the weeping morn,
+            Rose-cheeked Adonis hied him to the chase.
+        </p>
+        <p>The purple blood on Adonis' face in death is analogous to the purple face of the Sun as it sets, i.e. it is "blood-colored".
+            And, like women of Rome weeping 
+            for Adonis, the morn in Shakespeare's poem is "weeping" for the Sun who has "ta'en his last leave". 
+            So, not only does the setting sun foreshadow the death of Adonis,
+            but furthermore points to the idea that the myth has its origin in the Sun's cycle, as if Shakespeare is saying:
+            Had Adonis paid attention to the sign in the sky, he wouldn't have gone on the chase. 
+        </p>
+
+            For, he being dead, with him is beauty slain,
+ And, beauty dead, black chaos comes again.
+        </p>
+        <h2>199 Stanzas on the Wall</h2>
+        <p>There are 199 stanzas in Shakespeare's 'Venus and Adonis'. The matrix below maps the stanzas to the colors from the lists 
+          of red and white words above.
+        </p>
+        <div id="matrix-key">
+          <div class="key-holder">
+            <div class="key red-stanza"></div>
+            <span>Only words from the red list</span>
+          </div>
+          <div class="key-holder">
+            <div class="key white-stanza"></div>
+            <span>Only words from the white list</span>
+          </div>
+          <div class="key-holder">
+            <div class="key red-white-stanza"></div>
+            <span>From both the red and white lists</span>
+          </div>
+          <br/>
+
+        </div>
+        <div id="matrix-container">
+          
+        </div>
+
+
+
+    </div>
+</div>
+<script src="menu.js"></script>
+<script src="matrix.js"></script>
+</body>

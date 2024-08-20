@@ -38,8 +38,20 @@ bodyElement.insertAdjacentHTML('afterbegin', menuContent);
 
 //Putting the project array
  const projArray = [
-       "Scraping_Bible/index.html",
-       "Scraping_Sacred_Texts/index.html",
+   {
+      title: 'Scraping Books of the Bible using CSV of book names',
+      path: "Scraping_Bible/index.html"
+   },
+   {
+      title: 'Web scraping sacred texts',
+      path: "Scraping_Sacred_Texts/index.html"
+   },
+   {
+      title: "Data Analysis: Alchemical Symbolism in Shakespeare's Venus and Adonis",
+      path: "RedWhite_VenusAdonis/index.html"
+   }
+       
+       
  
        
 ]
@@ -48,9 +60,9 @@ bodyElement.insertAdjacentHTML('afterbegin', menuContent);
     const project = document.getElementById('projects')
     const div = document.createElement('div')
     div.classList.add('thumbnail')
-    const displayName = projArray[i].replace(/_/g, ' ').replace('/index.html', '');
+    const displayName = projArray[i].title;
     div.innerHTML = `
-    <a href="${projArray[i]}" target="_blank">
+    <a href="${projArray[i].path}" target="_blank">
     <div class="tnimage">${i+1}</div> 
     <caption>${displayName}</caption>
     </a>
