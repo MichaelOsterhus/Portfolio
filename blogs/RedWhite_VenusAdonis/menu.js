@@ -1,19 +1,27 @@
 links = [
     {
         title: 'Introduction',
-        url: 'index.html'
+        url: '#intro'
+    },
+    {
+        title: 'Overview of Alchemy',
+        url: '#alchemy-overview'
+    },
+    {
+        title: 'Red and White in Other Contexts',
+        url: '#other-contexts'
     },
     {
         title: 'Searching out the Root of the Red King and White Queen',
-        url: 'root.html'
+        url: '#root'
     },
     {
         title: 'Shakespeares Inspiration',
-        url: 'inspiration.html'
+        url: '#inspiration'
     },
     {
-        title: 'Analysis',
-        url: 'analysis.html'
+        title: 'Analysis of the Poem',
+        url: '#analysis'
     }
 ]
 

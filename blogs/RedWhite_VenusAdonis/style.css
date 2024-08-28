@@ -29,7 +29,9 @@ h1{
     width: 700px;
     margin:auto;
     border: 1px solid #555;
+    font-size: 11px;
 }
+
 .content{
     width: 700px;
     margin: auto;
@@ -37,17 +39,23 @@ h1{
 #content-background{
     width: 800px;
     margin-left: 400px;
-    background-color: #1c1c1c;
+    background-color: rgba(30, 30, 30, .7);
 }
 .grid-container {
     display: grid;
     grid-template-columns: repeat(4, 2fr);
     gap: 10px;
+    font-size: 14px;
+
 }
 .grid-item {
-    padding: 10px;
+    padding: 8px;
     border: 1px solid #ccc;
     text-align: center;
+}
+hr{
+    border: 1px rgb(168, 35, 35) solid;
+    margin-top: 40px;
 }
 #matrix-container {
     display: grid;
@@ -102,6 +110,7 @@ li{
 }
 #menu{
     position: fixed;
+    top: 200px;
     width: 300px;
     height: 100vh;
     padding-left: 20px;
