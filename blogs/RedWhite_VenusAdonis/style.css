@@ -214,6 +214,15 @@ p{
     margin: 0px;
     margin-top:10px;
 }
+#title{
+    background-color: #2f2a2a;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+.title-hr{
+    border: 1px #544e4e solid;
+    
+}
 .white{
     color: white;
 
