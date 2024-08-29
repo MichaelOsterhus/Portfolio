@@ -10,6 +10,8 @@ body{
     background-attachment: fixed;
     color: #ccc;
     font-family: 'Helvetica', sans-serif;
+    padding: 0px;
+    margin: 0px;
     
 }
 .center{
@@ -108,9 +110,34 @@ li{
     height: auto;
     object-fit: cover; /* Ensures images fill the squares without distortion */
 }
+.logo{
+    width: 1000px;
+    height: 50px;
+    display: flex;
+ 
+    position: fixed;
+    top: 0px;
+ }
+ .logo img{
+    margin-top: 7px;
+    width: 32px;
+    height: 32px;
+    margin-left: 15px;
+ }
+ .logo h1{
+    vertical-align: middle;
+    padding-left: 5px;
+    padding-top: 6px;
+    color: #cccccc;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-family: 'Abel', Tahoma, Geneva, Verdana, sans-serif, Helvetica, sans-serif;
+ }
+
 #menu{
     position: fixed;
-    top: 200px;
+    top: 140px;
     width: 300px;
     height: 100vh;
     padding-left: 20px;
@@ -120,7 +147,7 @@ li{
     display: block;
     margin-top: 20px;
     margin-left: 10px;
-    color:rgb(150, 137, 122);
+    color:rgb(188, 172, 154);
 }
 #planets{
     display: flex;
@@ -154,6 +181,15 @@ li{
 }
 p{
     line-height: 24px;
+}
+.space{
+    letter-spacing: 42px;
+
+}
+#space{
+    font-size: 42px;
+    font-weight: bold;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 .symbol{
     text-align:center;
