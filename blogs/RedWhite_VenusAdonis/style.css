@@ -1,3 +1,7 @@
+@font-face {
+    font-family: Allura;
+    src: url(Allura-Regular.ttf);
+}
 a{
     color:rgb(225, 194, 154);
     text-decoration: none;
@@ -182,15 +186,8 @@ li{
 p{
     line-height: 24px;
 }
-.space{
-    letter-spacing: 42px;
 
-}
-#space{
-    font-size: 42px;
-    font-weight: bold;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
+
 .symbol{
     text-align:center;
     font-size: 80px;
@@ -214,19 +211,8 @@ p{
     margin: 0px;
     margin-top:10px;
 }
-#title{
-    background-color: #2f2a2a;
-    padding: 5px;
-    margin-bottom: 20px;
-}
-.title-hr{
-    border: 1px #544e4e solid;
-    
-}
-.white{
-    color: white;
 
-}
+
 .red{
     color: rgb(255, 93, 93);
 }
@@ -255,10 +241,66 @@ p{
 table{
     width: 900px;
 }
+#title{
+    /* background-color: #0f0c0c; */
+    text-align: center;
+    line-height: 30px;
+    letter-spacing: 4px;
+    /* padding: 5px; */
+    margin-bottom: 20px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.title-allura{
+    font-family: Allura;
+    font-size: 24px;
+    letter-spacing: 0px;
+    margin-right: 12px;
+}
+.title-hr{
+    border: 1px solid #eee;
+    margin-bottom: 40px;
+}
+#title p{
+    margin: 0px;
+}
+.title-venus-space{
+    letter-spacing: 18px;
+}
+#title h1{
+    /* color: rgb(138, 133, 122);  */
+    text-align: center; 
+    
+    line-height: 34px;
+    font-weight: bold;
+}
+#title h3{
+    font-size: 20px;
+    margin: 0px;
+    color: rgb(172, 161, 137); 
+}
+.title-space{
+    letter-spacing: 32px;
+
+}
+#title-space{
+    font-size: 42px;
+    font-weight: bold;
+    text-align: center;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(255, 255, 255); 
+    /* background: -webkit-linear-gradient(#eee, #510707);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+}
+
 th{
     padding:5px;
     text-align: left;
 }
 td{
     padding: 5px;
+}
+.white{
+    color: white;
+
 }
