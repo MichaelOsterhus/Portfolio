@@ -245,7 +245,7 @@ table{
     /* background-color: #0f0c0c; */
     text-align: center;
     line-height: 30px;
-    letter-spacing: 4px;
+    letter-spacing: 8px;
     /* padding: 5px; */
     margin-bottom: 20px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -274,7 +274,7 @@ table{
     font-weight: bold;
 }
 #title h3{
-    font-size: 20px;
+    font-size: 26px;
     margin: 0px;
     color: rgb(172, 161, 137); 
 }
