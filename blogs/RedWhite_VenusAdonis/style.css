@@ -18,6 +18,18 @@ body{
     margin: 0px;
     
 }
+#menu li::marker {
+    color: rgb(214, 118, 118); /* Change the color to red */
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+}
+
+
+.r{
+    list-style-type: upper-roman;
+  
+}
+.a{list-style-type: upper-alpha;}
 .center{
     text-align:center;
 }
