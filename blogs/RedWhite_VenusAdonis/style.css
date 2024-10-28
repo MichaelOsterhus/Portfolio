@@ -116,6 +116,7 @@ li{
     /* font-family: monospace; */
     /* font-size: 15px; */
 }
+
 .img-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -200,7 +201,10 @@ p{
     line-height: 24px;
 }
 
+#rebis{
 
+    padding: 20px;
+}
 .symbol{
     text-align:center;
     font-size: 80px;
