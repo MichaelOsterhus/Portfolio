@@ -20,12 +20,26 @@
          height: 371px;
          object-fit: cover;
       }
+      #blogs{
+         display: flex;
+      }
+      #blogs h2{
+         text-align: center;
+      }
       .blog{
          width: 200px;
          height: 200px;
          border: 12px solid #9f9f9f;
          border-radius: 50%;
          background-size: contain;
+         margin: auto;
+      }
+      #blog-content{
+         width: 1260px;
+         margin: auto;
+      }
+      .blog-container{
+         width: 320px;
       }
       #bus{
          background-image: url('img/bus.jpg');
@@ -42,13 +56,23 @@
    <script src="js/menu.js"></script>
 
             
-         <div id="content">
+         <div id="blog-content">
             <div id="intro">
 
                <div id = 'blogs'>
-                  <a target="_blank" href="https://wheelsonthebusblog.blogspot.com/"><div class="blog" id="bus"></div></a>
-                  <a target="_blank" href="https://eyeonthehorizonai.blogspot.com/"><div class="blog" id="eye"></div></a>
-                  <a target="_blank" href="https://wordsasidols.blogspot.com/"><div class="blog" id="word"></div></a>
+                  <div class="blog-container">
+                     <a target="_blank" href="https://wheelsonthebusblog.blogspot.com/"><div class="blog" id="bus"></div></a>
+                     <h2>The Wheels on the Bus</h2>
+                  </div>
+                  <div class="blog-container">
+                     <a target="_blank" href="https://eyeonthehorizonai.blogspot.com/"><div class="blog" id="eye"></div></a>
+                     <h2>Eye on the Horizon</h2>
+                  </div>
+                  <div class="blog-container">
+                     <a target="_blank" href="https://wordsasidols.blogspot.com/"><div class="blog" id="word"></div></a>
+                     <h2>Idol Word</h2>
+                  </div>
+                  
                </div>
                
                
