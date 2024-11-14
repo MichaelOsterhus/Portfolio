@@ -10,7 +10,7 @@
 
     body {
     margin: 0;
-    display: flex;
+
     /* place-items: center; */
     color: rgba(255, 255, 255, 0.87);
     background-color: #242424;
@@ -23,10 +23,32 @@
     width: 100%;
 
     }
+    #store{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 1000px;
+        margin: auto;
+    }
+    .item{
+        display: block;
+        width: 300px;
+    }
+    .item img{
+        width: 300px;
+    }
+    .item a{
+        color: rgb(240, 216, 144);
+        text-decoration: none;
+        display: block;
+    }
     </style>
 
 </head>
 <body>
-    
+    <h1>Jack Rabbit Arts & Crafts</h1>
+    <h2>Store</h2>
+    <div id="store"></div>
+    <script src="printify.js"></script>
 </body>
 </html>
